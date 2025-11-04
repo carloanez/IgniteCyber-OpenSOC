@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+      - name: Lint Markdown
+        run: markdownlint '**/*.md' || true
+      - name: Check docker compose
+        run: |
+          docker --version
+          echo "Validating docker-compose syntax"
+          docker compose -f docker/docker-compose.yml config
