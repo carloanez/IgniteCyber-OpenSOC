@@ -1,0 +1,70 @@
+name: ai-module6
+
+on:
+  pull_request:
+    paths:
+      - 'modules/module6-ai-assisted-lab/**'
+      - '.github/workflows/ai-ci.yml'
+  push:
+    branches: [ main ]
+    paths:
+      - 'modules/module6-ai-assisted-lab/**'
+      - '.github/workflows/ai-ci.yml'
+
+jobs:
+  ai_module_smoke:
+    name: Module 6 – AI lab smoke checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify required files exist
+        run: |
+          set -e
+          test -f modules/module6-ai-assisted-lab/README.md
+          test -f modules/module6-ai-assisted-lab/prompts/analyst_assistant.md
+          test -f modules/module6-ai-assisted-lab/labs/sample_alert.json
+          test -f modules/module6-ai-assisted-lab/scripts/ai_triage.py
+          echo "All required Module 6 files are present."
+
+      - name: Validate AI compose file (if present)
+        run: |
+          if [ -f modules/module6-ai-assisted-lab/docker/docker-compose.ai.yml ]; then
+            docker compose -f modules/module6-ai-assisted-lab/docker/docker-compose.ai.yml config
+          else
+            echo "AI compose file not found; skipping compose validation."
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install minimal deps (requests)
+        run: |
+          if [ -f modules/module6-ai-assisted-lab/requirements.txt ]; then
+            pip install -r modules/module6-ai-assisted-lab/requirements.txt
+          else
+            pip install requests
+          fi
+
+      - name: Python syntax check for ai_triage.py
+        run: python -m py_compile modules/module6-ai-assisted-lab/scripts/ai_triage.py
+
+      - name: Static prompt sanity check
+        run: |
+          grep -q "System role:" modules/module6-ai-assisted-lab/prompts/analyst_assistant.md
+          grep -q "Task:" modules/module6-ai-assisted-lab/prompts/analyst_assistant.md
+          grep -q "Constraints:" modules/module6-ai-assisted-lab/prompts/analyst_assistant.md
+          echo "Prompt file includes required headings."
+
+      - name: Sample alert JSON validity
+        run: |
+          python - << 'PY'
+          import json, pathlib
+          p = pathlib.Path("modules/module6-ai-assisted-lab/labs/sample_alert.json")
+          data = json.loads(p.read_text())
+          assert "rule" in data and "data" in data, "alert missing expected keys"
+          print("Sample alert structure OK")
+          PY
+
