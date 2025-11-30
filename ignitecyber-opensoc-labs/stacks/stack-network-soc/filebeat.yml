@@ -1,0 +1,15 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/log/zeek/*.log
+    fields:
+      log_type: zeek
+    fields_under_root: true
+
+output.elasticsearch:
+  hosts: ["elasticsearch:9200"]
+
+setup.template.enabled: true
+setup.ilm.enabled: false
+logging.to_files: false

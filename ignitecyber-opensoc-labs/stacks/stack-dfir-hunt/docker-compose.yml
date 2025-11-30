@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+
+postgres:
+image: postgres:13
+container_name: ic_ts_postgres
+environment:
+- POSTGRES_PASSWORD=timesketch
+networks: [dfirnet]
+
+redis:
+image: redis:6
+container_name: ic_ts_redis
+networks: [dfirnet]
+
+timesketch:
+image: timesketch/timesketch:latest
+container_name: ic_timesketch
+depends_on: [postgres, redis]
+ports:
+- "5000:5000"
+networks: [dfirnet]
+
+networks:
+dfirnet:
+driver: bridge

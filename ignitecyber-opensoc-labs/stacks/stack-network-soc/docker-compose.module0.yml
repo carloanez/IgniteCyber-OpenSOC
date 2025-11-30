@@ -1,0 +1,6 @@
+ersion: "3.9"
+
+services:
+zeek:
+volumes:
+- ../../datasets/module0/pcaps:/pcaps:ro

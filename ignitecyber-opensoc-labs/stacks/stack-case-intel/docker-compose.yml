@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+
+cassandra:
+image: cassandra:3.11
+container_name: ic_cassandra
+networks: [casenet]
+
+thehive:
+image: strangebee/thehive:5.5.1
+container_name: ic_thehive
+depends_on: [cassandra]
+ports:
+- "9001:9000"
+networks: [casenet]
+
+cortex:
+image: thehiveproject/cortex:3.1.7
+container_name: ic_cortex
+ports:
+- "9000:9001"
+networks: [casenet]
+
+misp:
+image: harvarditsecurity/misp:latest
+container_name: ic_misp
+ports:
+- "8444:443"
+networks: [casenet]
+
+networks:
+casenet:
+driver: bridge
