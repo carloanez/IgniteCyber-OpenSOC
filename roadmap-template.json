@@ -1,0 +1,78 @@
+{
+  "name": "IgniteCyber OpenSOC Roadmap",
+  "description": "Central roadmap for building, testing, and launching each OpenSOC module (Modules 0–5), contributor tasks, and community milestones.",
+  "layout": "board",
+  "views": [
+    {
+      "type": "board",
+      "name": "OpenSOC Build Roadmap",
+      "description": "Track module progress from planning to completion",
+      "columns": [
+        { "name": "🟡 Backlog", "description": "Ideas and tasks waiting to be assigned" },
+        { "name": "🟢 In Progress", "description": "Active development or documentation underway" },
+        { "name": "🔵 Review", "description": "Needs peer or mentor review before marking done" },
+        { "name": "🟣 Completed", "description": "Verified and merged into main branch" }
+      ]
+    }
+  ],
+  "fields": [
+    {
+      "name": "Status",
+      "data_type": "single_select",
+      "options": ["Backlog", "In Progress", "Review", "Completed"]
+    },
+    {
+      "name": "Priority",
+      "data_type": "single_select",
+      "options": ["High", "Medium", "Low"]
+    },
+    {
+      "name": "Module",
+      "data_type": "single_select",
+      "options": [
+        "Module 0 – SOC Foundations",
+        "Module 1 – Initial Access",
+        "Module 2 – Malware Analysis",
+        "Module 3 – Incident Response",
+        "Module 4 – Threat Hunting",
+        "Module 5 – Professional Development",
+        "Community / Outreach"
+      ]
+    },
+    { "name": "Due Date", "data_type": "date" },
+    { "name": "Owner", "data_type": "text" }
+  ],
+  "automation": [
+    {
+      "on": "issues.opened",
+      "set": { "field": "Status", "value": "Backlog" }
+    },
+    {
+      "on": "pull_request.opened",
+      "set": { "field": "Status", "value": "In Progress" }
+    }
+  ],
+  "seed_issues": [
+    {
+      "title": "Module 0 – Build SOC Foundations Lab Environment",
+      "body": "Configure Wazuh, Zeek, and Security Onion stack for Module 0.\n- Create Docker Compose configs\n- Validate lab telemetry\n- Document setup in /docs/setup-guides",
+      "labels": ["module: foundations", "documentation"],
+      "priority": "High",
+      "module": "Module 0 – SOC Foundations"
+    },
+    {
+      "title": "Module 1 – Phishing Detection Lab",
+      "body": "Develop initial access simulation with email artifacts and Wazuh detection rules.\n- Include Sigma rule mappings to MITRE ATT&CK T1566\n- Provide sample analysis report template",
+      "labels": ["module: initial-access"],
+      "priority": "Medium",
+      "module": "Module 1 – Initial Access"
+    },
+    {
+      "title": "Community Collaboration Setup",
+      "body": "Connect with SANS Community Chapters for mentorship and contributor onboarding.\n- Add upcoming events to community/sans-chapters.md\n- Invite volunteers to OpenSOC Slack",
+      "labels": ["community"],
+      "priority": "Medium",
+      "module": "Community / Outreach"
+    }
+  ]
+}
