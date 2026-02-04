@@ -1,0 +1,34 @@
+{
+  "title": "LAB2.1 \u2014 Phishing Triage: AFS Payroll Recon",
+  "severity": 2,
+  "tlp": 2,
+  "tags": [
+    "ignitecyber",
+    "bootcamp",
+    "LAB2.1",
+    "phishing",
+    "cinder-jackal"
+  ],
+  "tasks": [
+    {
+      "title": "Triage email headers + sender infrastructure",
+      "status": "Waiting"
+    },
+    {
+      "title": "Extract IOCs (URLs/domains/hashes)",
+      "status": "Waiting"
+    },
+    {
+      "title": "ATT&CK mapping + hypothesis",
+      "status": "Waiting"
+    },
+    {
+      "title": "Write Sigma-first detections (process + network)",
+      "status": "Waiting"
+    },
+    {
+      "title": "Hunt in Elastic (zeek-*, elastic-agent-*, wazuh-alerts-*)",
+      "status": "Waiting"
+    }
+  ]
+}

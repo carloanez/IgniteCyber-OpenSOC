@@ -1,0 +1,86 @@
+[
+  {
+    "@timestamp": "2026-02-03T15:41:43.000Z",
+    "tactic": "TA0001",
+    "technique": "T1566.001",
+    "technique_name": "Spearphishing Attachment",
+    "evidence": "User opened payroll-themed email with attachment Payroll_Update_Q1_2026.docm"
+  },
+  {
+    "@timestamp": "2026-02-03T15:42:23.000Z",
+    "tactic": "TA0002",
+    "technique": "T1204.002",
+    "technique_name": "User Execution: Malicious File",
+    "evidence": "WINWORD opened Payroll_Update_Q1_2026.docm from Downloads"
+  },
+  {
+    "@timestamp": "2026-02-03T15:42:53.000Z",
+    "tactic": "TA0005",
+    "technique": "T1218.005",
+    "technique_name": "Mshta",
+    "evidence": "WINWORD spawned mshta with vbscript:Execute()"
+  },
+  {
+    "@timestamp": "2026-02-03T15:42:56.000Z",
+    "tactic": "TA0002",
+    "technique": "T1059.001",
+    "technique_name": "PowerShell",
+    "evidence": "mshta launched encoded PowerShell to fetch stage-2 script"
+  },
+  {
+    "@timestamp": "2026-02-03T15:42:58.000Z",
+    "tactic": "TA0011",
+    "technique": "T1071.001",
+    "technique_name": "Web Protocols",
+    "evidence": "Outbound HTTPS to cdn-ffsync.com to fetch stage-2"
+  },
+  {
+    "@timestamp": "2026-02-03T15:43:48.000Z",
+    "tactic": "TA0005",
+    "technique": "T1197",
+    "technique_name": "BITS Jobs",
+    "evidence": "bitsadmin used to stage binary into ProgramData"
+  },
+  {
+    "@timestamp": "2026-02-03T15:44:33.000Z",
+    "tactic": "TA0003",
+    "technique": "T1053.005",
+    "technique_name": "Scheduled Task",
+    "evidence": "Scheduled task created for periodic execution"
+  },
+  {
+    "@timestamp": "2026-02-03T15:44:53.000Z",
+    "tactic": "TA0003",
+    "technique": "T1547.001",
+    "technique_name": "Registry Run Keys/Startup Folder",
+    "evidence": "Run key created for startup persistence"
+  },
+  {
+    "@timestamp": "2026-02-03T15:51:53.000Z",
+    "tactic": "TA0006",
+    "technique": "T1003.003",
+    "technique_name": "OS Credential Dumping",
+    "evidence": "Rubeus asktgt with /createnetonly observed"
+  },
+  {
+    "@timestamp": "2026-02-03T15:52:53.000Z",
+    "tactic": "TA0011",
+    "technique": "T1071.001",
+    "technique_name": "Web Protocols",
+    "evidence": "Periodic HTTPS beaconing to cdn-ffsync.com observed"
+  },
+  {
+    "@timestamp": "2026-02-03T17:52:53.000Z",
+    "tactic": "TA0009",
+    "technique": "T1074.001",
+    "technique_name": "Local Data Staging",
+    "evidence": "Sensitive CSV exports archived into recon.zip"
+  },
+  {
+    "@timestamp": "2026-02-03T17:58:53.000Z",
+    "tactic": "TA0010",
+    "technique": "T1041",
+    "technique_name": "Exfiltration Over C2 Channel",
+    "evidence": "POST upload of recon.zip to exfil endpoint observed"
+  }
+]

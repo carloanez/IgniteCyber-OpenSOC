@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "schema": "ignitecyber.casebundle.v1",
+    "lab_code": "Lab 2.2",
+    "threat_actor": "CINDER JACKAL",
+    "company": "FinanceFront",
+    "generated_utc": "2026-02-03T18:19:02.242063Z"
+  },
+  "case": {
+    "title": "CJ-FF-PRD-2026-02 \u2014 Maldoc Macro \u2192 mshta \u2192 Encoded PowerShell",
+    "description": "### Narrative\nA recovered Office document contains an obfuscated macro. When executed, it spawns mshta and launches encoded PowerShell to download and run stage-2.\n\n### What you must prove\n1) Macro intent (deobfuscate strings safely, offline)  \n2) IOCs extracted (URLs/domains, file paths, registry keys, cmdline tokens)  \n3) Detections that would have caught this earlier (Sigma-first)  \n4) How you would validate and scope the incident in Elastic\n\n### ATT&CK mapping\n- TA0002 / T1204.002 \u2014 User Execution: Malicious File  \n- TA0005 / T1218.005 \u2014 Mshta  \n- TA0002 / T1059.001 \u2014 PowerShell  \n- TA0005 / T1197 \u2014 BITS Jobs (staging)",
+    "severity": 2,
+    "tlp": 2,
+    "pap": 2,
+    "tags": [
+      "ignitecyber",
+      "financefront",
+      "cinder-jackal",
+      "lab-2.2",
+      "maldoc",
+      "sigma-first"
+    ],
+    "customFields": {
+      "threat_actor": {
+        "string": "CINDER JACKAL"
+      },
+      "company": {
+        "string": "FinanceFront"
+      },
+      "lab_code": {
+        "string": "Lab 2.2"
+      }
+    }
+  },
+  "tasks": [
+    {
+      "title": "Extract and deobfuscate macro strings safely (offline)",
+      "description": "Do not execute. Focus on string decoding and intent reconstruction.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Extract IOCs and create hunting pivots",
+      "description": "Generate KQL pivots for URL/domain/hash/cmdline tokens.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Correlate endpoint execution with Zeek DNS/HTTP",
+      "description": "Tie macro output to network traffic windows.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Sigma-first: create 1 detection and 2 tuning variants",
+      "description": "Strict/medium/broad variants with justification.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Scope and eradication plan",
+      "description": "Identify other hosts/users likely impacted and evidence required to close.",
+      "status": "Waiting"
+    }
+  ],
+  "observables": [
+    {
+      "dataType": "filename",
+      "data": "Payroll_Update_Q1_2026.docm",
+      "message": "Recovered macro document",
+      "tags": [
+        "cinder-jackal",
+        "maldoc",
+        "lab-2.2"
+      ],
+      "ioc": false,
+      "sighted": true
+    },
+    {
+      "dataType": "hash",
+      "data": "a3c1f4e2d5c6b7a8f9e0d1c2b3a4f5e6d7c8b9a0f1e2d3c4b5a6f7e8d9c0b1a2",
+      "message": "Maldoc SHA256",
+      "tags": [
+        "cinder-jackal",
+        "maldoc",
+        "lab-2.2"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "domain",
+      "data": "cdn-ffsync.com",
+      "message": "Stage-2 download/C2 domain (story)",
+      "tags": [
+        "cinder-jackal",
+        "c2",
+        "lab-2.2"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "url",
+      "data": "https://cdn-ffsync.com/updates/win/ffsync.bin",
+      "message": "Stage-2 payload URL",
+      "tags": [
+        "cinder-jackal",
+        "payload",
+        "lab-2.2"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "hash",
+      "data": "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1908f7e6d5c4b3a2f1e0d9c8b7a6",
+      "message": "Stage-2 payload SHA256 (story)",
+      "tags": [
+        "cinder-jackal",
+        "payload",
+        "lab-2.2"
+      ],
+      "ioc": true,
+      "sighted": false
+    },
+    {
+      "dataType": "regexp",
+      "data": "(?i)(vbscript:Execute\\(|FromBase64String|\\s-enc\\s|IEX|Invoke-Expression)",
+      "message": "High-signal macro/PS tokens",
+      "tags": [
+        "detection",
+        "lab-2.2"
+      ],
+      "ioc": false,
+      "sighted": false
+    }
+  ],
+  "notes": [
+    {
+      "title": "Macro Analysis Guidance",
+      "content": "Treat the macro as untrusted. Use string extraction and decode functions; never enable Office execution in the lab VM beyond controlled artifacts.",
+      "tlp": 2
+    },
+    {
+      "title": "IOC Hygiene",
+      "content": "Normalize domains and URLs. Store in case observables; tag as IOC only after validation against evidence.",
+      "tlp": 2
+    }
+  ]
+}

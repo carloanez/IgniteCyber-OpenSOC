@@ -1,0 +1,398 @@
+{
+  "version": "1.1",
+  "generated": "2026-02-02T21:38:28.991261Z",
+  "dataset_dir": "/opt/bootcamp/datasets",
+  "index_patterns": [
+    "zeek-*",
+    "wazuh-alerts-*",
+    "elastic-agent-*"
+  ],
+  "labs": [
+    {
+      "lab_code": "Lab 1.1",
+      "title": "Hosted Lab Onboarding + Health Checks",
+      "day": 1,
+      "book": 1,
+      "notebook": "notebooks/LAB-1.1_Onboarding_HealthChecks.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0007",
+          "technique": "T1082",
+          "name": "System Information Discovery"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Verify Elastic cluster health and authenticate.",
+        "Confirm that index patterns (`zeek-*`, `wazuh-alerts-*`, `elastic-agent-*`) return data.",
+        "Record ingestion status (healthy/yellow/red), unassigned shards, and most recent event timestamp per index family."
+      ]
+    },
+    {
+      "lab_code": "Lab 1.2",
+      "title": "Baseline Dashboards (Zeek + Endpoint Telemetry)",
+      "day": 1,
+      "book": 1,
+      "notebook": "notebooks/LAB-1.2_Baseline_Dashboards_Zeek_Endpoint.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0007",
+          "technique": "T1046",
+          "name": "Network Service Discovery"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Build a baseline view of top talkers (src/dst), top ports, and top domains in `zeek-*`.",
+        "Build an endpoint baseline: top processes, top parent processes, and top command-line tokens in `elastic-agent-*`.",
+        "Document what 'normal' looks like for later anomaly hunting."
+      ]
+    },
+    {
+      "lab_code": "Lab 1.3",
+      "title": "First Detection: Suspicious PowerShell (Sigma)",
+      "day": 1,
+      "book": 1,
+      "notebook": "notebooks/LAB-1.3_First_Detection_Suspicious_PowerShell_Sigma.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0002",
+          "technique": "T1059.001",
+          "name": "PowerShell"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Hunt for encoded PowerShell (`-enc`, `FromBase64String`, `IEX`).",
+        "Identify parent process and user context for suspicious executions.",
+        "Create a Sigma rule and validate it against collected events.",
+        "Propose a tuning plan (reduce false positives)."
+      ]
+    },
+    {
+      "lab_code": "Lab 2.1",
+      "title": "Phishing Case Triage (Elastic Casebook-style)",
+      "day": 2,
+      "book": 2,
+      "notebook": "notebooks/LAB-2.1_Phishing_Triage_Elastic_Casebook.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0001",
+          "technique": "T1566.001",
+          "name": "Spearphishing Attachment"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Pivot from a suspicious email/URL to Zeek HTTP/DNS evidence.",
+        "Identify affected user/host and first time seen.",
+        "Build a case timeline of initial access.",
+        "Draft containment: block domain/IP, isolate host, reset creds."
+      ]
+    },
+    {
+      "lab_code": "Lab 2.2",
+      "title": "Maldoc/Macro Analysis + Deobfuscation (Offline) + IOC Extraction",
+      "day": 2,
+      "book": 2,
+      "notebook": "notebooks/LAB-2.2_Maldoc_Macro_Deobfuscation_IOC_Extraction.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0002",
+          "technique": "T1204.002",
+          "name": "Malicious File"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Parse a provided macro/script snippet and deobfuscate key strings.",
+        "Extract IOCs (URLs, domains, IPs, file names, registry paths).",
+        "Create 2 KQL pivots and 1 Sigma rule proposal based on extracted artifacts."
+      ]
+    },
+    {
+      "lab_code": "Lab 2.3",
+      "title": "LOLBAS Proxy Execution: mshta.exe (T1218.005)",
+      "day": 2,
+      "book": 2,
+      "notebook": "notebooks/LAB-2.3_LOLBAS_mshta_ProxyExecution_T1218_005.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0005",
+          "technique": "T1218.005",
+          "name": "Mshta"
+        }
+      ],
+      "dataset_hints": [
+        "mshta_vbscript_execute_psh",
+        "mshta_javascript_getobject_sct",
+        "mshta_html_application_execution"
+      ],
+      "tasks": [
+        "Find mshta execution events and identify their parent processes.",
+        "Determine the payload source (local .hta vs remote scriptlet / URL).",
+        "Correlate endpoint execution with Zeek DNS/HTTP around the same time window.",
+        "Write a Sigma rule and validate it against your evidence."
+      ]
+    },
+    {
+      "lab_code": "Lab 2.4",
+      "title": "Stage 2 Download: bitsadmin.exe (T1197)",
+      "day": 2,
+      "book": 2,
+      "notebook": "notebooks/LAB-2.4_BITSADMIN_Download_T1197.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0005",
+          "technique": "T1197",
+          "name": "BITS Jobs"
+        }
+      ],
+      "dataset_hints": [
+        "bitsadmin_download"
+      ],
+      "tasks": [
+        "Identify bitsadmin executions that include URL download behavior.",
+        "Extract downloaded URL + destination path if available.",
+        "Correlate with network evidence (Zeek) and subsequent process execution.",
+        "Draft a Sigma rule and propose allowlist/tuning controls."
+      ]
+    },
+    {
+      "lab_code": "Lab 3.1",
+      "title": "C2 Beacon Investigation (Cobalt Strike patterns)",
+      "day": 3,
+      "book": 3,
+      "notebook": "notebooks/LAB-3.1_C2_Beacon_Investigation_CobaltStrike.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0011",
+          "technique": "T1071.001",
+          "name": "Web Protocols"
+        },
+        {
+          "tactic": "TA0011",
+          "technique": "T1573.002",
+          "name": "Asymmetric Cryptography"
+        }
+      ],
+      "dataset_hints": [
+        "aptsimulator_cobaltstrike"
+      ],
+      "tasks": [
+        "Use Zeek to identify periodic beaconing (consistent intervals, repeated destinations).",
+        "Extract potential C2 indicators: dest IP, SNI, URI path, user-agent anomalies.",
+        "Validate with endpoint telemetry: process responsible for connections, parent chain.",
+        "Write a hunt summary and suggested blocking/containment plan."
+      ]
+    },
+    {
+      "lab_code": "Lab 3.2",
+      "title": "Lateral Movement: WinRM + Remote Scheduled Tasks",
+      "day": 3,
+      "book": 3,
+      "notebook": "notebooks/LAB-3.2_Lateral_Movement_WinRM_Schtasks.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0008",
+          "technique": "T1021.006",
+          "name": "PowerShell Remoting"
+        },
+        {
+          "tactic": "TA0008",
+          "technique": "T1053.005",
+          "name": "Scheduled Task"
+        }
+      ],
+      "dataset_hints": [
+        "psremoting",
+        "schtask_create",
+        "schtask_modification"
+      ],
+      "tasks": [
+        "Detect remote `schtasks` usage (`/S`, `/U`, `/P`) and identify target hosts.",
+        "Look for WinRM/PowerShell remoting signals (host logs + network).",
+        "Build a lateral movement map: source host \u2192 target host \u2192 executed payload.",
+        "Document containment: disable scheduled task, isolate hosts, reset creds."
+      ]
+    },
+    {
+      "lab_code": "Lab 3.3",
+      "title": "Timeline Reconstruction (Elastic-based, Timesketch optional)",
+      "day": 3,
+      "book": 3,
+      "notebook": "notebooks/LAB-3.3_Timeline_Reconstruction_Elastic.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0009",
+          "technique": "T1074.001",
+          "name": "Local Data Staging"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Create a time-ordered sequence of key events across endpoint + network data.",
+        "Mark phase boundaries: initial access \u2192 execution \u2192 persistence \u2192 C2 \u2192 actions on objectives.",
+        "Export a timeline evidence CSV and write a 1-paragraph narrative."
+      ]
+    },
+    {
+      "lab_code": "Lab 4.1",
+      "title": "Persistence Hunt: Run Keys + Scheduled Tasks",
+      "day": 4,
+      "book": 4,
+      "notebook": "notebooks/LAB-4.1_Persistence_Hunt_RunKeys_Schtasks.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0003",
+          "technique": "T1547.001",
+          "name": "Registry Run Keys/Startup Folder"
+        },
+        {
+          "tactic": "TA0003",
+          "technique": "T1053.005",
+          "name": "Scheduled Task"
+        }
+      ],
+      "dataset_hints": [
+        "registry_modification_run_keys",
+        "schtasks_creation_standard_user",
+        "schtasks_creation_execution_elevated_user"
+      ],
+      "tasks": [
+        "Search for Run key modifications linked to suspicious binaries/scripts.",
+        "Search for scheduled task creation/modification events and identify creators.",
+        "Validate persistence by locating subsequent execution events.",
+        "Build an eradication plan and verify removal steps."
+      ]
+    },
+    {
+      "lab_code": "Lab 4.2",
+      "title": "Credential Access Signal: Rubeus ASKTGT CreateNetOnly (T1003.003)",
+      "day": 4,
+      "book": 4,
+      "notebook": "notebooks/LAB-4.2_Credential_Access_Rubeus_T1003_003.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0006",
+          "technique": "T1003.003",
+          "name": "OS Credential Dumping (Rubeus patterns)"
+        }
+      ],
+      "dataset_hints": [
+        "rubeus_asktgt_createnetonly"
+      ],
+      "tasks": [
+        "Hunt for Rubeus execution artifacts in process creation telemetry.",
+        "Identify associated Kerberos-related signals (where available).",
+        "Assess privilege/risk impact and propose response: isolate host, reset tickets, rotate creds."
+      ]
+    },
+    {
+      "lab_code": "Lab 4.3",
+      "title": "Threat Hunting Workflow (ELK): Hypothesis \u2192 Query \u2192 Validate \u2192 Report",
+      "day": 4,
+      "book": 4,
+      "notebook": "notebooks/LAB-4.3_Threat_Hunting_Workflow_ELK.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0007",
+          "technique": "T1087",
+          "name": "Account Discovery"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Write a hunt hypothesis (what you expect to see and where).",
+        "Run 3 iterative queries, each time refining based on results.",
+        "Document decisions: why you kept/changed each query.",
+        "Produce a 1-page hunt report."
+      ]
+    },
+    {
+      "lab_code": "Lab 5.1",
+      "title": "AI Triage Assistant (Validated Summaries)",
+      "day": 5,
+      "book": 5,
+      "notebook": "notebooks/LAB-5.1_AI_Triage_Assistant_Validated_Summaries.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0009",
+          "technique": "T1119",
+          "name": "Automated Collection"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Create a prompt that summarizes alerts only using provided evidence rows.",
+        "Force the model to output: summary, ATT&CK, validation queries, containment.",
+        "Add an 'uncertainty' section and require analyst validation."
+      ]
+    },
+    {
+      "lab_code": "Lab 5.2",
+      "title": "AI-Assisted Sigma Authoring + Unit Tests",
+      "day": 5,
+      "book": 5,
+      "notebook": "notebooks/LAB-5.2_AI_Assisted_Sigma_Authoring_Unit_Tests.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0005",
+          "technique": "T1027",
+          "name": "Obfuscated/Compressed Files and Information"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Provide the model with example events (positive) and benign events (negative).",
+        "Generate Sigma rule variants and evaluate precision vs recall tradeoffs.",
+        "Write a short unit-test plan: required fields, expected matches, known false positives."
+      ]
+    },
+    {
+      "lab_code": "Lab 5.3",
+      "title": "AI-Assisted ATT&CK Mapping + Reporting (Human-in-the-loop)",
+      "day": 5,
+      "book": 5,
+      "notebook": "notebooks/LAB-5.3_AI_Assisted_ATTACK_Mapping_Report.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0009",
+          "technique": "T1074",
+          "name": "Data Staged"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Given an evidence CSV, have the model propose an ATT&CK timeline.",
+        "Manually verify each technique mapping and correct it if needed.",
+        "Produce a final incident report section with verified mappings."
+      ]
+    },
+    {
+      "lab_code": "Lab 5.4",
+      "title": "Capstone: Full Intrusion Investigation (CINDER JACKAL @ FinanceFront)",
+      "day": 5,
+      "book": 5,
+      "notebook": "notebooks/LAB-5.4_Capstone_CINDER_JACKAL_Investigation.ipynb",
+      "mitre": [
+        {
+          "tactic": "TA0001",
+          "technique": "T1566",
+          "name": "Phishing"
+        },
+        {
+          "tactic": "TA0010",
+          "technique": "T1041",
+          "name": "Exfiltration Over C2 Channel"
+        }
+      ],
+      "dataset_hints": [],
+      "tasks": [
+        "Conduct end-to-end investigation using all prior techniques.",
+        "Produce: timeline, IOCs, ATT&CK mapping, detection improvements, lessons learned.",
+        "Deliver a 2-page final report and a 5-minute executive briefing."
+      ]
+    }
+  ]
+}

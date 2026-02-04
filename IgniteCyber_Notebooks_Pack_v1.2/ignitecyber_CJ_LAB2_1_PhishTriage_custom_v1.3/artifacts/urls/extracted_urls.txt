@@ -1,0 +1,3 @@
+hxxps://portal-apexfin-payments[.]invalid/auth?ref=payroll&campaign=CJ-021
+hxxps://login-apexfin-secure[.]invalid/sso?continue=/payroll
+hxxps://cdn-cinderjackal[.]invalid/static/update.hta

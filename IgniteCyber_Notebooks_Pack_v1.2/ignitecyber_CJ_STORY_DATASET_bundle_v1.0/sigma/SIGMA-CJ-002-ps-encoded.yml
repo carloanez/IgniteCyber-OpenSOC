@@ -1,0 +1,25 @@
+title: CJ FinanceFront Encoded PowerShell With WebClient
+id: 9a2a0a2a-cj-002
+status: experimental
+description: Encoded PowerShell with download/execute indicators used during CJ staging.
+author: IgniteCyber Academy
+date: 2026/02/03
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith: '\powershell.exe'
+  selection_terms:
+    CommandLine|contains:
+      - ' -enc '
+      - 'FromBase64String'
+      - 'DownloadString'
+      - 'IEX'
+  condition: selection_img and selection_terms
+falsepositives:
+  - Automation scripts
+level: medium
+tags:
+  - attack.execution
+  - attack.t1059.001

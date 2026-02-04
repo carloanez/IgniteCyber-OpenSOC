@@ -1,0 +1,160 @@
+{
+  "meta": {
+    "schema": "ignitecyber.casebundle.v1",
+    "lab_code": "Lab 2.1",
+    "threat_actor": "CINDER JACKAL",
+    "company": "FinanceFront",
+    "generated_utc": "2026-02-03T18:19:02.242008Z"
+  },
+  "case": {
+    "title": "CJ-FF-PRD-2026-02 \u2014 Phishing \u2192 Credential Harvesting Attempt",
+    "description": "### Narrative\nFinanceFront HR receives multiple reports of a \"Payroll Portal Update\" email sent to employees. The sender impersonates HR and uses a look-alike domain to harvest Microsoft 365 credentials. Shortly after an employee opens the attachment, we see outbound HTTP traffic to the phish domain and a follow-on LOLBAS execution chain.\n\n### What you must prove\n1) Who received and interacted with the message (user/host)  \n2) Whether the attachment led to execution (process chain evidence)  \n3) Whether the phish infrastructure was contacted (DNS/HTTP evidence)  \n4) What containment steps are required and what evidence supports them\n\n### ATT&CK mapping\n- TA0001 / T1566.001 \u2014 Spearphishing Attachment  \n- TA0002 / T1204.002 \u2014 User Execution: Malicious File  \n- TA0005 / T1218.005 \u2014 Mshta (proxy execution)  \n- TA0002 / T1059.001 \u2014 PowerShell (encoded)",
+    "severity": 2,
+    "tlp": 2,
+    "pap": 2,
+    "tags": [
+      "ignitecyber",
+      "financefront",
+      "cinder-jackal",
+      "lab-2.1",
+      "phishing",
+      "sigma-first"
+    ],
+    "customFields": {
+      "threat_actor": {
+        "string": "CINDER JACKAL"
+      },
+      "company": {
+        "string": "FinanceFront"
+      },
+      "lab_code": {
+        "string": "Lab 2.1"
+      }
+    }
+  },
+  "tasks": [
+    {
+      "title": "Triage the reported email (header, sender, subject, attachment)",
+      "description": "Capture sender, subject, attachment name/hash, and who reported it.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Pivot to Zeek DNS/HTTP evidence for phish domain",
+      "description": "Find first/last seen, hosts, URI paths, and response codes.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Confirm execution chain on endpoint",
+      "description": "Identify Office -> mshta -> PowerShell chain and any follow-on downloads.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Containment actions",
+      "description": "Block domain/IP, isolate host, reset credentials; document evidence supporting each step.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Sigma-first detections",
+      "description": "Draft Sigma (and KQL) for mshta + encoded PowerShell patterns.",
+      "status": "Waiting"
+    }
+  ],
+  "observables": [
+    {
+      "dataType": "mail",
+      "data": "hr@financefront-payroll-secure.com",
+      "message": "Spoofed sender used by CINDER JACKAL",
+      "tags": [
+        "cinder-jackal",
+        "phish",
+        "lab-2.1"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "domain",
+      "data": "financefront-payroll-secure.com",
+      "message": "Look-alike phishing domain",
+      "tags": [
+        "cinder-jackal",
+        "phish",
+        "lab-2.1"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "url",
+      "data": "https://financefront-payroll-secure.com/portal/login?redirect=o365",
+      "message": "Credential harvest landing URL",
+      "tags": [
+        "cinder-jackal",
+        "phish",
+        "lab-2.1"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "hash",
+      "data": "f0b7f2b3c3b0e1c91f2e9f8a9c1c2f4e9b88f9f8a0b1c2d3e4f5a6b7c8d9e0f1",
+      "message": "Attachment SHA256 (docm)",
+      "tags": [
+        "cinder-jackal",
+        "attachment",
+        "lab-2.1"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "hostname",
+      "data": "FF-LT-023",
+      "message": "Suspected impacted endpoint",
+      "tags": [
+        "financefront",
+        "endpoint",
+        "lab-2.1"
+      ],
+      "ioc": false,
+      "sighted": true
+    },
+    {
+      "dataType": "username",
+      "data": "j.santos",
+      "message": "Potential impacted user",
+      "tags": [
+        "financefront",
+        "user",
+        "lab-2.1"
+      ],
+      "ioc": false,
+      "sighted": true
+    },
+    {
+      "dataType": "ip",
+      "data": "185.199.110.153",
+      "message": "Observed external IP linked to phish infra",
+      "tags": [
+        "cinder-jackal",
+        "infra",
+        "lab-2.1"
+      ],
+      "ioc": true,
+      "sighted": true
+    }
+  ],
+  "notes": [
+    {
+      "title": "CJ Tradecraft Snapshot",
+      "content": "CINDER JACKAL commonly uses look-alike domains and LOLBAS (mshta + encoded PowerShell) to reduce tool footprint. Focus on parent-child process chain and rapid network pivots.",
+      "tlp": 2
+    },
+    {
+      "title": "Evidence Standard",
+      "content": "No evidence \u2192 no claims. Every statement must cite a field/value from Elastic or file artifacts.",
+      "tlp": 2
+    }
+  ]
+}

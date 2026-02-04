@@ -1,0 +1,381 @@
+// TheHive 5.x Function (Notification + Action: Case)
+// Name: IC_CJ_BOOTSTRAP_LAB2_v1
+//
+// Purpose:
+// - Auto-bootstrap Cinder Jackal lab cases with tags, storyline, case page, tasks,
+//   starter observables (from IgniteCyber CJ dataset IOCs), and MITRE ATT&CK procedures.
+//
+// Works best when case title includes LAB2.1 / LAB2.2 (or CAPSTONE).
+//
+// Notes:
+// - TheHive uses "caze" instead of "case" in Functions. (reserved keyword) :contentReference[oaicite:1]{index=1}
+
+function uniq(arr) {
+  const out = [];
+  const seen = {};
+  (arr || []).forEach((x) => {
+    const k = String(x);
+    if (!seen[k]) { seen[k] = true; out.push(k); }
+  });
+  return out;
+}
+
+function titleHasAny(titleU, needles) {
+  for (let i = 0; i < needles.length; i++) {
+    if (titleU.indexOf(needles[i]) >= 0) return true;
+  }
+  return false;
+}
+
+function detectLab(caseTitle, caseTags) {
+  const t = (caseTitle || "").toUpperCase();
+  const tagsU = (caseTags || []).map((x) => String(x).toUpperCase());
+
+  const hasTag = (x) => tagsU.indexOf(x.toUpperCase()) >= 0;
+
+  if (titleHasAny(t, ["LAB2.1", "LAB-2.1", "CJ-LAB2.1", "CJ LAB2.1"]) || hasTag("IC-LAB-2.1") || hasTag("LAB-2.1")) return "LAB2.1";
+  if (titleHasAny(t, ["LAB2.2", "LAB-2.2", "CJ-LAB2.2", "CJ LAB2.2"]) || hasTag("IC-LAB-2.2") || hasTag("LAB-2.2")) return "LAB2.2";
+  if (titleHasAny(t, ["CAPSTONE", "LAB5.4", "LAB-5.4", "CJ-CAPSTONE", "CJ CAPSTONE"]) || hasTag("IC-CAPSTONE") || hasTag("LAB-5.4")) return "CAPSTONE";
+  return null;
+}
+
+function buildLabConfig(lab) {
+  const base = {
+    markerTag: "IC-AUTOSETUP-V1",
+    commonTags: ["ignitecyber", "cinder-jackal", "offline-only", "elastic-kibana", "sigma-first", "ollama-local-llm"],
+    company: "ApexFin Services (AFS)",
+    actor: "Cinder Jackal",
+    indices: ["zeek-*", "wazuh-alerts-*", "elastic-agent-*"],
+    notebooksRoot: "/opt/bootcamp/notebooks",
+    datasetsRoot: "/opt/bootcamp/datasets"
+  };
+
+  if (lab === "LAB2.1") {
+    return Object.assign({}, base, {
+      labCode: "LAB2.1",
+      labTag: "IC-LAB-2.1",
+      datasetZip: "ignitecyber_CJ_LAB2_1_PhishTriage_custom_v1.2.zip",
+      notebook: "LAB2.1_CJ_Phish_Triage_Elastic.ipynb",
+      mitre: [
+        { tactic: "TA0001", technique: "T1566.001", name: "Spearphishing Attachment" },
+        { tactic: "TA0001", technique: "T1566.002", name: "Spearphishing Link" },
+        { tactic: "TA0002", technique: "T1204.002", name: "User Execution: Malicious File" },
+        { tactic: "TA0005", technique: "T1071.001", name: "Application Layer Protocol: Web Protocols" }
+      ],
+      iocs: [
+        { dataType: "domain", data: "portal-apexfin-payments.invalid", message: "CJ phishing portal (lure)" },
+        { dataType: "domain", data: "login-apexfin-secure.invalid", message: "Credential capture redirect" },
+        { dataType: "domain", data: "cdn-cinderjackal.invalid", message: "Stager hosting / C2" },
+        { dataType: "ip", data: "203.0.113.77", message: "Stager host (TEST-NET-3)" },
+        { dataType: "filename", data: "AFS_Q4_BonusPlan.docm", message: "Macro-enabled attachment name" }
+      ],
+      tasks: [
+        {
+          group: "LAB2.1 - Start Here",
+          title: "Open the lab notebook + verify dataset availability",
+          mandatory: true,
+          description:
+`**Notebook:** \`${base.notebooksRoot}/LAB2.1_CJ_Phish_Triage_Elastic.ipynb\`
+**Dataset ZIP:** \`${base.datasetsRoot}/ignitecyber_CJ_LAB2_1_PhishTriage_custom_v1.2.zip\`
+
+**Elastic index patterns:** ${base.indices.join(", ")}
+
+✅ Goal: confirm you can open the notebook, and Kibana shows relevant indices.`
+        },
+        {
+          group: "LAB2.1 - Triage",
+          title: "Phish intake triage (headers, sender, links, attachment)",
+          mandatory: true,
+          description:
+`Use the notebook to:
+- Parse the email artifact(s) and extract URLs/domains
+- Identify lure intent against **${base.company} Accounts Payable**
+- Capture IOCs + context into TheHive observables
+
+**Sigma-first:** draft/choose Sigma for phishing-like patterns (email/url access) then translate to Kibana queries.`
+        },
+        {
+          group: "LAB2.1 - Hunting (Elastic)",
+          title: "Hunt web + endpoint evidence in Elastic/Kibana (offline)",
+          mandatory: true,
+          description:
+`Pivot in Kibana using:
+- \`zeek-*\` for web/proxy/DNS pivots (lure + redirect + stager host)
+- \`elastic-agent-*\` for endpoint execution traces (macro -> child process)
+- \`wazuh-alerts-*\` if host alerts exist
+
+Document: timestamps, affected host/user, and evidence supporting CJ behavior.`
+        },
+        {
+          group: "LAB2.1 - AI Assist (Ollama)",
+          title: "Generate an analyst-ready triage summary with local Ollama",
+          mandatory: false,
+          description:
+`Using your local Ollama LLM (offline), prompt for:
+- 5-bullet executive summary
+- Observed TTPs (map to ATT&CK)
+- Recommended immediate containment steps
+- Sigma improvements (false-positive reduction)
+
+Paste the final summary into a Task Log.`
+        }
+      ]
+    });
+  }
+
+  if (lab === "LAB2.2") {
+    return Object.assign({}, base, {
+      labCode: "LAB2.2",
+      labTag: "IC-LAB-2.2",
+      datasetZip: "ignitecyber_CJ_LAB2_2_MaldocMacro_custom_v1.2.zip",
+      notebook: "LAB2.2_CJ_Maldoc_Macro_Elastic.ipynb",
+      mitre: [
+        { tactic: "TA0002", technique: "T1204.002", name: "User Execution: Malicious File" },
+        { tactic: "TA0005", technique: "T1218.005", name: "Mshta" },
+        { tactic: "TA0005", technique: "T1059.001", name: "PowerShell" }
+      ],
+      iocs: [
+        { dataType: "domain", data: "portal-apexfin-payments.invalid", message: "Decoded lure host reference" },
+        { dataType: "domain", data: "cdn-cinderjackal.invalid", message: "Stager path reference" },
+        { dataType: "filename", data: "AFS_Payment_Remittance.docm", message: "Maldoc name" }
+      ],
+      tasks: [
+        {
+          group: "LAB2.2 - Start Here",
+          title: "Open notebook + stage macro/maldoc dataset",
+          mandatory: true,
+          description:
+`**Notebook:** \`${base.notebooksRoot}/LAB2.2_CJ_Maldoc_Macro_Elastic.ipynb\`
+**Dataset ZIP:** \`${base.datasetsRoot}/ignitecyber_CJ_LAB2_2_MaldocMacro_custom_v1.2.zip\`
+
+✅ Goal: reproduce the CJ macro chain and identify follow-on execution patterns in Elastic.`
+        },
+        {
+          group: "LAB2.2 - Macro Analysis",
+          title: "Decode macro logic + extract staged URL / execution chain",
+          mandatory: true,
+          description:
+`In the notebook:
+- De-obfuscate macro strings
+- Identify staged URL(s) and downloader behavior
+- Capture IOCs as TheHive observables
+
+Attach findings to the case via Task Logs (copy/paste key outputs).`
+        },
+        {
+          group: "LAB2.2 - Hunt (Elastic)",
+          title: "Confirm mshta + PowerShell execution in endpoint telemetry",
+          mandatory: true,
+          description:
+`Sigma-first:
+- Write/choose Sigma for \`mshta.exe\` suspicious use and PowerShell download cradles
+- Translate Sigma to Kibana queries and validate against \`elastic-agent-*\`
+
+Record:
+- process tree
+- command lines
+- network destinations
+- user context`
+        },
+        {
+          group: "LAB2.2 - AI Assist (Ollama)",
+          title: "Generate detection improvements (Sigma) with local Ollama",
+          mandatory: false,
+          description:
+`Offline prompt to Ollama:
+- propose 2 Sigma rules (mshta + powershell)
+- propose 3 tuning ideas (FP reduction)
+- propose 1 correlation idea (Zeek + Endpoint)
+
+Add outputs as Task Logs.`
+        }
+      ]
+    });
+  }
+
+  // Optional Capstone (day 5)
+  if (lab === "CAPSTONE") {
+    return Object.assign({}, base, {
+      labCode: "CAPSTONE",
+      labTag: "IC-CAPSTONE",
+      datasetZip: "ignitecyber_CJ_CAPSTONE_custom_bundle_v1.0.zip",
+      notebook: "LAB5.4_CJ_Capstone_EndToEnd.ipynb",
+      mitre: [
+        { tactic: "TA0001", technique: "T1566.001", name: "Spearphishing Attachment" },
+        { tactic: "TA0002", technique: "T1204.002", name: "User Execution" },
+        { tactic: "TA0005", technique: "T1059.001", name: "PowerShell" },
+        { tactic: "TA0005", technique: "T1218.005", name: "Mshta" },
+        { tactic: "TA0011", technique: "T1041", name: "Exfiltration Over C2 Channel" }
+      ],
+      iocs: [],
+      tasks: [
+        {
+          group: "CAPSTONE - Start Here",
+          title: "Open capstone notebook + confirm capstone bundle present",
+          mandatory: true,
+          description:
+`**Notebook:** \`${base.notebooksRoot}/LAB5.4_CJ_Capstone_EndToEnd.ipynb\`
+**Dataset ZIP:** \`${base.datasetsRoot}/ignitecyber_CJ_CAPSTONE_custom_bundle_v1.0.zip\`
+
+End-to-end goal: identify, scope, and document CJ intrusion from initial access to outcomes.`
+        },
+        {
+          group: "CAPSTONE - Hunt & Report",
+          title: "Build end-to-end timeline + detections (Sigma-first)",
+          mandatory: true,
+          description:
+`Deliverables:
+- timeline (key timestamps)
+- affected assets/users
+- ATT&CK mapping
+- 3 Sigma rules + 1 correlation idea (Zeek + Endpoint + Wazuh)
+- final incident narrative (paste into case page/logs)`
+        }
+      ]
+    });
+  }
+
+  return null;
+}
+
+function handle(input, context) {
+  const out = { ok: false, actions: [], debug: {} };
+
+  const obj = (input && (input.object || input.case || input.caze)) ? (input.object || input.case || input.caze) : input;
+  const caseId =
+    (obj && (obj.caseId || obj._id || obj.id)) ||
+    (input && (input.caseId || input.objectId)) ||
+    null;
+
+  if (!caseId) {
+    out.debug.inputKeys = input ? Object.keys(input) : [];
+    out.error = "No caseId found in input (expected input.object._id or input.caseId).";
+    return out;
+  }
+
+  const caze = context.caze.get(caseId); // :contentReference[oaicite:2]{index=2}
+  if (!caze) {
+    out.error = "Case not found.";
+    out.caseId = caseId;
+    return out;
+  }
+
+  const lab = detectLab(caze.title, caze.tags);
+  if (!lab) {
+    out.ok = true;
+    out.skipped = true;
+    out.reason = "Case title/tags do not match LAB2.1/LAB2.2/CAPSTONE.";
+    out.caseId = caseId;
+    out.caseTitle = caze.title;
+    return out;
+  }
+
+  const cfg = buildLabConfig(lab);
+  const existingTags = caze.tags || [];
+  if (existingTags.indexOf(cfg.markerTag) >= 0) {
+    out.ok = true;
+    out.skipped = true;
+    out.reason = "Marker tag already present; bootstrap already done.";
+    out.caseId = caseId;
+    out.lab = cfg.labCode;
+    return out;
+  }
+
+  // 1) Tag the case
+  const newTags = uniq([].concat(existingTags, cfg.commonTags, [cfg.labTag, cfg.markerTag]));
+  context.caze.update(caseId, { tags: newTags }); // :contentReference[oaicite:3]{index=3}
+  out.actions.push({ type: "case.update.tags", tagsAdded: uniq([].concat(cfg.commonTags, [cfg.labTag, cfg.markerTag])) });
+
+  // 2) Storyline comment
+  const story =
+`**IgniteCyber Bootcamp — ${cfg.labCode}**
+**Company:** ${cfg.company}
+**Threat actor:** ${cfg.actor}
+
+**Story beat:**
+Cinder Jackal targets AFS Accounts Payable using a finance-themed lure (macro-enabled document and/or link redirect) to drive user execution and establish web-based staging.
+
+**Offline constraints:**
+- Work entirely from local datasets + Elastic/Kibana indices: ${cfg.indices.join(", ")}
+- Sigma-first detections; translate to Kibana searches
+- Local AI assistance via Ollama (no internet)`;
+
+  context.comment.createInCase(caseId, { message: story }); // :contentReference[oaicite:4]{index=4}
+  out.actions.push({ type: "comment.createInCase", title: "Storyline injected" });
+
+  // 3) Case page with lab guide
+  const pageContent =
+`# ${cfg.labCode} — Cinder Jackal Lab Guide
+
+## What you’re doing
+You will hunt CJ activity end-to-end using **offline-only** telemetry and **Sigma-first** detection development.
+
+## Assets (offline)
+- **Notebook:** \`${cfg.notebooksRoot}/${cfg.notebook}\`
+- **Dataset ZIP:** \`${cfg.datasetsRoot}/${cfg.datasetZip}\`
+- **Elastic index patterns:** ${cfg.indices.map((x) => `\`${x}\``).join(", ")}
+
+## ATT&CK mapping (procedures)
+${(cfg.mitre || []).map((m) => `- ${m.technique} (${m.tactic}) — ${m.name}`).join("\n")}
+
+## Workflow (recommended)
+1. Open notebook and validate data presence in Kibana
+2. Start with Sigma logic → translate to Kibana queries
+3. Pivot using Zeek + endpoint telemetry
+4. Capture observables + evidence in TheHive
+5. Use Ollama offline for summaries + detection tuning (optional)`;
+
+  context.page.createInCase(caseId, { title: `IgniteCyber ${cfg.labCode} Lab Guide`, content: pageContent, category: "Labs" }); // :contentReference[oaicite:5]{index=5}
+  out.actions.push({ type: "page.createInCase", title: `IgniteCyber ${cfg.labCode} Lab Guide` });
+
+  // 4) Create tasks
+  const createdTaskIds = [];
+  (cfg.tasks || []).forEach((t) => {
+    const created = context.task.createInCase(caseId, {
+      title: t.title,
+      group: t.group,
+      status: "New",
+      mandatory: !!t.mandatory,
+      description: t.description
+    }); // :contentReference[oaicite:6]{index=6}
+    createdTaskIds.push(created && created._id ? created._id : null);
+  });
+  out.actions.push({ type: "task.createInCase", count: (cfg.tasks || []).length });
+
+  // Add a kickoff log to the first task (if available)
+  const firstTaskId = createdTaskIds.find((x) => !!x);
+  if (firstTaskId) {
+    context.log.create(firstTaskId, {
+      message:
+`Kickoff:
+- Open \`${cfg.notebooksRoot}/${cfg.notebook}\`
+- Confirm indices in Kibana: ${cfg.indices.join(", ")}
+- Extract/confirm observables and map to ATT&CK procedures
+- Keep notes in task logs; paste Sigma + Kibana queries`
+    }); // :contentReference[oaicite:7]{index=7}
+    out.actions.push({ type: "log.create", taskId: firstTaskId });
+  }
+
+  // 5) Create observables (starter IOCs)
+  (cfg.iocs || []).forEach((ioc) => {
+    context.observable.createInCase(caseId, {
+      dataType: ioc.dataType,
+      data: ioc.data,
+      message: ioc.message
+    }); // :contentReference[oaicite:8]{index=8}
+  });
+  out.actions.push({ type: "observable.createInCase", count: (cfg.iocs || []).length });
+
+  // 6) Create ATT&CK procedures in case
+  const now = new Date().getTime();
+  context.procedure.bulkCreateInCase(caseId, {
+    procedures: (cfg.mitre || []).map((m) => ({ patternId: m.technique, occurDate: now }))
+  }); // :contentReference[oaicite:9]{index=9}
+  out.actions.push({ type: "procedure.bulkCreateInCase", count: (cfg.mitre || []).length });
+
+  out.ok = true;
+  out.caseId = caseId;
+  out.lab = cfg.labCode;
+  out.caseTitle = caze.title;
+  return out;
+}

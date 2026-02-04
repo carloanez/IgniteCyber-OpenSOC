@@ -1,0 +1,24 @@
+title: CJ FinanceFront Bitsadmin Transfer Download
+id: 9a2a0a2a-cj-003
+status: experimental
+description: Bitsadmin used to download remote payloads (CJ staging).
+author: IgniteCyber Academy
+date: 2026/02/03
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith: '\bitsadmin.exe'
+  selection_terms:
+    CommandLine|contains:
+      - '/transfer'
+      - 'http://'
+      - 'https://'
+  condition: selection_img and selection_terms
+falsepositives:
+  - Some IT uses BITS; tune by allowlisting domains
+level: medium
+tags:
+  - attack.defense_evasion
+  - attack.t1197

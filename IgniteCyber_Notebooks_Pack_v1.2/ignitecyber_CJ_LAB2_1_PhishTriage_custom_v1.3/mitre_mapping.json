@@ -1,0 +1,27 @@
+{
+  "lab_code": "LAB2.1",
+  "scenario": "Spearphish email targets AFS Accounts Payable; lure to fake portal; attachment used to prompt user execution.",
+  "threat_actor": "Cinder Jackal",
+  "mitre_attack": [
+    {
+      "tactic": "TA0001",
+      "technique": "T1566.001",
+      "name": "Spearphishing Attachment"
+    },
+    {
+      "tactic": "TA0001",
+      "technique": "T1566.002",
+      "name": "Spearphishing Link"
+    },
+    {
+      "tactic": "TA0002",
+      "technique": "T1204.002",
+      "name": "User Execution: Malicious File"
+    },
+    {
+      "tactic": "TA0005",
+      "technique": "T1071.001",
+      "name": "Application Layer Protocol: Web Protocols"
+    }
+  ]
+}

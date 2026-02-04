@@ -1,0 +1,5 @@
+type,value,context
+domain,portal-apexfin-payments.invalid,decoded lure host
+domain,cdn-cinderjackal.invalid,stager path reference
+file_name,AFS_Payment_Remittance.docm,maldoc name
+tag,Cinder Jackal,campaign identifier

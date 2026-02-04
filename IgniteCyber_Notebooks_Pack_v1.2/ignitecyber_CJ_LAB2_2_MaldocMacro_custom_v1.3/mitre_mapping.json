@@ -1,0 +1,22 @@
+{
+  "lab_code": "LAB2.2",
+  "scenario": "User opens macro-enabled document; macro reveals staged URL for mshta-based follow-on.",
+  "threat_actor": "Cinder Jackal",
+  "mitre_attack": [
+    {
+      "tactic": "TA0002",
+      "technique": "T1204.002",
+      "name": "User Execution: Malicious File"
+    },
+    {
+      "tactic": "TA0005",
+      "technique": "T1218.005",
+      "name": "Mshta"
+    },
+    {
+      "tactic": "TA0005",
+      "technique": "T1059.001",
+      "name": "PowerShell"
+    }
+  ]
+}

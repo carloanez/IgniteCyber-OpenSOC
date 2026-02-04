@@ -1,0 +1,18 @@
+olevba 0.60 on Python 3.x
+================================================================
+FILE: AFS_Payment_Remittance.docm
+Type: OpenXML
+VBA MACROS:
++----------------+--------------------------------------------------+
+| VBA filename   | VBA code (first 100 chars)                        |
++----------------+--------------------------------------------------+
+| Module1        | Private Function d(ByVal s As String) As String  |
++----------------+--------------------------------------------------+
+
+Suspicious keywords:
+- AutoOpen
+- Chr / Asc / Mid (string obfuscation patterns)
+
+Decoded indicators found in macro output:
+- portal-apexfin-payments.invalid/auth?campaign=CJ-022
+- /static/update.hta

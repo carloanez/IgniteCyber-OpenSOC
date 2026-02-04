@@ -1,0 +1,6 @@
+type,value,context
+domain,portal-apexfin-payments.invalid,phishing portal
+domain,login-apexfin-secure.invalid,credential capture redirect
+domain,cdn-cinderjackal.invalid,stager hosting / C2
+ip,203.0.113.77,stager host (TEST-NET-3)
+file_name,AFS_Q4_BonusPlan.docm,attachment name

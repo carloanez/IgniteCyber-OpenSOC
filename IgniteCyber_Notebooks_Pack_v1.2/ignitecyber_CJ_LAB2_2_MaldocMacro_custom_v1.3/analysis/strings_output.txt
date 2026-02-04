@@ -1,0 +1,5 @@
+portal-apexfin-payments.invalid
+/static/update.hta
+BeaconURL=
+Tag=
+CinderJackal
