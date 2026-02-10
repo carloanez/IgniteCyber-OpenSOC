@@ -1,0 +1,169 @@
+baseline_note: >-
+  These are external replay datasets (primarily OTRF/Security-Datasets raw GitHub links) used across
+  the IgniteCyber 17-lab bootcamp. Use scripts/download_otrf_datasets.py to prefetch archives for
+  offline use and scripts/run_lab_ingest.sh to ingest into Elastic and/or Wazuh Indexer.
+
+labs:
+  LAB-1.1:
+    name: Onboarding / Health Checks
+    datasets: []
+
+  LAB-1.2:
+    name: Baseline Dashboards (Zeek + Endpoint)
+    datasets:
+      - type: network
+        name: Log4Shell PCAP (JNDI reference)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/Log4Shell/pcap_log4shell_cve2021_44228_jndi_reference.zip
+      - type: host
+        name: Log4Shell Sysmon (Java serialized object)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/log4shell/sysmon_log4shell_cve2021_44228_java_serialized_object.zip
+
+  LAB-1.3:
+    name: First Detection (Suspicious PowerShell / Sigma)
+    datasets:
+      - type: host
+        name: PowerShell HTTP Listener
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/execution/host/psh_powershell_httplistener.zip
+
+  LAB-2.1:
+    name: Phishing Triage (Elastic Casebook)
+    datasets:
+      - type: host
+        name: UI Prompt For Credentials (phish-style prompt)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/credential_access/host/psh_input_capture_promptforcreds.zip
+
+  LAB-2.2:
+    name: Maldoc/Macro Analysis (IOC extraction)
+    datasets:
+      - type: host
+        name: DCOM ExecuteExcel4Macro (Host)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/host/covenant_dcom_executeexcel4macro_allowed.zip
+      - type: network
+        name: DCOM ExecuteExcel4Macro (Network)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/network/covenant_dcom_executeexcel4macro_allowed.zip
+
+  LAB-2.3:
+    name: LOLBAS mshta Proxy Execution (T1218.005)
+    datasets:
+      - type: host
+        name: mshta javascript GetObject .sct (T1218.005)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/cmd_mshta_javascript_getobject_sct.zip
+
+  LAB-2.4:
+    name: BITSADMIN Download (T1197)
+    datasets:
+      - type: host
+        name: bitsadmin download PowerShell script
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/cmd_bitsadmin_download_psh_script.zip
+
+  LAB-3.1:
+    name: C2 Beacon Investigation (Cobalt Strike)
+    datasets:
+      - type: host
+        name: APT Simulator Cobalt Strike
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/other/aptsimulator_cobaltstrike.zip
+
+  LAB-3.2:
+    name: Lateral Movement (WinRM + Schtasks)
+    datasets:
+      - type: host
+        name: Covenant PowerShell Remoting Command (Host)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/host/covenant_psremoting_command.zip
+      - type: network
+        name: Covenant PowerShell Remoting Command (Network)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/network/covenant_psremoting_command.zip
+      - type: host
+        name: Remote Scheduled Task Modification (Host)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/host/schtask_modification.zip
+      - type: network
+        name: Remote Scheduled Task Modification (Network)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/network/schtask_modification.zip
+
+  LAB-3.3:
+    name: Timeline Reconstruction (Elastic)
+    datasets:
+      - type: host
+        name: Log4Shell Security Auditing (Java serialized object)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/Log4Shell/securityauditing_log4shell_cve2021_44228_java_serialized_object.zip
+      - type: host
+        name: Log4Shell Sysmon (Java serialized object)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/log4shell/sysmon_log4shell_cve2021_44228_java_serialized_object.zip
+      - type: network
+        name: Log4Shell PCAP (JNDI reference)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/compound/Log4Shell/pcap_log4shell_cve2021_44228_jndi_reference.zip
+
+  LAB-4.1:
+    name: Persistence Hunt (RunKeys + Schtasks)
+    datasets:
+      - type: host
+        name: Registry Run Keys (Standard User)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_standard_user.zip
+      - type: host
+        name: Scheduled Tasks Creation (Standard User)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_schtasks_creation_standard_user.zip
+      - type: host
+        name: Scheduled Tasks Creation/Execution (Elevated User)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_schtasks_creation_execution_elevated_user.zip
+
+  LAB-4.2:
+    name: Credential Access Hunt (T1003.003 - LSASS Memory / Rubeus-themed)
+    datasets:
+      # Note: Security-Datasets does not consistently label Rubeus content as ZIPs; this lab can reuse
+      # credential-access datasets from your internal CJ bundle. The below is a common Mordor-style
+      # credential access dataset used for hunting workflows.
+      - type: host
+        name: (Recommended) DCSync-style credential access (Mordor)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/small/windows/credential_access/host/empire_dcsync.zip
+
+  LAB-4.3:
+    name: Threat Hunting Workflow (ELK)
+    datasets:
+      - type: host
+        name: DLL Injection (LoadLibrary/CreateRemoteThread)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/empire_dllinjection_LoadLibrary_CreateRemoteThread.zip
+      - type: host
+        name: DCOM ShellWindows Stager (Host)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/host/empire_dcom_shellwindows_stager.zip
+      - type: network
+        name: DCOM ShellWindows Stager (Network)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/network/empire_dcom_shellwindows_stager.zip
+
+  LAB-5.1:
+    name: AI Triage Assistant (Validated Summaries)
+    datasets:
+      - type: host
+        name: APT Simulator Cobalt Strike (reuse)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/other/aptsimulator_cobaltstrike.zip
+
+  LAB-5.2:
+    name: AI Assisted Sigma Authoring (Unit Tests)
+    datasets:
+      - type: host
+        name: bitsadmin download PowerShell script (reuse)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/defense_evasion/host/cmd_bitsadmin_download_psh_script.zip
+
+  LAB-5.3:
+    name: AI Assisted ATT&CK Mapping Report
+    datasets:
+      - type: host
+        name: Registry Run Keys (Standard User) (reuse)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_standard_user.zip
+      - type: host
+        name: PowerShell HTTP Listener (reuse)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/execution/host/psh_powershell_httplistener.zip
+
+  LAB-5.4:
+    name: Capstone (CINDER JACKAL Investigation)
+    datasets:
+      - type: host
+        name: APT Simulator Cobalt Strike
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/other/aptsimulator_cobaltstrike.zip
+      - type: host
+        name: Scheduled Task Modification (Host)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/host/schtask_modification.zip
+      - type: network
+        name: Scheduled Task Modification (Network)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/lateral_movement/network/schtask_modification.zip
+      - type: host
+        name: Registry Run Keys (Standard User)
+        url: https://raw.githubusercontent.com/OTRF/Security-Datasets/master/datasets/atomic/windows/persistence/host/empire_persistence_registry_modification_run_keys_standard_user.zip
