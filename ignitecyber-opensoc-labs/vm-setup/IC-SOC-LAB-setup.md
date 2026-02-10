@@ -4,7 +4,7 @@ Specs:
 
 Ubuntu 22.04
 
-4 vCPU
+4 vCPU - 6 VCPU
 
 8–12 GB RAM
 
