@@ -44,6 +44,12 @@ Navigate to the `misp-docker` directory:
 cd misp-docker
 ```
 
+Create the .env file:
+
+```bash
+cp template.env .env
+```
+
 Start the containers:
 
 ```bash
