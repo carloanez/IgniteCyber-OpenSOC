@@ -24,6 +24,10 @@ Verify the containers are running:
 docker compose ps
 ```
 
+Reference Image:
+
+![alt text](images/hive-cortex_containers.png)
+
 If you receive a permission denied error, run:
 
 ```bash
@@ -55,6 +59,12 @@ Start the containers:
 ```bash
 docker compose up -d
 ```
+
+Reference Images:
+
+![alt text](images/misp_containers.png)
+
+![alt text](images/misp_ps.png)
 
 ---
 
