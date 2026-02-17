@@ -31,7 +31,7 @@ Reference Image:
 If you receive a permission denied error, run:
 
 ```bash
-sudo chown root:docker /run/docker.sock
+sudo chown root:docker /var/run/docker.sock && sudo chmod 660 /var/run/docker.sock
 ```
 
 Then retry:
@@ -39,6 +39,16 @@ Then retry:
 ```bash
 docker compose ps
 ```
+
+If docker container for elssticsearch or cassandra fails:
+
+```bash
+sudo chown -R 1000:1000 .
+sudo chmod -R 775 .
+```
+
+Then retry creating the containers
+
 
 ---
 
@@ -111,9 +121,53 @@ Add the following line:
 - URL: http://soc.lab:9001/cortex  
 - Username: admin  
 - Password: password  
+(Cortex does not have default password. Accessing it for the first time might lead to the "Update Database" page. By clicking on it a user and password can be created)
 
 **MISP**
 
 - URL: https://soc.lab:8443/  
 - Username: admin@admin.test  
 - Password: admin 
+
+---
+
+#### Service Connections
+
+
+**TheHive-Cortex Connection**
+
+1. Create an organization IC_SOC in Cortex:
+![alt text](images/cortex_org.png)
+
+
+2. Create a user for the organization:
+![alt text](images/cortex-user.png)
+Copy this user's API key in TheHive for the Cortex server connection in step 4
+
+
+3. Create the same organization in TheHive:
+![alt text](images/hive-org.png)
+
+
+4. In TheHive's Platform-Management, go to the Connector tab and add a Cortex server with the following config:
+![alt text](images/hive-cortex_connection.png)
+![alt text](images/hive-cortex_connection_2.png)
+
+
+5. Test the connection. Once the connection is working, click on update and then click on confirm to save the changes.
+
+
+**TheHive-MISP Connection**
+
+1. In MISP go to My Profile and Auth keys and create a new auth key for the user:
+Make sure to copy the key.
+![alt text](images/misp_auth_1.png)
+![alt text](images/misp_auth_2.png)
+
+
+2. In Theive's Platform-Management, go to the Connector tab and add a MISP server with the following config and the API key from step 1:
+![alt text](images/hive_misp_connection_1.png)
+![alt text](images/hive-misp_connection_2.png)
+
+
+3. Test the connection. Once the connection is working, click on update and then click on confirm to save the changes.
