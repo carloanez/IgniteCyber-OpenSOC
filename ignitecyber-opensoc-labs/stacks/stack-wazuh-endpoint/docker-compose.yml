@@ -48,7 +48,7 @@ services:
     hostname: wazuh.indexer
     restart: always
     ports:
-      - "9200:9200"
+      - "9201:9200"
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
