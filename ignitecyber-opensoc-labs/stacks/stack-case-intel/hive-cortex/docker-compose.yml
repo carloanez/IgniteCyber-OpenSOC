@@ -25,9 +25,9 @@ services:
     healthcheck:
       # Waiting for cqlsh command to succeed to make sure Cassandra is ready
       test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
-      start_period: 120s
-      interval: 2s
-      timeout: 1s
+      start_period: 180s
+      interval: 15s
+      timeout: 10s
       retries: 3
     labels:
       com.strangebee.stack: "thehive-cortex-stack"
@@ -69,9 +69,9 @@ services:
       - thehive-cortex-network
     healthcheck:
       test: ["CMD-SHELL", "curl -f -s -u 'elastic:${elasticsearch_password}' http://elasticsearch:9200/_cat/health || exit 1"]
-      start_period: 40s
-      interval: 2s
-      timeout: 1s
+      start_period: 120s
+      interval: 10s
+      timeout: 5s
       retries: 5
     labels:
       com.strangebee.stack: "thehive-cortex-stack"
