@@ -10,16 +10,29 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Install markdownlint
         run: npm install -g markdownlint-cli
+
       - name: Lint Markdown
         run: markdownlint '**/*.md' || true
+
       - name: Check docker compose
         run: |
           docker --version
           echo "Validating docker-compose syntax"
-          docker compose -f docker/docker-compose.yml config
+
+          # Baseline compose (only if present)
+          if [ -f docker/docker-compose.yml ]; then
+            docker compose -f docker/docker-compose.yml config
+          else
+            echo "Skipping: docker/docker-compose.yml not found"
+          fi
+
+          # AI profile compose (expected)
+          docker compose -f docker/ai/docker-compose.ai.yml config
