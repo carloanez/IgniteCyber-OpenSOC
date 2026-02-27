@@ -1,0 +1,14 @@
+# Local environment overrides
+.env
+
+# Log files
+logs/suricata-logs/*
+logs/zeek-logs/*
+!logs/suricata-logs/.gitkeep
+!logs/zeek-logs/.gitkeep
+
+# Docker
+*.log
+
+# OS
+.DS_Store
