@@ -1,0 +1,29 @@
+# Log4Shell (CVE-2021-44228) Detection Rules
+
+# Alert on HTTP requests containing JNDI LDAP reference
+alert http any any -> any any ( \
+  msg:"LOG4J JNDI LDAP Reference Detected"; \
+  content:"jndi:ldap"; nocase; \
+  classtype:web-application-attack; \
+  sid:1000001; \
+  rev:1; \
+)
+
+# Alert on HTTP requests containing JNDI reference (generic)
+alert http any any -> any any ( \
+  msg:"LOG4J JNDI Reference Detected"; \
+  content:"jndi:"; nocase; \
+  classtype:web-application-attack; \
+  sid:1000002; \
+  rev:1; \
+)
+
+# Alert on User-Agent containing JNDI/LDAP pattern (common Log4j exploitation)
+alert http any any -> any any ( \
+  msg:"LOG4J User-Agent Exploitation Attempt"; \
+  content:"${"; nocase; \
+  content:"jndi"; nocase; \
+  classtype:web-application-attack; \
+  sid:1000003; \
+  rev:1; \
+)
