@@ -1,7 +1,7 @@
-16 GB RAM minimum (32 GB recommended)
-4‑core CPU minimum (8 cores recommended)
-Minimum of 120 GB free disk space.
-Windows 11 with WSL2, macOS, or Linux
-Docker Desktop installed (or VMware/VirtualBox)
-Ability to import VM images and/or pull Docker containers; local admin rights strongly recommended
-Power supply and a modern browser
+- 16 GB RAM minimum (32 GB recommended)
+- 4‑core CPU minimum (8 cores recommended)
+- Minimum of 120 GB free disk space.
+- Windows 11 with WSL2, macOS, or Linux
+- Docker Desktop installed (or VMware/VirtualBox)
+- Ability to import VM images and/or pull Docker containers; local admin rights strongly recommended
+- Power supply and a modern browser
