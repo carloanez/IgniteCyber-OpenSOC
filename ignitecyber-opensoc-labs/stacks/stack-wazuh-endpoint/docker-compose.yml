@@ -26,7 +26,9 @@ services:
       - SSL_KEY=/etc/ssl/filebeat.key
       - API_USERNAME=wazuh-wui
       - API_PASSWORD=MyS3cr37P450r.*-
+      - FILEBEAT_ARCHIVES_ENABLED=true
     volumes:
+      - /tmp/data:/var/ossec/logs/custom_json_logs:ro
       - wazuh_api_configuration:/var/ossec/api/configuration
       - wazuh_etc:/var/ossec/etc
       - wazuh_logs:/var/ossec/logs
@@ -42,13 +44,14 @@ services:
       - ./config/wazuh_indexer_ssl_certs/wazuh.manager.pem:/etc/ssl/filebeat.pem
       - ./config/wazuh_indexer_ssl_certs/wazuh.manager-key.pem:/etc/ssl/filebeat.key
       - ./config/wazuh_cluster/wazuh_manager.conf:/wazuh-config-mount/etc/ossec.conf
+      - ./config/wazuh_cluster/filebeat.yml:/etc/filebeat/filebeat.yml:ro
 
   wazuh.indexer:
     image: wazuh/wazuh-indexer:4.14.3
     hostname: wazuh.indexer
     restart: always
     ports:
-      - "9201:9200"
+      - "9200:9200"
     environment:
       - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
