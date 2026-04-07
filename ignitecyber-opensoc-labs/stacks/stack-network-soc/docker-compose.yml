@@ -32,6 +32,16 @@ services:
     profiles:
       - zeek
 
+  logstash:
+    image: opensearchproject/logstash-oss-with-opensearch-output-plugin:8.9.0
+    container_name: logstash-zeek
+    network_mode: host
+    volumes:
+      - ./logs/zeek-logs:/var/log/zeek:ro
+      - ./logstash-zeek.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - [path_to_dir]/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/etc/ssl/root-ca.pem:ro
+
+
 networks:
   socnet:
     driver: bridge

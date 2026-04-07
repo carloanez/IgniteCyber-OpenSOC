@@ -127,3 +127,71 @@ Then repeat steps 5 and 6.
 export ES_USER=admin
 export ES_PASS=SecretPassword
 export ES_VERIFY_TLS=[path_to_dir]/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem
+
+---
+
+
+# Zeek PCAP Ingestion
+
+
+---
+
+#### 1. Generate Zeek logs from PCAP
+
+Follow the instructions in `stacks/stack-network-soc/README.md` to generate the Zeek logs from the PCAP file.
+
+Logs will be written to `stacks/stack-network-soc/logs/zeek-logs/`.
+
+---
+
+#### 2. Update the cert path in `docker-compose.yml`
+
+In `stacks/stack-network-soc/docker-compose.yml`, update the cert volume mount in the logstash service to match your local path:
+
+```yaml
+logstash:
+  volumes:
+    - ./logs/zeek-logs:/var/log/zeek:ro
+    - ./logstash-zeek.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+    - [path_to_dir]/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/etc/ssl/root-ca.pem:ro
+```
+
+---
+
+#### 3. Start Logstash
+
+In the `stack-network-soc` directory:
+
+```bash
+docker compose up -d logstash
+```
+
+---
+
+#### 4. Verify ingestion
+
+```bash
+curl -sk -u admin:SecretPassword \
+  curl -sk -u admin:SecretPassword "https://localhost:9200/_cat/indices/zeek-*?v&s=index"
+```
+
+---
+
+#### 5. Create index pattern in dashboard
+
+In the Wazuh dashboard go to **Management → Dashboards Management → Index Patterns** and create:
+
+- Pattern: `zeek-*`
+- Time field: `@timestamp`
+
+> **Note:** Zeek log timestamps reflect the original PCAP capture time. Set the dashboard time picker to cover the PCAP capture date when querying.
+
+---
+
+#### 6. Stop the logstash container
+
+In the `stack-network-soc` directory:
+
+```bash
+docker compose stop logstash
+```
