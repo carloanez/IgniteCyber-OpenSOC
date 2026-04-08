@@ -5,7 +5,7 @@
 
 set -e
 
-CERT_DIR="[path_to_dir]/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs"
+CERT_DIR="/home/malulu/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs"
 OPENSEARCH="https://localhost:9200"
 CREDS="admin:SecretPassword"
 PIPELINE_JSON="${1:-./ecs_pipeline.json}"
