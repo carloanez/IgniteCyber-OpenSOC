@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""
 IgniteCyber TheHive Case Importer (TheHive 5.x / API v1) — Offline-friendly
 
 Targets TheHive API v1 routes:
@@ -15,6 +16,7 @@ Usage:
 
 Notes:
 - Case IDs in TheHive 5 often look like "~123". This script supports that.
+"""
 
 import os, sys, json, time, requests
 
@@ -89,14 +91,29 @@ def main(fp):
         except Exception as e:
             print("Task create error:", str(e)[:200])
 
+    # for n in bundle.get("notes", []):
+    #     try:
+    #         request("POST", f"/api/v1/case/{case_id}/note", n)
+    #     except Exception as e:
+    #         print("Note create error:", str(e)[:200])
+
+    # for o in bundle.get("observables", []):
+    #     try:
+    #         request("POST", f"/api/v1/case/{case_id}/observable", o)
+    #     except Exception as e:
+    #         print("Observable create error:", str(e)[:200])
+
     for n in bundle.get("notes", []):
-        try:
-            request("POST", f"/api/v1/case/{case_id}/note", n)
-        except Exception as e:
-            print("Note create error:", str(e)[:200])
+            try:
+                payload = {"message": f"**{n.get('title','')}**\n\n{n.get('content','')}"}
+                request("POST", f"/api/v1/case/{case_id}/comment", payload)
+            except Exception as e:
+                print("Note create error:", str(e)[:200])
 
     for o in bundle.get("observables", []):
         try:
+            if o.get("dataType") == "username":
+                o["dataType"] = "other"
             request("POST", f"/api/v1/case/{case_id}/observable", o)
         except Exception as e:
             print("Observable create error:", str(e)[:200])

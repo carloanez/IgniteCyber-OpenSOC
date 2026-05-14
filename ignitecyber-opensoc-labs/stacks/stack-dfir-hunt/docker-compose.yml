@@ -1,8 +1,8 @@
 # Timesketch container dependencies
 x-timesketch-dependencies: &timesketch-dependencies
   depends_on:
-    opensearch:
-      condition: service_healthy
+    # elasticsearch:
+    #   condition: service_healthy
     postgres:
       condition: service_healthy
     # redis:
@@ -75,34 +75,34 @@ services:
       - ${TIMESKETCH_LOGS_PATH}:/var/log/timesketch/
     <<: *timesketch-dependencies
 
-  opensearch:
-    container_name: opensearch
-    image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
-    restart: always
-    environment:
-      - TAKE_FILE_OWNERSHIP=1
-      - discovery.type=single-node
-      - "DISABLE_INSTALL_DEMO_CONFIG=true"
-      - "DISABLE_SECURITY_PLUGIN=true" # TODO: Enable when we have migrated the python client to Opensearch as well.
-      - "OPENSEARCH_JAVA_OPTS=-Xms${OPENSEARCH_MEM_USE_GB}g -Xmx${OPENSEARCH_MEM_USE_GB}g"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    networks:
-      - hive-cortex_thehive-cortex-network
-    ports:
-      - 9201:9200
-    volumes:
-      - ${OPENSEARCH_DATA_PATH}:/usr/share/opensearch/data/
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s"]
-      interval: 10s
-      timeout: 10s
-      retries: 5
+  # opensearch:
+  #   container_name: opensearch
+  #   image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
+  #   restart: always
+  #   environment:
+  #     - TAKE_FILE_OWNERSHIP=1
+  #     - discovery.type=single-node
+  #     - "DISABLE_INSTALL_DEMO_CONFIG=true"
+  #     - "DISABLE_SECURITY_PLUGIN=true" # TODO: Enable when we have migrated the python client to Opensearch as well.
+  #     - "OPENSEARCH_JAVA_OPTS=-Xms${OPENSEARCH_MEM_USE_GB}g -Xmx${OPENSEARCH_MEM_USE_GB}g"
+  #   ulimits:
+  #     memlock:
+  #       soft: -1
+  #       hard: -1
+  #     nofile:
+  #       soft: 65536
+  #       hard: 65536
+  #   networks:
+  #     - hive-cortex_thehive-cortex-network
+  #   ports:
+  #     - 9201:9200
+  #   volumes:
+  #     - ${OPENSEARCH_DATA_PATH}:/usr/share/opensearch/data/
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s"]
+  #     interval: 10s
+  #     timeout: 10s
+  #     retries: 5
 
 
   postgres:

@@ -171,3 +171,23 @@ Make sure to copy the key.
 
 
 3. Test the connection. Once the connection is working, click on update and then click on confirm to save the changes.
+
+**TheHive Case Ingestion**
+
+1. In TheHive, go to Admin → Organisations, open your org, and click Add User. Fill in login, name, and set the role to analyst or org-admin. Set a password and save.
+
+2. Go to Admin → Users, open the user → API Key → Create → Reveal. Copy the key.
+
+
+3. Use the org user's API key — the platform admin key cannot create cases.
+
+```bash
+export THEHIVE_URL="http://<host>:9000/thehive"
+export THEHIVE_API_KEY="your-api-key-here"
+```
+In the IgniteCyber_Notebooks_Pack_v1.2/ignitecyber_TheHive_CaseImport_Workflow_LAB2_v1.1/ folder run:
+
+```bash
+python3 import_casebundle.py casebundle_lab2_1.json
+python3 import_casebundle.py casebundle_lab2_2.json
+```bash
