@@ -79,7 +79,7 @@ def save_evidence_csv(df: pd.DataFrame, lab_slug: str):
 # ---------------------------
 # Ollama helpers (local LLM)
 # ---------------------------
-OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+OLLAMA_HOST = os.getenv("OLLAMA_HOST", "http://ollama:11434")
 
 def ollama_models():
     try:
@@ -90,11 +90,27 @@ def ollama_models():
     except Exception:
         return []
 
-def ollama_generate(prompt: str, model: str = None, temperature: float = 0.2):
-    models = ollama_models()
-    if model is None:
-        model = models[0] if models else "llama3"
-    payload = {"model": model, "prompt": prompt, "stream": False, "options": {"temperature": temperature}}
-    r = requests.post(f"{OLLAMA_HOST}/api/generate", json=payload, timeout=180)
-    r.raise_for_status()
-    return r.json().get("response", "")
+# def ollama_generate(prompt: str, model: str = None, temperature: float = 0.2):
+#     models = ollama_models()
+#     if model is None:
+#         model = models[0] if models else "llama3"
+#     payload = {"model": model, "prompt": prompt, "stream": False, "options": {"temperature": temperature}}
+#     r = requests.post(f"{OLLAMA_HOST}/api/generate", json=payload, timeout=180)
+#     r.raise_for_status()
+#     return r.json().get("response", "")
+
+def ollama_stream(prompt, model, temperature=0.2):
+    payload = {
+        "model": model,
+        "prompt": prompt,
+        "stream": True,
+        "options": {"temperature": temperature}
+    }
+    with requests.post(f"{OLLAMA_HOST}/api/generate", json=payload, stream=True, timeout=600) as r:
+        for line in r.iter_lines():
+            if line:
+                import json
+                chunk = json.loads(line)
+                print(chunk.get("response", ""), end="", flush=True)
+                if chunk.get("done"):
+                    break

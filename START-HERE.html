@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IgniteCyber Academy | OpenSOC Lab Environment</title>
+  <style>
+    :root {
+      --bg: #06111f;
+      --panel: rgba(10, 29, 49, 0.82);
+      --text: #eef7ff;
+      --muted: #a9c0d3;
+      --cyan: #35d9ff;
+      --teal: #2df5c4;
+      --warning: #ffd166;
+      --border: rgba(97, 220, 255, 0.25);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(37, 164, 255, 0.20), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(45, 245, 196, 0.12), transparent 25%),
+        linear-gradient(135deg, #04101d 0%, #071c30 45%, #050b14 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(53, 217, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(53, 217, 255, 0.05) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.7), transparent 85%);
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1180px, calc(100% - 36px)); margin: 0 auto; padding: 36px 0 60px; }
+    .hero {
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(8, 36, 61, 0.92), rgba(6, 17, 31, 0.86));
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -120px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(53, 217, 255, 0.20), transparent 65%);
+    }
+    .kicker { color: var(--teal); text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.78rem; font-weight: 700; margin-bottom: 12px; }
+    h1 { font-size: clamp(2.25rem, 5vw, 4.6rem); line-height: 0.95; margin: 0 0 14px; letter-spacing: -0.05em; }
+    h1 span { color: var(--cyan); }
+    .subtitle { color: var(--muted); font-size: clamp(1rem, 2vw, 1.28rem); max-width: 780px; line-height: 1.6; margin-bottom: 28px; }
+    .tagline { display: inline-flex; gap: 12px; align-items: center; padding: 12px 16px; border-radius: 999px; background: rgba(53, 217, 255, 0.10); border: 1px solid var(--border); color: var(--text); font-weight: 700; }
+    .dot { color: var(--cyan); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; margin-top: 22px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 22px; padding: 22px; box-shadow: 0 10px 28px rgba(0,0,0,0.25); }
+    .card h2, .card h3 { margin-top: 0; }
+    .span-8 { grid-column: span 8; }
+    .span-6 { grid-column: span 6; }
+    .span-4 { grid-column: span 4; }
+    .span-12 { grid-column: span 12; }
+    .quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+    .link-btn { display: block; padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(53, 217, 255, 0.24); background: rgba(8, 40, 63, 0.72); font-weight: 700; color: var(--text); }
+    .link-btn small { display: block; color: var(--muted); font-weight: 500; margin-top: 5px; line-height: 1.35; }
+    .link-btn:hover { background: rgba(53, 217, 255, 0.14); text-decoration: none; border-color: rgba(53, 217, 255, 0.50); }
+    code, pre { font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace; }
+    pre { overflow-x: auto; background: #020912; border: 1px solid rgba(53, 217, 255, 0.18); border-radius: 16px; padding: 16px; color: #d6f7ff; line-height: 1.55; }
+    .pill { display: inline-block; border-radius: 999px; padding: 6px 10px; margin: 3px 4px 3px 0; background: rgba(45, 245, 196, 0.12); border: 1px solid rgba(45, 245, 196, 0.24); color: #dffef8; font-size: 0.86rem; font-weight: 650; }
+    .module-list { display: grid; gap: 12px; }
+    .module { border-left: 3px solid var(--cyan); padding: 12px 14px; background: rgba(255,255,255,0.035); border-radius: 12px; }
+    .module strong { display: block; margin-bottom: 4px; color: var(--text); }
+    .module span { color: var(--muted); line-height: 1.45; }
+    .checklist { columns: 2; column-gap: 28px; padding-left: 0; list-style: none; }
+    .checklist li { break-inside: avoid; margin: 0 0 10px; color: var(--muted); }
+    .checklist li::before { content: "□"; color: var(--cyan); margin-right: 8px; }
+    .notice { padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(255, 209, 102, 0.28); background: rgba(255, 209, 102, 0.08); color: #ffe9a8; line-height: 1.55; }
+    table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 14px; font-size: 0.95rem; }
+    th, td { padding: 12px 11px; border-bottom: 1px solid rgba(255,255,255,0.08); text-align: left; vertical-align: top; }
+    th { color: var(--text); background: rgba(53, 217, 255, 0.10); }
+    td { color: var(--muted); }
+    footer { color: var(--muted); text-align: center; margin-top: 34px; font-size: 0.94rem; }
+    @media (max-width: 900px) { .span-8, .span-6, .span-4 { grid-column: span 12; } .hero { padding: 28px; } .checklist { columns: 1; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="kicker">IgniteCyber Academy</div>
+      <h1><span>OpenSOC</span> Lab Environment</h1>
+      <p class="subtitle">
+        Your local hands-on SOC, DFIR, threat hunting, and AI-assisted analysis workspace.
+        Use this page to launch tools, start the lab stack, find notebooks, and follow the student workflow.
+      </p>
+      <div class="tagline">Train <span class="dot">•</span> Detect <span class="dot">•</span> Defend <span class="dot">•</span> Together</div>
+    </section>
+
+    <section class="grid">
+      <div class="card span-12">
+        <h2>Launch Tools</h2>
+        <div class="quick-links">
+          <a class="link-btn" href="file:///home/ic-soc/IgniteCyber-OpenSOC/IgniteCyber_Notebooks_Pack_v1.2/notebooks/README.md">README.md <small>Main student guide</small></a>
+          <a class="link-btn" href="http://localhost:8888/lab">JupyterLab <small>Open lab notebooks</small></a>
+          <a class="link-btn" href="https://soc.lab:5601">Wazuh Dashboard <small>SIEM alerts and dashboards</small></a>
+          <a class="link-btn" href="http://soc.lab:9000/thehive">TheHive <small>Cases, tasks, observables</small></a>
+          <a class="link-btn" href="https://soc.lab:8443">MISP <small>Threat intelligence and IOCs</small></a>
+          <a class="link-btn" href="http://soc.lab:9001/cortex">Cortex <small>Analyzers and enrichment</small></a>
+          <a class="link-btn" href="http://soc.lab">Timesketch <small>Forensic Timeline</small></a>
+          <a class="link-btn" href="http://localhost:11434">Ollama API <small>Local AI assistant service</small></a>
+        </div>
+      </div>
+
+      <div class="card span-8">
+        <h2>Quick Start</h2>
+        <p>Open a terminal and run the following commands:</p>
+        <pre><code>cd IgniteCyber-OpenSOC
+
+# Start the lab stack
+sudo ./start_script.sh
+
+# Check service health
+./scripts/health-check.sh
+
+# Open JupyterLab
+./scripts/open-jupyter.sh</code></pre>
+        <p>To stop the lab stack:</p>
+        <pre><code>cd IgniteCyber-OpenSOC
+./stop_script.sh</code></pre>
+      </div>
+
+      <div class="card span-4">
+        <h2>Daily Workflow</h2>
+        <div class="module-list">
+          <div class="module"><strong>1. Start</strong><span>Boot VM, open this page, start services.</span></div>
+          <div class="module"><strong>2. Investigate</strong><span>Use notebooks, Wazuh, Kibana, TheHive, and MISP.</span></div>
+          <div class="module"><strong>3. Validate</strong><span>Confirm evidence before using AI summaries.</span></div>
+          <div class="module"><strong>4. Report</strong><span>Document findings, timeline, ATT&CK mapping, and recommendations.</span></div>
+        </div>
+      </div>
+
+      <div class="card span-6">
+        <h2>Bootcamp Modules</h2>
+        <div class="module-list">
+          <div class="module"><strong>Day 1 — SOC Foundations</strong><span>Health checks, telemetry, baseline dashboards, first detections.</span></div>
+          <div class="module"><strong>Day 2 — Initial Access & Execution</strong><span>Phishing, maldocs, PowerShell, mshta, BITSAdmin, IOC extraction.</span></div>
+          <div class="module"><strong>Day 3 — C2 & Incident Response</strong><span>Cobalt Strike-style activity, lateral movement, timeline reconstruction.</span></div>
+          <div class="module"><strong>Day 4 — Persistence & Threat Hunting</strong><span>Run Keys, scheduled tasks, credential access, hunt workflows.</span></div>
+          <div class="module"><strong>Day 5 — AI-Assisted Analysis & Capstone</strong><span>Validated summaries, Sigma authoring, ATT&CK mapping, Cinder Jackal investigation.</span></div>
+        </div>
+      </div>
+
+      <div class="card span-6">
+        <h2>Key Lab Paths</h2>
+        <pre><code>/IgniteCyber-OpenSOC
+├── START-HERE.html
+├── credentials/
+├── start_script.sh
+├── stop_script.sh
+├── IgniteCyber_Notebooks_Pack_v1.2
+    ├── notebooks/
+        ├── README.md
+├── datasets/
+├── docs/
+├── ignitecyber-opensoc-labs/
+└── docker/</code></pre>
+        <div>
+          <span class="pill">Wazuh</span><span class="pill">Elastic</span><span class="pill">Zeek</span><span class="pill">TheHive</span><span class="pill">MISP</span><span class="pill">Cortex</span><span class="pill">Jupyter</span><span class="pill">Ollama</span><span class="pill">MITRE ATT&CK</span>
+        </div>
+      </div>
+
+      <div class="card span-12">
+        <h2>Service and Credential Notes</h2>
+        <div class="notice">
+          Credentials should be finalized before VM export and stored in
+          <code>/opt/bootcamp/credentials/credentials-template.md</code>.
+          If a service does not open, run <code>./scripts/health-check.sh</code> and check the troubleshooting folder.
+        </div>
+        <table>
+          <thead><tr><th>Service</th><th>Expected Use</th><th>Common Check</th></tr></thead>
+          <tbody>
+            <tr><td>JupyterLab</td><td>Run lab notebooks</td><td><code>http://localhost:8888/lab</code></td></tr>
+            <tr><td>Wazuh / Elastic</td><td>Search alerts, logs, dashboards, timelines</td><td>Confirm indices and dashboards load</td></tr>
+            <tr><td>TheHive</td><td>Create cases, tasks, and observables</td><td>Confirm org, user, and API key exist</td></tr>
+            <tr><td>MISP</td><td>Import and enrich IOCs</td><td>Confirm API key and event import path</td></tr>
+            <tr><td>Ollama</td><td>AI-assisted triage and analysis</td><td><code>curl http://localhost:11434/api/tags</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card span-6">
+        <h2>Before You Begin</h2>
+        <ul class="checklist">
+          <li>VM boots successfully</li><li>Network works</li><li>Docker starts</li><li>JupyterLab opens</li><li>Wazuh opens</li><li>Timesketch opens</li><li>TheHive opens</li><li>MISP opens</li><li>Datasets are present</li><li>Notebooks are present</li><li>Ollama responds</li><li>README is available</li>
+        </ul>
+      </div>
+
+      <div class="card span-6">
+        <h2>Need Help?</h2>
+        <p>When asking for support, include:</p>
+        <pre><code>Name:
+Lab:
+Notebook:
+Tool affected:
+Command or step:
+Screenshot or error:
+What you already tried:</code></pre>
+        <p>Use the official class support channel provided by your instructor. Do not paste sensitive credentials or private data into public channels.</p>
+      </div>
+
+      <div class="card span-12">
+        <h2>Safety Reminder</h2>
+        <p>This VM is for authorized training only. Do not use lab techniques against real systems. Do not introduce real malware, proprietary data, classified data, or export-controlled content. Treat all datasets as training artifacts and follow instructor guidance for screenshots and reports.</p>
+      </div>
+    </section>
+
+    <footer>IgniteCyber Academy OpenSOC Lab Environment · Hands-on SOC · DFIR · Threat Hunting · AI-Assisted Analysis</footer>
+  </main>
+</body>
+</html>

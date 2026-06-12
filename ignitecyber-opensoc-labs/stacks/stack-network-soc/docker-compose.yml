@@ -39,7 +39,7 @@ services:
     volumes:
       - ./logs/zeek-logs:/var/log/zeek:ro
       - ./logstash-zeek.conf:/usr/share/logstash/pipeline/logstash.conf:ro
-      - [path_to_dir]/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/etc/ssl/root-ca.pem:ro
+      - /home/ic-soc/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/etc/ssl/root-ca.pem:ro
 
 
 networks:

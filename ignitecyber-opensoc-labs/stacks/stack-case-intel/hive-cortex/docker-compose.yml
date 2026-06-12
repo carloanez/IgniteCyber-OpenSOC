@@ -9,19 +9,19 @@ services:
       - CASSANDRA_CLUSTER_NAME=TheHive
       - CASSANDRA_AUTHENTICATOR=PasswordAuthenticator
       - CASSANDRA_NUM_TOKENS=4
-      - HEAP_NEWSIZE=1280M
-      - MAX_HEAP_SIZE=200M
+      - HEAP_NEWSIZE=100M
+      - MAX_HEAP_SIZE=512M
     volumes:
       - ./cassandra/data:/var/lib/cassandra
       - ./cassandra/logs:/var/log/cassandra
     deploy:
       resources:
         limits:
-          memory: 2G
+          memory: 1G
     # Prevent swap https://docs.docker.com/engine/containers/resource_constraints/#prevent-a-container-from-using-swap
-    memswap_limit: 2G
+    memswap_limit: 1G
     networks:
-      - thehive-cortex-network
+      - soc-lab-net
     healthcheck:
       # Waiting for cqlsh command to succeed to make sure Cassandra is ready
       test: ["CMD-SHELL", "cqlsh -u cassandra -p cassandra -e 'describe keyspaces' || exit 1"]
@@ -37,49 +37,49 @@ services:
       com.strangebee.version: "${cassandra_image_version}"
       com.strangebee.dependency: "None"
 
-  elasticsearch:
-    image: "elasticsearch:${elasticsearch_image_version}"
-    container_name: elasticsearch
-    hostname: elasticsearch
-    restart: unless-stopped
-    user: ${UID}:0
-    environment:
-      - http.host=0.0.0.0
-      - discovery.type=single-node
-      - cluster.name=hive
-      - thread_pool.search.queue_size=100000
-      - thread_pool.write.queue_size=100000
-      - bootstrap.memory_lock=true
-      - xpack.security.enabled=true
-      - ELASTIC_PASSWORD=${elasticsearch_password} # Password for "elastic" default user
-      - ES_JAVA_OPTS=-Xms1G -Xmx1G
-    volumes:
-      - ./elasticsearch/data:/usr/share/elasticsearch/data
-      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
-    ulimits:
-      nofile:
-        soft: 65536
-        hard: 65536
-    deploy:
-      resources:
-        limits:
-          memory: 2G
-    memswap_limit: 2G
-    networks:
-      - thehive-cortex-network
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f -s -u 'elastic:${elasticsearch_password}' http://elasticsearch:9200/_cat/health || exit 1"]
-      start_period: 120s
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    labels:
-      com.strangebee.stack: "thehive-cortex-stack"
-      com.strangebee.service: "elasticsearch"
-      com.strangebee.role: "indexing"
-      com.strangebee.environment: "testing"
-      com.strangebee.version: "${elasticsearch_image_version}"
-      com.strangebee.dependency: "None"
+  # elasticsearch:
+  #   image: "elasticsearch:${elasticsearch_image_version}"
+  #   container_name: elasticsearch
+  #   hostname: elasticsearch
+  #   restart: unless-stopped
+  #   user: ${UID}:0
+  #   environment:
+  #     - http.host=0.0.0.0
+  #     - discovery.type=single-node
+  #     - cluster.name=hive
+  #     - thread_pool.search.queue_size=100000
+  #     - thread_pool.write.queue_size=100000
+  #     - bootstrap.memory_lock=true
+  #     - xpack.security.enabled=true
+  #     - ELASTIC_PASSWORD=${elasticsearch_password} # Password for "elastic" default user
+  #     - ES_JAVA_OPTS=-Xms512m -Xmx512m
+  #   volumes:
+  #     - ./elasticsearch/data:/usr/share/elasticsearch/data
+  #     - ./elasticsearch/logs:/usr/share/elasticsearch/logs
+  #   ulimits:
+  #     nofile:
+  #       soft: 65536
+  #       hard: 65536
+  #   deploy:
+  #     resources:
+  #       limits:
+  #         memory: 2G
+  #   memswap_limit: 2G
+  #   networks:
+  #     - soc-lab-net
+  #   healthcheck:
+  #     test: ["CMD-SHELL", "curl -f -s -u 'elastic:${elasticsearch_password}' http://elasticsearch:9200/_cat/health || exit 1"]
+  #     start_period: 120s
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   labels:
+  #     com.strangebee.stack: "thehive-cortex-stack"
+  #     com.strangebee.service: "elasticsearch"
+  #     com.strangebee.role: "indexing"
+  #     com.strangebee.environment: "testing"
+  #     com.strangebee.version: "${elasticsearch_image_version}"
+  #     com.strangebee.dependency: "None"
 
   thehive:
     image: "strangebee/thehive:${thehive_image_version}"
@@ -89,23 +89,19 @@ services:
     command: '--no-config --no-config-secret'
     user: ${UID}:${GID}
     environment:
-      - |
-        JAVA_OPTS=
-          -Xms1280M
-          -Xmx1280M
-          -XX:MaxMetaspaceSize=400m
-          -XX:ReservedCodeCacheSize=250m
+      - "JAVA_OPTS=-Xms512M -Xmx512M -XX:MaxMetaspaceSize=300m -XX:ReservedCodeCacheSize=128m"
     volumes:
       - ./thehive/config:/etc/thehive:ro
       - ./thehive/data/files:/opt/thp/thehive/files
       - ./thehive/logs:/var/log/thehive
+      #- /home/ic-soc/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/opt/thehive/certs/wazuh-root-ca.pem:ro
     deploy:
       resources:
         limits:
-          memory: 2G
-    memswap_limit: 2G
+          memory: 1.5G
+    memswap_limit: 1.5G
     networks:
-      - thehive-cortex-network
+      - soc-lab-net
     ports:
       - '0.0.0.0:9000:9000'
     healthcheck:
@@ -115,8 +111,8 @@ services:
       timeout: 1s
       retries: 5
     depends_on:
-      elasticsearch:
-        condition: service_healthy
+      # elasticsearch:
+      #   condition: service_healthy
       cassandra:
         condition: service_healthy
     labels:
@@ -133,14 +129,24 @@ services:
     container_name: cortex
     hostname: cortex
     restart: unless-stopped
+    entrypoint: >
+      sh -c "keytool -import -alias wazuh
+      -file /opt/cortex/certs/wazuh-root-ca.pem
+      -keystore /usr/lib/jvm/java-11-amazon-corretto/lib/security/cacerts
+      -storepass changeit -noprompt 2>/dev/null;
+      exec /opt/cortex/entrypoint"
     environment:
-      - |
-        JAVA_OPTS=
-          -Xms1000M
-          -Xmx1000M
-          -XX:MaxMetaspaceSize=400m
-          -XX:ReservedCodeCacheSize=250m
-      - es_uri=http://elasticsearch:9200
+      # - |
+      #   JAVA_OPTS=
+      #     -Xms1000M
+      #     -Xmx1000M
+      #     -XX:MaxMetaspaceSize=400m
+      #     -XX:ReservedCodeCacheSize=250m
+      #     -Djavax.net.ssl.trustStore=/etc/cortex/wazuh-truststore.p12
+      #     -Djavax.net.ssl.trustStorePassword=password
+      #     -Djavax.net.ssl.trustStoreType=PKCS12
+      - "JAVA_OPTS=-Xms512M -Xmx512M -XX:MaxMetaspaceSize=300m -XX:ReservedCodeCacheSize=128m -Djavax.net.ssl.trustStore=/etc/cortex/wazuh-truststore.p12 -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.trustStoreType=PKCS12"
+      - es_uri=https://wazuh.indexer:9200
       - job_directory=/tmp/cortex-jobs
       - docker_job_directory=${cortex_docker_job_directory}
     volumes:
@@ -151,13 +157,15 @@ services:
       - ./cortex/config:/etc/cortex:ro
       - ./cortex/logs:/var/log/cortex
       - ./cortex/neurons:/opt/cortexneurons
-    deploy:
+      #elasticsearch certificate for secure communication between cortex and elasticsearch
+      - /home/ic-soc/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem:/opt/cortex/certs/wazuh-root-ca.pem:ro
+    deploy:  
       resources:
         limits:
-          memory: 2G
-    memswap_limit: 2G
+          memory: 1.5G
+    memswap_limit: 1.5G
     networks:
-      - thehive-cortex-network
+      - soc-lab-net
     ports:
       - '0.0.0.0:9001:9001'
     healthcheck:
@@ -166,9 +174,9 @@ services:
       interval: 10s
       timeout: 1s
       retries: 5
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
+    # depends_on:
+    #   elasticsearch:
+    #     condition: service_healthy
     labels:
       com.strangebee.stack: "thehive-cortex-stack"
       com.strangebee.service: "cortex"
@@ -192,7 +200,7 @@ services:
       - '443:443'
       - '80:80'
     networks:
-      - thehive-cortex-network
+      - soc-lab-net
     deploy:
       resources:
         limits:
@@ -211,4 +219,5 @@ services:
 
 
 networks:
-  thehive-cortex-network:
+  soc-lab-net:
+    external: true

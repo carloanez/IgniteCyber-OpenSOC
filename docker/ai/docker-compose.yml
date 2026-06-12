@@ -1,0 +1,66 @@
+name: ignitecyber-opensoc
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: opensoc-ollama
+    profiles: ["ai"]
+    restart: unless-stopped
+    ports:
+      - "${OLLAMA_BIND:-127.0.0.1}:${OLLAMA_PORT:-11434}:11434"
+    environment:
+      - OLLAMA_HOST=0.0.0.0:11434
+      - OLLAMA_MODELS=/ollama
+      - OLLAMA_KEEP_ALIVE=-1       
+      - OLLAMA_NUM_PARALLEL=1  
+    volumes:
+      - ollama_models:/ollama
+    networks:
+      - opensoc
+    deploy:
+      resources:
+        limits:
+          memory: 2.5g 
+
+    # Optional GPU (if VM host has NVIDIA + nvidia-container-toolkit)
+    # gpus: all
+
+  jupyterlab:
+    build:
+      context: ../jupyterlab
+      dockerfile: Dockerfile
+    container_name: opensoc-jupyterlab
+    profiles: ["ai"]
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    ports:
+      - "${JUPYTER_BIND:-127.0.0.1}:${JUPYTER_PORT:-8888}:8888"
+    environment:
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-ignitecyber}
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - ES_HOST=https://stack-wazuh-endpoint-wazuh.indexer-1:9200
+      - ES_USER=admin
+      - ES_PASS=SecretPassword
+      - ES_VERIFY_TLS=/home/ic-soc/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs/root-ca.pem
+      - OLLAMA_HOST=http://ollama:11434
+    volumes:
+      # Update these mounts to match your VM paths if different
+      - ../../IgniteCyber_Notebooks_Pack_v1.2/notebooks:/home/jovyan/work/labs:rw
+      - ../../datasets:/home/jovyan/work/datasets:ro
+      - jupyter_home:/home/jovyan
+    networks:
+      - opensoc
+    deploy:
+      resources:
+        limits:
+          memory: 1g 
+
+networks:
+  opensoc:
+    external: true
+    name: ${OPENSOC_NETWORK:-ignitecyber}
+
+volumes:
+  ollama_models:
+  jupyter_home:

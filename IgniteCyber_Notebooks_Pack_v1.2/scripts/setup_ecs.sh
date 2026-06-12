@@ -4,10 +4,10 @@
 # Usage: bash setup_ecs.sh /path/to/ecs_pipeline.json
 
 set -e
-
-CERT_DIR="/home/malulu/IgniteCyber-OpenSOC/ignitecyber-opensoc-labs/stacks/stack-wazuh-endpoint/config/wazuh_indexer_ssl_certs"
-OPENSEARCH="https://localhost:9200"
-CREDS="admin:SecretPassword"
+source /etc/environment
+CERT_DIR="$ES_VERIFY_TLS"
+OPENSEARCH="$ES_HOST"
+CREDS="$ES_USER:$ES_PASSWORD"
 PIPELINE_JSON="${1:-./ecs_pipeline.json}"
 FILEBEAT_PIPELINE="filebeat-7.10.2-wazuh-archives-pipeline"
 
@@ -132,6 +132,13 @@ RESULT=$(os_curl \
             "match_mapping_type": "string",
             "mapping": { "type": "keyword" }
           }
+        },
+        {
+          "data_dates": {
+            "path_match": "data.*",
+            "match_mapping_type": "date",
+            "mapping": { "type": "keyword" }
+          }
         }
       ]
     }
@@ -153,4 +160,4 @@ echo "  bash log_ingest.sh"
 echo ""
 echo "Every document will have ECS fields automatically."
 echo "Query using: wazuh-archives-4.x-*"
-echo "================================================================"
+echo "================================================================"cd

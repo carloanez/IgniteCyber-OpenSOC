@@ -1,0 +1,17 @@
+creation_rules:
+  - path_regex: \.env(\..*)?$
+    input_type: dotenv
+    output_type: dotenv
+    age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"      
+
+  - path_regex: secrets/.*\.(yaml|json)$
+    age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
+
+  - path_regex: .*\.(pem|key|crt|p12)$
+    age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
+
+  - path_regex: .*secret\.conf$
+    age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
+
+  - path_regex: .*index\.conf$
+    age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"

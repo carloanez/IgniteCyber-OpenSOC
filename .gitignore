@@ -14,6 +14,14 @@ node_modules/
 **/data/
 **/logs/
 .env
+*.key
+*.pem
+*.crt
+*.p12
+secrets/*.yaml
+secrets/*.json
+secret.conf
+
 
 # OS
 .DS_Store

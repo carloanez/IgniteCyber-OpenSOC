@@ -17,12 +17,17 @@ services:
     restart: always
     command: timesketch-web
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 768M
     volumes:
       - ${TIMESKETCH_CONFIG_PATH}:/etc/timesketch/
       - ${TIMESKETCH_UPLOAD_PATH}:/usr/share/timesketch/upload/
       - ${TIMESKETCH_LOGS_PATH}:/var/log/timesketch/
     <<: *timesketch-dependencies
+
 
   # [DEPRECATED] Add "--profile legacy-ui" to your docker compose command to use the legacy UI
   timesketch-web-legacy:
@@ -35,7 +40,7 @@ services:
     profiles:
       - "legacy-ui"
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
     volumes:
       - ${TIMESKETCH_CONFIG_PATH}:/etc/timesketch/
       - ${TIMESKETCH_UPLOAD_PATH}:/usr/share/timesketch/upload/
@@ -53,7 +58,7 @@ services:
     profiles:
       - "v3-ui"
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
     volumes:
       - ${TIMESKETCH_CONFIG_PATH}:/etc/timesketch/
       - ${TIMESKETCH_UPLOAD_PATH}:/usr/share/timesketch/upload/
@@ -68,7 +73,11 @@ services:
     restart: always
     command: timesketch-worker
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 1G
     volumes:
       - ${TIMESKETCH_CONFIG_PATH}:/etc/timesketch/
       - ${TIMESKETCH_UPLOAD_PATH}:/usr/share/timesketch/upload/
@@ -120,7 +129,11 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 1G
 
   # redis:
   #   container_name: redis
@@ -153,5 +166,5 @@ services:
   #     - hive-cortex_thehive-cortex-network
 
 networks:
-  hive-cortex_thehive-cortex-network:
+  soc-lab-net:
     external: true

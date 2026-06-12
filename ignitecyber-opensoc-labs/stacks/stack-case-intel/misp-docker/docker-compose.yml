@@ -1,23 +1,23 @@
 services:
   # This is capable to relay via gmail, Amazon SES, or generic relays
   # See: https://gitlab.com/egos-tech/smtp
-  mail:
-    image: ${REGISTRY_MIRROR_URL:-}ghcr.io/egos-tech/smtp:1.1.3
-    restart: always
-    environment:
-      # For use with Amazon SES relay
-      - "SES_USER=${SES_USER}"
-      - "SES_PASSWORD=${SES_PASSWORD}"
-      - "SES_REGION=${SES_REGION}"
-      - "SES_PORT=${SES_PORT}"
-      # Generic SMTP relay
-      - "SMARTHOST_ADDRESS=${SMARTHOST_ADDRESS}"
-      - "SMARTHOST_PORT=${SMARTHOST_PORT}"
-      - "SMARTHOST_USER=${SMARTHOST_USER}"
-      - "SMARTHOST_PASSWORD=${SMARTHOST_PASSWORD}"
-      - "SMARTHOST_ALIASES=${SMARTHOST_ALIASES}"
-    networks:
-      - hive-cortex_thehive-cortex-network
+  # mail:
+  #   image: ${REGISTRY_MIRROR_URL:-}ghcr.io/egos-tech/smtp:1.1.3
+  #   restart: always
+  #   environment:
+  #     # For use with Amazon SES relay
+  #     - "SES_USER=${SES_USER}"
+  #     - "SES_PASSWORD=${SES_PASSWORD}"
+  #     - "SES_REGION=${SES_REGION}"
+  #     - "SES_PORT=${SES_PORT}"
+  #     # Generic SMTP relay
+  #     - "SMARTHOST_ADDRESS=${SMARTHOST_ADDRESS}"
+  #     - "SMARTHOST_PORT=${SMARTHOST_PORT}"
+  #     - "SMARTHOST_USER=${SMARTHOST_USER}"
+  #     - "SMARTHOST_PASSWORD=${SMARTHOST_PASSWORD}"
+  #     - "SMARTHOST_ALIASES=${SMARTHOST_ALIASES}"
+  #   networks:
+  #     - hive-cortex_thehive-cortex-network
 
   redis:
     image: ${REGISTRY_MIRROR_URL:-}valkey/valkey:7.2
@@ -50,7 +50,11 @@ services:
     volumes:
       - cache_data:/data:Z
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   db:
     # We use MariaDB because it supports ARM and has the expected collations
@@ -62,7 +66,7 @@ services:
       - "MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-password}"
       - "MYSQL_DATABASE=${MYSQL_DATABASE:-misp}"
     command: "\
-      --innodb-buffer-pool-size=${INNODB_BUFFER_POOL_SIZE:-2048M} \
+      --innodb-buffer-pool-size=${INNODB_BUFFER_POOL_SIZE:-512M} \
       --innodb-change-buffering=${INNODB_CHANGE_BUFFERING:-none} \
       --innodb-io-capacity=${INNODB_IO_CAPACITY:-1000} \
       --innodb-io-capacity-max=${INNODB_IO_CAPACITY_MAX:-2000} \
@@ -82,7 +86,11 @@ services:
       start_period: 30s
       start_interval: 5s
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 1G
 
   misp-core:
     image: ${REGISTRY_MIRROR_URL:-}ghcr.io/misp/misp-docker/misp-core:${CORE_RUNNING_TAG:-latest}
@@ -290,7 +298,7 @@ services:
       - "FASTCGI_CONNECT_TIMEOUT=${FASTCGI_CONNECT_TIMEOUT:-300s}"
       - "FASTCGI_STATUS_LISTEN=${FASTCGI_STATUS_LISTEN}"
       # PHP settings
-      - "PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-2048M}"
+      - "PHP_MEMORY_LIMIT=${PHP_MEMORY_LIMIT:-512M}"
       - "PHP_MAX_EXECUTION_TIME=${PHP_MAX_EXECUTION_TIME:-300}"
       - "PHP_UPLOAD_MAX_FILESIZE=${PHP_UPLOAD_MAX_FILESIZE:-50M}"
       - "PHP_POST_MAX_SIZE=${PHP_POST_MAX_SIZE:-50M}"
@@ -318,7 +326,11 @@ services:
       # compose profiles
       - "COMPOSE_PROFILES=${COMPOSE_PROFILES}"
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
   misp-modules:
     image: ${REGISTRY_MIRROR_URL:-}ghcr.io/misp/misp-docker/misp-modules:${MODULES_RUNNING_TAG:-latest}
@@ -345,36 +357,40 @@ services:
       - "./custom/export_mod/:/custom/export_mod/:Z"
       - "./custom/import_mod/:/custom/import_mod/:Z"
     networks:
-      - hive-cortex_thehive-cortex-network
+      - soc-lab-net
+    deploy:
+      resources:
+        limits:
+          memory: 512M
 
-  misp-guard:
-    profiles:
-      - misp-guard
-    restart: always
-    image: ${REGISTRY_MIRROR_URL:-}ghcr.io/misp/misp-docker/misp-guard:${GUARD_RUNNING_TAG:-latest}
-    build:
-      context: guard/.
-      args:
-        - GUARD_TAG=${GUARD_TAG:?Missing or outdated .env file, see README.md for instructions}
-        - GUARD_COMMIT=${GUARD_COMMIT}
-    depends_on:
-      - misp-core
-    ports:
-      - "${GUARD_PORT:-8888}:${GUARD_PORT:-8888}"
-    environment:
-      - "GUARD_PORT=${GUARD_PORT:-8888}"
-      - "GUARD_ARGS=${GUARD_ARGS}"
-    volumes:
-      - ./guard/config.json:/config.json:ro
-      - misp_guard_ca:/misp_guard_ca
-    healthcheck:
-      test: "/bin/bash -c '</dev/tcp/localhost/${GUARD_PORT:-8888}'"
-      interval: 2m
-      timeout: 5s
-      retries: 3
-      start_period: 10s
-    networks:
-      - hive-cortex_thehive-cortex-network
+  # misp-guard:
+  #   profiles:
+  #     - misp-guard
+  #   restart: always
+  #   image: ${REGISTRY_MIRROR_URL:-}ghcr.io/misp/misp-docker/misp-guard:${GUARD_RUNNING_TAG:-latest}
+  #   build:
+  #     context: guard/.
+  #     args:
+  #       - GUARD_TAG=${GUARD_TAG:?Missing or outdated .env file, see README.md for instructions}
+  #       - GUARD_COMMIT=${GUARD_COMMIT}
+  #   depends_on:
+  #     - misp-core
+  #   ports:
+  #     - "${GUARD_PORT:-8888}:${GUARD_PORT:-8888}"
+  #   environment:
+  #     - "GUARD_PORT=${GUARD_PORT:-8888}"
+  #     - "GUARD_ARGS=${GUARD_ARGS}"
+  #   volumes:
+  #     - ./guard/config.json:/config.json:ro
+  #     - misp_guard_ca:/misp_guard_ca
+  #   healthcheck:
+  #     test: "/bin/bash -c '</dev/tcp/localhost/${GUARD_PORT:-8888}'"
+  #     interval: 2m
+  #     timeout: 5s
+  #     retries: 3
+  #     start_period: 10s
+  #   networks:
+  #     - hive-cortex_thehive-cortex-network
 
 volumes:
   mysql_data:
@@ -382,5 +398,5 @@ volumes:
   misp_guard_ca:
 
 networks:
-  hive-cortex_thehive-cortex-network:
+  soc-lab-net:
     external: true
