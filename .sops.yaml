@@ -11,7 +11,11 @@ creation_rules:
     age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
 
   - path_regex: .*secret\.conf$
+    input_type: binary
+    output_type: binary
     age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
 
   - path_regex: .*index\.conf$
+    input_type: binary
+    output_type: binary
     age: "age1uytaz3mz5lu8ysd8fysn3q82t932sgrukrj2cuwjaxqaynqytf5sumgz2f"
