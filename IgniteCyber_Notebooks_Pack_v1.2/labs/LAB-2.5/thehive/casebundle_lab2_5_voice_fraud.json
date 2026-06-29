@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "schema": "ignitecyber.casebundle.v1",
+    "lab_code": "Lab 2.5",
+    "threat_actor": "CINDER JACKAL",
+    "company": "ApexFin Solutions",
+    "generated_utc": "2025-06-19T17:00:00Z"
+  },
+  "case": {
+    "title": "LAB-2.5 Voice Fraud and Help Desk MFA Reset Abuse",
+    "description": "### Narrative\nApexFin Solutions receives a suspicious help desk call from a person claiming to be the CFO. The caller pressures Help Desk Tier 1 to bypass verification, use a non-directory callback number, and complete an MFA device rebind. Shortly afterward, identity logs show a new MFA device, a new device login, and browsing to a suspicious look-alike domain.\n\n### What you must prove\n1) Whether the call shows social engineering markers.\n2) Whether help desk verification failed, was skipped, or was incomplete.\n3) Whether the MFA reset/rebind was followed by risky login activity.\n4) Whether endpoint and Zeek evidence shows access to suspicious infrastructure.\n5) What containment and process changes are required.\n\n### ATT&CK mapping\n- T1566.004 \u2014 Phishing: Spearphishing Voice\n- T1598.004 \u2014 Phishing for Information: Spearphishing Voice\n- T1656 \u2014 Impersonation\n- T1078 \u2014 Valid Accounts",
+    "severity": 3,
+    "tlp": 2,
+    "pap": 2,
+    "tags": [
+      "ignitecyber",
+      "apexfin",
+      "voice-fraud",
+      "vishing",
+      "helpdesk-social-engineering",
+      "mfa-reset-abuse",
+      "cinder-jackal",
+      "LAB-2.5"
+    ],
+    "customFields": {
+      "threat_actor": {
+        "string": "CINDER JACKAL"
+      },
+      "company": {
+        "string": "ApexFin Solutions"
+      },
+      "lab_code": {
+        "string": "Lab 2.5"
+      },
+      "case_id": {
+        "string": "CJ-VOICE-001"
+      }
+    }
+  },
+  "tasks": [
+    {
+      "title": "Review call metadata",
+      "description": "Compare caller ID, callback number, attestation, duration, and risk flags.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Review transcript for social engineering markers",
+      "description": "Identify urgency, authority pressure, refusal of verification, and alternate callback requests.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Correlate help desk and MFA activity",
+      "description": "Use case_id, ticket_id, user, caller_id, source_ip, and device_id to build the timeline.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Review endpoint and network telemetry",
+      "description": "Confirm suspicious URL access, script execution, and Zeek HTTP activity.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Enrich observables in MISP",
+      "description": "Promote validated caller, callback, domain, URL, IP, user, and ticket observables.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Draft detection logic",
+      "description": "Write Sigma and OpenSearch logic for voice-driven MFA reset abuse.",
+      "status": "Waiting"
+    },
+    {
+      "title": "Produce final analyst report",
+      "description": "Summarize evidence, timeline, impact, and mitigations.",
+      "status": "Waiting"
+    }
+  ],
+  "observables": [
+    {
+      "dataType": "other",
+      "data": "+1-202-555-0148",
+      "message": "Suspicious caller ID used in voice fraud attempt",
+      "tags": [
+        "voice-fraud",
+        "lab-2.5"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "other",
+      "data": "+1-202-555-0199",
+      "message": "Non-directory callback number requested by caller",
+      "tags": [
+        "callback-mismatch",
+        "lab-2.5"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "domain",
+      "data": "apexfin-helpdesk-login.example",
+      "message": "Suspicious look-alike help desk domain",
+      "tags": [
+        "cinder-jackal",
+        "domain",
+        "lab-2.5"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "url",
+      "data": "https://apexfin-helpdesk-login.example/verify",
+      "message": "Suspicious verification URL referenced after the call",
+      "tags": [
+        "vishing",
+        "url",
+        "lab-2.5"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "ip",
+      "data": "203.0.113.45",
+      "message": "Synthetic source IP for new device login and web activity",
+      "tags": [
+        "identity",
+        "lab-2.5"
+      ],
+      "ioc": true,
+      "sighted": true
+    },
+    {
+      "dataType": "username",
+      "data": "mrivera@apexfin.example",
+      "message": "Targeted user account",
+      "tags": [
+        "target-user",
+        "lab-2.5"
+      ],
+      "ioc": false,
+      "sighted": true
+    },
+    {
+      "dataType": "other",
+      "data": "HD-2025-0619-4451",
+      "message": "Help desk ticket ID",
+      "tags": [
+        "helpdesk",
+        "lab-2.5"
+      ],
+      "ioc": false,
+      "sighted": true
+    }
+  ],
+  "notes": [
+    {
+      "title": "Safe Training Scope",
+      "content": "This case uses synthetic records and teaches defensive monitoring, triage, escalation, and response. It does not include voice cloning, deepfake generation, or bypass instructions.",
+      "tlp": 2
+    },
+    {
+      "title": "Evidence Standard",
+      "content": "AI output is an analyst aid, not evidence. Every claim must be validated against call records, transcripts, help desk events, identity events, endpoint telemetry, network telemetry, MISP, or TheHive artifacts.",
+      "tlp": 2
+    }
+  ]
+}

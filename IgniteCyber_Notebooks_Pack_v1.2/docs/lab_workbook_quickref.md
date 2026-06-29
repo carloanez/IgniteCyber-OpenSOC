@@ -2,6 +2,8 @@
 
 Offline-only. Use the aligned notebook for each lab.
 
+At the end of each lab, complete the **Daily Executive Summary Checkpoint** in the notebook. Use local AI assistance only on validated evidence, then manually verify every claim before adding the update to the rolling Cinder Jackal report.
+
 ## Lab 1.1 — Hosted Lab Onboarding + Health Checks
 - **Day:** 1  | **Book:** 1
 - **Notebook:** `notebooks/LAB-1.1_Onboarding_HealthChecks.ipynb`
@@ -109,6 +111,32 @@ Offline-only. Use the aligned notebook for each lab.
 - **Starter KQL pivots:**
   - `process.name:bitsadmin.exe`
   - `process.command_line:(* /transfer * and (*http* or *https*))`
+
+## Lab 2.5 — Voice Fraud & Voice Security Triage
+- **Day:** 2  | **Book:** 2
+- **Notebook:** `notebooks/LAB-2.5_Voice_Fraud_Voice_Security_Triage.ipynb`
+- **ATT&CK:**
+  - **TA0001 / T1566.004** — Phishing: Spearphishing Voice
+  - **TA0043 / T1598.004** — Phishing for Information: Spearphishing Voice
+  - **TA0001 / T1656** — Impersonation
+  - **TA0001 / T1078** — Valid Accounts
+- **Datasets (offline JSON/transcripts):**
+  - `datasets/LAB-2.5/voice_call_records.json`
+  - `datasets/LAB-2.5/helpdesk_ticket_events.json`
+  - `datasets/LAB-2.5/mfa_identity_events.json`
+  - `datasets/LAB-2.5/voice_fraud_endpoint_events.json`
+  - `datasets/LAB-2.5/voice_fraud_zeek_http.json`
+  - `datasets/LAB-2.5/voice_fraud_transcripts/`
+- **Tasks:**
+  - Review synthetic call-detail records and transcripts for voice fraud indicators.
+  - Correlate help desk ticket activity with MFA reset and new device login events.
+  - Pivot to endpoint and Zeek-style HTTP telemetry for suspicious URL access and follow-on activity.
+  - Review MISP and TheHive artifacts, then draft detection logic and mitigations.
+  - Use AI-assisted transcript summarization with human validation against source evidence.
+- **Starter KQL pivots:**
+  - `case_id:"CJ-VOICE-001"`
+  - `event_type:("callback_mismatch" or "mfa_device_rebound" or "new_device_login")`
+  - `host:"apexfin-helpdesk-login.example"`
 
 ## Lab 3.1 — C2 Beacon Investigation (Cobalt Strike patterns)
 - **Day:** 3  | **Book:** 3

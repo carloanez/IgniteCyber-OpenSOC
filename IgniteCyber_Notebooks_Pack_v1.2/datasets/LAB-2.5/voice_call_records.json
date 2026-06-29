@@ -1,0 +1,158 @@
+[
+  {
+    "timestamp": "2025-06-19T13:58:09Z",
+    "case_id": "BASELINE-VOICE-001",
+    "caller_id": "+1-202-555-0101",
+    "callback_number": "+1-202-555-0101",
+    "claimed_identity": "ApexFin employee",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 184,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Password manager question resolved",
+    "risk_flags": []
+  },
+  {
+    "timestamp": "2025-06-19T14:03:42Z",
+    "case_id": "BASELINE-VOICE-002",
+    "caller_id": "+1-202-555-0112",
+    "callback_number": "+1-202-555-0112",
+    "claimed_identity": "ApexFin contractor",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 241,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "VPN self-service link provided",
+    "risk_flags": [
+      "new_contractor"
+    ]
+  },
+  {
+    "timestamp": "2025-06-19T14:12:25Z",
+    "case_id": "SUSP-VOICE-001",
+    "caller_id": "+1-202-555-0186",
+    "callback_number": "+1-202-555-0186",
+    "claimed_identity": "ApexFin sales manager",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 98,
+    "stir_shaken_attestation": "B",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Account unlock requested; verification completed",
+    "risk_flags": [
+      "travel_claim",
+      "attestation_b"
+    ]
+  },
+  {
+    "timestamp": "2025-06-19T14:22:11Z",
+    "case_id": "CJ-VOICE-001",
+    "caller_id": "+1-202-555-0148",
+    "callback_number": "+1-202-555-0199",
+    "claimed_identity": "ApexFin CFO",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 312,
+    "stir_shaken_attestation": "B",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "MFA reset requested",
+    "risk_flags": [
+      "executive_impersonation",
+      "urgent_request",
+      "callback_number_mismatch",
+      "mfa_reset_pressure"
+    ]
+  },
+  {
+    "timestamp": "2025-06-19T14:37:04Z",
+    "case_id": "BASELINE-VOICE-003",
+    "caller_id": "+1-202-555-0124",
+    "callback_number": "+1-202-555-0124",
+    "claimed_identity": "ApexFin finance analyst",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier2",
+    "call_duration_seconds": 156,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Laptop audio issue routed",
+    "risk_flags": []
+  },
+  {
+    "timestamp": "2025-06-19T15:05:51Z",
+    "case_id": "SUSP-VOICE-002",
+    "caller_id": "+1-202-555-0171",
+    "callback_number": "+1-202-555-0155",
+    "claimed_identity": "ApexFin executive assistant",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 205,
+    "stir_shaken_attestation": "C",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Callback requested; no reset performed",
+    "risk_flags": [
+      "callback_number_mismatch",
+      "attestation_c",
+      "assistant_claim"
+    ]
+  },
+  {
+    "timestamp": "2025-06-19T15:18:33Z",
+    "case_id": "BASELINE-VOICE-004",
+    "caller_id": "+1-202-555-0133",
+    "callback_number": "+1-202-555-0133",
+    "claimed_identity": "ApexFin HR coordinator",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 121,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Software access question resolved",
+    "risk_flags": []
+  },
+  {
+    "timestamp": "2025-06-19T15:44:28Z",
+    "case_id": "BASELINE-VOICE-005",
+    "caller_id": "+1-202-555-0160",
+    "callback_number": "+1-202-555-0160",
+    "claimed_identity": "ApexFin engineer",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier2",
+    "call_duration_seconds": 268,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "MFA replacement scheduled through normal workflow",
+    "risk_flags": [
+      "planned_device_change"
+    ]
+  },
+  {
+    "timestamp": "2025-06-19T16:02:16Z",
+    "case_id": "BASELINE-VOICE-006",
+    "caller_id": "+1-202-555-0180",
+    "callback_number": "+1-202-555-0180",
+    "claimed_identity": "ApexFin legal analyst",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 88,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Ticket status checked",
+    "risk_flags": []
+  },
+  {
+    "timestamp": "2025-06-19T16:30:12Z",
+    "case_id": "BASELINE-VOICE-007",
+    "caller_id": "+1-202-555-0189",
+    "callback_number": "+1-202-555-0189",
+    "claimed_identity": "ApexFin product manager",
+    "target_department": "Help Desk",
+    "target_user": "helpdesk_tier1",
+    "call_duration_seconds": 176,
+    "stir_shaken_attestation": "A",
+    "voice_platform": "Simulated enterprise voice / Avaya CM-style CDR",
+    "call_result": "Knowledge base article sent",
+    "risk_flags": []
+  }
+]

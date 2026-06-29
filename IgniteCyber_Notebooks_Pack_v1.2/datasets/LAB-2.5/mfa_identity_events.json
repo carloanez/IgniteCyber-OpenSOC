@@ -1,0 +1,67 @@
+[
+  {
+    "timestamp": "2025-06-19T14:28:09Z",
+    "case_id": "CJ-VOICE-001",
+    "ticket_id": "HD-2025-0619-4451",
+    "user": "mrivera@apexfin.example",
+    "source_ip": "198.51.100.77",
+    "device_id": "ios-unknown-7781",
+    "event_type": "mfa_reset_requested",
+    "result": "success",
+    "risk_score": 72,
+    "geo": "US-VA",
+    "details": "Reset request initiated from help desk workflow."
+  },
+  {
+    "timestamp": "2025-06-19T14:31:22Z",
+    "case_id": "CJ-VOICE-001",
+    "ticket_id": "HD-2025-0619-4451",
+    "user": "mrivera@apexfin.example",
+    "source_ip": "198.51.100.77",
+    "device_id": "ios-unknown-7781",
+    "event_type": "mfa_device_rebound",
+    "result": "success",
+    "risk_score": 81,
+    "geo": "US-VA",
+    "details": "New MFA device enrolled without successful standard callback validation."
+  },
+  {
+    "timestamp": "2025-06-19T14:42:03Z",
+    "case_id": "CJ-VOICE-001",
+    "ticket_id": "HD-2025-0619-4451",
+    "user": "mrivera@apexfin.example",
+    "source_ip": "203.0.113.45",
+    "device_id": "win-new-4490",
+    "event_type": "new_device_login",
+    "result": "success",
+    "risk_score": 88,
+    "geo": "US-NY",
+    "details": "New device login 10 minutes after MFA rebind."
+  },
+  {
+    "timestamp": "2025-06-19T14:43:44Z",
+    "case_id": "CJ-VOICE-001",
+    "ticket_id": "HD-2025-0619-4451",
+    "user": "mrivera@apexfin.example",
+    "source_ip": "203.0.113.45",
+    "device_id": "win-new-4490",
+    "event_type": "conditional_access_challenge",
+    "result": "satisfied_by_new_mfa",
+    "risk_score": 90,
+    "geo": "US-NY",
+    "details": "Challenge satisfied using newly rebound MFA device."
+  },
+  {
+    "timestamp": "2025-06-19T14:46:10Z",
+    "case_id": "CJ-VOICE-001",
+    "ticket_id": "HD-2025-0619-4451",
+    "user": "mrivera@apexfin.example",
+    "source_ip": "203.0.113.45",
+    "device_id": "win-new-4490",
+    "event_type": "identity_risk_increase",
+    "result": "open",
+    "risk_score": 94,
+    "geo": "US-NY",
+    "details": "Impossible-travel style anomaly compared with prior corporate VPN session."
+  }
+]

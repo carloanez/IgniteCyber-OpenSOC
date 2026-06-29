@@ -1,0 +1,55 @@
+title: Voice Fraud Driven Help Desk MFA Reset Abuse
+id: 7d1df7b3-43c8-4d3e-b9e7-25d0c1a9b525
+status: experimental
+description: Detects a suspicious help desk MFA reset or device rebind after a flagged inbound voice call, followed by risky new device login activity within the investigation window.
+author: IgniteCyber OpenSOC
+date: 2025-06-19
+references:
+  - https://attack.mitre.org/techniques/T1566/004/
+  - https://attack.mitre.org/techniques/T1598/004/
+tags:
+  - attack.initial_access
+  - attack.t1566.004
+  - attack.reconnaissance
+  - attack.t1598.004
+  - attack.defense_evasion
+  - attack.t1656
+  - attack.t1078
+logsource:
+  product: synthetic
+  service: helpdesk_identity
+detection:
+  selection_helpdesk:
+    event_type:
+      - mfa_reset_requested
+      - mfa_device_rebind_requested
+    risk_flags|contains:
+      - urgent_request
+      - callback_number_mismatch
+      - mfa_reset_pressure
+  selection_verification:
+    event_type:
+      - verification_partial
+      - verification_skipped
+      - callback_mismatch
+  selection_identity:
+    event_type:
+      - mfa_device_rebound
+      - new_device_login
+      - identity_risk_increase
+    risk_score|gte: 80
+  condition: selection_helpdesk and selection_verification and selection_identity
+fields:
+  - timestamp
+  - case_id
+  - ticket_id
+  - user
+  - caller_id
+  - callback_number
+  - source_ip
+  - device_id
+  - risk_score
+falsepositives:
+  - Legitimate executive travel with an approved MFA replacement and successful callback to the corporate directory number.
+  - Planned device migration where the help desk ticket includes manager approval and no risky login follows.
+level: high

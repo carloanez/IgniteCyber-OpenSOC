@@ -1,0 +1,8 @@
+Synthetic transcript for LAB-2.5 / SUSP-VOICE-002. This is fictional defensive training data only.
+
+Help Desk: ApexFin Help Desk, this is Riley.
+Caller: I support an executive and need an MFA reset before a client meeting. Can you call me back at +1-202-555-0155?
+Help Desk: The number does not match the directory. I can call the listed corporate number or open an escalation.
+Caller: The executive is traveling. Is there any way around that?
+Help Desk: No. Caller ID and alternate callback numbers are not proof of identity. I will document the request and follow the approved workflow.
+Caller: Fine, open the ticket.

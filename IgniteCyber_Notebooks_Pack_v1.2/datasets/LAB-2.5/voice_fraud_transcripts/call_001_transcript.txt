@@ -1,0 +1,10 @@
+Synthetic transcript for LAB-2.5 / CJ-VOICE-001. This is fictional defensive training data only.
+
+Help Desk: ApexFin Help Desk, this is Jordan. How can I help?
+Caller: This is the CFO. I am boarding for a board meeting and my authenticator is dead. I need you to reset MFA right now.
+Help Desk: I can help, but I need to complete standard verification and call back your directory number.
+Caller: No, use this travel phone: +1-202-555-0199. The directory number will not work. We do not have time for that process.
+Help Desk: I still need the verification challenge.
+Caller: I already gave you my title and employee details. If Finance misses this board package, your manager will hear about it. Rebind my MFA device and send the verification link.
+Help Desk: I need to escalate if the callback number does not match.
+Caller: Do not escalate. Send it to apexfin-helpdesk-login.example/verify and I will finish it myself.

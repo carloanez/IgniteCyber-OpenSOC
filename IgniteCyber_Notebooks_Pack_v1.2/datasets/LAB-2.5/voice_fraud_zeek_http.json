@@ -1,0 +1,54 @@
+[
+  {
+    "ts": "2025-06-19T14:44:21Z",
+    "case_id": "CJ-VOICE-001",
+    "uid": "CJv1a",
+    "id.orig_h": "203.0.113.45",
+    "id.resp_h": "192.0.2.44",
+    "method": "GET",
+    "host": "apexfin-helpdesk-login.example",
+    "uri": "/verify",
+    "status_code": 200,
+    "user_agent": "Mozilla/5.0 synthetic lab browser",
+    "user": "mrivera@apexfin.example"
+  },
+  {
+    "ts": "2025-06-19T14:46:38Z",
+    "case_id": "CJ-VOICE-001",
+    "uid": "CJv1b",
+    "id.orig_h": "203.0.113.45",
+    "id.resp_h": "192.0.2.44",
+    "method": "GET",
+    "host": "apexfin-helpdesk-login.example",
+    "uri": "/static/verify.ps1",
+    "status_code": 200,
+    "user_agent": "Mozilla/5.0 synthetic lab browser",
+    "user": "mrivera@apexfin.example"
+  },
+  {
+    "ts": "2025-06-19T14:48:35Z",
+    "case_id": "CJ-VOICE-001",
+    "uid": "CJv1c",
+    "id.orig_h": "203.0.113.45",
+    "id.resp_h": "198.51.100.120",
+    "method": "POST",
+    "host": "collector.apexfin-helpdesk-login.example",
+    "uri": "/api/session",
+    "status_code": 202,
+    "user_agent": "PowerShell/7.4 synthetic lab client",
+    "user": "mrivera@apexfin.example"
+  },
+  {
+    "ts": "2025-06-19T15:46:01Z",
+    "case_id": "BASELINE-VOICE-005",
+    "uid": "base1",
+    "id.orig_h": "10.20.14.51",
+    "id.resp_h": "10.10.20.15",
+    "method": "GET",
+    "host": "help.apexfin.example",
+    "uri": "/mfa-device-change",
+    "status_code": 200,
+    "user_agent": "Mozilla/5.0 synthetic lab browser",
+    "user": "tnguyen@apexfin.example"
+  }
+]

@@ -1,0 +1,1 @@
+{"type": "dashboard", "id": "lab-2-5-voice-fraud", "attributes": {"title": "LAB-2.5 Voice Fraud Triage", "description": "Starter OpenSearch dashboard stub for synthetic voice fraud CDR, help desk, identity, endpoint, and Zeek events.", "panelsJSON": "[]", "optionsJSON": "{\"useMargins\":true,\"hidePanelTitles\":false}", "version": 1, "timeRestore": false}}

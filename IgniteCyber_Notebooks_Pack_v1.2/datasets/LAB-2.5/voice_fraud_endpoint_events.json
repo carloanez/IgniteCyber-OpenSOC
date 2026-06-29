@@ -1,0 +1,51 @@
+[
+  {
+    "@timestamp": "2025-06-19T14:44:15Z",
+    "case_id": "CJ-VOICE-001",
+    "event.dataset": "windows.sysmon",
+    "host.name": "AF-LT-044",
+    "user.name": "mrivera",
+    "process.name": "msedge.exe",
+    "process.command_line": "msedge.exe https://apexfin-helpdesk-login.example/verify",
+    "event.action": "Process Create",
+    "source.ip": "203.0.113.45",
+    "device_id": "win-new-4490"
+  },
+  {
+    "@timestamp": "2025-06-19T14:47:02Z",
+    "case_id": "CJ-VOICE-001",
+    "event.dataset": "windows.sysmon",
+    "host.name": "AF-LT-044",
+    "user.name": "mrivera",
+    "process.name": "powershell.exe",
+    "process.parent.name": "msedge.exe",
+    "process.command_line": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\\Users\\mrivera\\Downloads\\verify.ps1",
+    "event.action": "Process Create",
+    "source.ip": "203.0.113.45",
+    "device_id": "win-new-4490"
+  },
+  {
+    "@timestamp": "2025-06-19T14:48:11Z",
+    "case_id": "CJ-VOICE-001",
+    "event.dataset": "windows.sysmon",
+    "host.name": "AF-LT-044",
+    "user.name": "mrivera",
+    "process.name": "powershell.exe",
+    "process.command_line": "powershell.exe Get-ChildItem Env:USERDOMAIN",
+    "event.action": "Process Create",
+    "source.ip": "203.0.113.45",
+    "device_id": "win-new-4490"
+  },
+  {
+    "@timestamp": "2025-06-19T15:45:52Z",
+    "case_id": "BASELINE-VOICE-005",
+    "event.dataset": "windows.sysmon",
+    "host.name": "AF-LT-118",
+    "user.name": "tnguyen",
+    "process.name": "msedge.exe",
+    "process.command_line": "msedge.exe https://help.apexfin.example/mfa-device-change",
+    "event.action": "Process Create",
+    "source.ip": "10.20.14.51",
+    "device_id": "win-corp-118"
+  }
+]

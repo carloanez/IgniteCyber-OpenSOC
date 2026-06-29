@@ -1,0 +1,96 @@
+{
+  "Event": {
+    "info": "LAB-2.5 Voice Fraud and Voice Security Triage - Cinder Jackal",
+    "date": "2025-06-19",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "Tag": [
+      {
+        "name": "voice-fraud"
+      },
+      {
+        "name": "vishing"
+      },
+      {
+        "name": "helpdesk-abuse"
+      },
+      {
+        "name": "mfa-reset-abuse"
+      },
+      {
+        "name": "cinder-jackal"
+      },
+      {
+        "name": "mitre-attack-pattern:T1566.004"
+      },
+      {
+        "name": "mitre-attack-pattern:T1598.004"
+      },
+      {
+        "name": "mitre-attack-pattern:T1656"
+      },
+      {
+        "name": "mitre-attack-pattern:T1078"
+      }
+    ],
+    "Attribute": [
+      {
+        "type": "text",
+        "category": "External analysis",
+        "to_ids": false,
+        "value": "CJ-VOICE-001",
+        "comment": "Case ID for synthetic defensive voice fraud lab."
+      },
+      {
+        "type": "text",
+        "category": "Payload delivery",
+        "to_ids": true,
+        "value": "+1-202-555-0148",
+        "comment": "Suspicious caller ID in synthetic CDR."
+      },
+      {
+        "type": "text",
+        "category": "Payload delivery",
+        "to_ids": true,
+        "value": "+1-202-555-0199",
+        "comment": "Requested callback number that did not match the corporate directory."
+      },
+      {
+        "type": "domain",
+        "category": "Network activity",
+        "to_ids": true,
+        "value": "apexfin-helpdesk-login.example",
+        "comment": "Synthetic look-alike help desk domain."
+      },
+      {
+        "type": "url",
+        "category": "Network activity",
+        "to_ids": true,
+        "value": "https://apexfin-helpdesk-login.example/verify",
+        "comment": "Synthetic suspicious verification URL."
+      },
+      {
+        "type": "ip-src",
+        "category": "Network activity",
+        "to_ids": true,
+        "value": "203.0.113.45",
+        "comment": "Synthetic source IP observed after MFA rebind."
+      },
+      {
+        "type": "text",
+        "category": "Attribution",
+        "to_ids": false,
+        "value": "Cinder Jackal",
+        "comment": "Fictional threat actor used across the bootcamp storyline."
+      },
+      {
+        "type": "text",
+        "category": "External analysis",
+        "to_ids": false,
+        "value": "T1566.004, T1598.004, T1656, T1078",
+        "comment": "ATT&CK mapping for defensive analysis."
+      }
+    ]
+  }
+}
