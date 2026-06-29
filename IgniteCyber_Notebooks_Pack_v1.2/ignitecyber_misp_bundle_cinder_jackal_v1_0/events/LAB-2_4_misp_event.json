@@ -1,0 +1,210 @@
+{
+  "Event": {
+    "uuid": "d73c566c-9cb8-5633-a346-a54ae0da3b39",
+    "info": "IgniteCyber CJ LAB-2.4: Stage 2 Download: bitsadmin.exe",
+    "date": "2025-07-17",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-2.4"
+      },
+      {
+        "name": "case:CJ-007"
+      },
+      {
+        "name": "day:day-2"
+      },
+      {
+        "name": "attack:technique=\"T1197\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"BITS Jobs - T1197\""
+      },
+      {
+        "name": "attack:technique=\"T1105\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "12059d31-91dc-555e-b47c-d1b2d9d3ad9e",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-007",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "2fb75847-5e23-59cc-90a6-9c76e182f5b9",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-2.4_BITSADMIN_Download_T1197.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "7f69e927-06a8-5ca3-990f-a62fef466fb0",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=cmd_bitsadmin_download_psh_script_2020-10-2302365189.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "c859b468-377a-5a41-a4dd-0f705b5a8868",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "bitsadmin.exe",
+        "to_ids": false,
+        "comment": "LOLBAS downloader observed in process creation telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "source:windows-lolbas-binary"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          }
+        ]
+      },
+      {
+        "uuid": "e60570a6-841e-5d83-9a9c-1b2693280d8a",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md",
+        "to_ids": false,
+        "comment": "BITSAdmin source URL observed in command line.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "source:training-source-url"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          }
+        ]
+      },
+      {
+        "uuid": "f233eece-465c-5a2d-ace2-385e6b20d84c",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "151.101.208.133",
+        "to_ids": false,
+        "comment": "Remote IP observed for BITSAdmin download.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "source:observed-cdn-endpoint"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          }
+        ]
+      },
+      {
+        "uuid": "3174416c-05b5-5f54-94bb-8a2d60ad2050",
+        "type": "filepath",
+        "category": "Artifacts dropped",
+        "value": "C:\\Users\\wardog\\AppData\\Local\\Temp\\bitsadmin1_flag.ps1",
+        "to_ids": true,
+        "comment": "Destination path observed in BITSAdmin command line.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "source:download-target"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          }
+        ]
+      },
+      {
+        "uuid": "17fdd04d-cb96-59ab-9673-afb965c87e53",
+        "type": "command-line",
+        "category": "External analysis",
+        "value": "bitsadmin.exe /transfer /Download /priority Foreground https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md C:\\Users\\wardog\\AppData\\Local\\Temp\\bitsadmin1_flag.ps1",
+        "to_ids": true,
+        "comment": "Full command line observed in Windows Security Event ID 4688.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-17",
+        "Tag": [
+          {
+            "name": "source:detection-indicator"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "50b95741-3ff0-5bbd-aa82-0da22b61ba7e",
+        "name": "LAB-2.4 CTI Event Report",
+        "content": "# LAB-2.4 \u2014 Stage 2 Download: bitsadmin.exe\n\n**Case:** CJ-007  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-17  \n**ATT&CK:** T1197, T1105\n\n## Analyst narrative\nStudents investigate BITSAdmin used as a living-off-the-land downloader and record the download URL, target path, and process evidence.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_bitsadmin_download_psh_script_2020-10-2302365189.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

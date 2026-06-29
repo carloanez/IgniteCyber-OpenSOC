@@ -1,0 +1,131 @@
+{
+  "Event": {
+    "uuid": "52477a03-e678-5e3f-a8f9-49dfec2b573b",
+    "info": "IgniteCyber CJ LAB-5.2: AI-Assisted Sigma Authoring + Unit Tests",
+    "date": "2025-09-10",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-5.2"
+      },
+      {
+        "name": "case:CJ-015"
+      },
+      {
+        "name": "day:day-5"
+      },
+      {
+        "name": "attack:technique=\"T1027\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Obfuscated Files or Information - T1027\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "037cd702-d897-526c-bb99-1b38da1cf154",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-015",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-10",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "6c3a621c-263e-58ca-9c7d-591e2540ac49",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-5.2_AI_Assisted_Sigma_Authoring_Unit_Tests.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-10",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "812c9b74-c6a1-5c80-9771-8cf9fd0e7320",
+        "type": "text",
+        "category": "Other",
+        "value": "sigma:detection_status=unit-tested",
+        "to_ids": false,
+        "comment": "Detection engineering status marker promoted with the lab CTI.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-10",
+        "Tag": [
+          {
+            "name": "source:detection-metadata"
+          },
+          {
+            "name": "lab:LAB-5.2"
+          }
+        ]
+      },
+      {
+        "uuid": "52353409-eeda-5738-ab45-6f57c4d44322",
+        "type": "text",
+        "category": "Other",
+        "value": "candidate detections: mshta scriptlet, bitsadmin transfer, encoded PowerShell",
+        "to_ids": false,
+        "comment": "Detection candidates tied to earlier CJ evidence.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-10",
+        "Tag": [
+          {
+            "name": "source:detection-metadata"
+          },
+          {
+            "name": "lab:LAB-5.2"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "8ccfaba9-ee1d-5021-89cf-f01d6fb9ae4b",
+        "name": "LAB-5.2 CTI Event Report",
+        "content": "# LAB-5.2 \u2014 AI-Assisted Sigma Authoring + Unit Tests\n\n**Case:** CJ-015  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-10  \n**ATT&CK:** T1027\n\n## Analyst narrative\nStudents use AI to accelerate Sigma authoring but validate detections with unit tests and known-good/known-bad examples.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

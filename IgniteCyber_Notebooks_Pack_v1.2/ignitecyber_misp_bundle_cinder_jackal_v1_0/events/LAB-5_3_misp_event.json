@@ -1,0 +1,131 @@
+{
+  "Event": {
+    "uuid": "39a3a1e7-b6c4-55c2-bae5-638c9ee2f73a",
+    "info": "IgniteCyber CJ LAB-5.3: AI-Assisted ATT&CK Mapping + Reporting",
+    "date": "2025-09-11",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-5.3"
+      },
+      {
+        "name": "case:CJ-016"
+      },
+      {
+        "name": "day:day-5"
+      },
+      {
+        "name": "attack:technique=\"T1074\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Data Staged - T1074\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "fed57a2b-4c94-511d-9c18-e8daa334e96d",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-016",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-11",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "01a9ba03-1a60-55bb-99a3-46ca60acf387",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-5.3_AI_Assisted_ATTACK_Mapping_Report.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-11",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "77ec1469-54a5-52f5-b944-6a23964559d3",
+        "type": "text",
+        "category": "Other",
+        "value": "final report pivot: CJ campaign spine event + per-lab MISP events",
+        "to_ids": false,
+        "comment": "Capstone report linkage model.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-11",
+        "Tag": [
+          {
+            "name": "source:report-metadata"
+          },
+          {
+            "name": "lab:LAB-5.3"
+          }
+        ]
+      },
+      {
+        "uuid": "b8753935-d405-5326-844a-72abe43d3f38",
+        "type": "text",
+        "category": "Other",
+        "value": "confidence model: confirmed / likely / possible",
+        "to_ids": false,
+        "comment": "Confidence language for final CTI reporting.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-11",
+        "Tag": [
+          {
+            "name": "source:report-metadata"
+          },
+          {
+            "name": "lab:LAB-5.3"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "d0f5d292-bf49-5dbf-9972-f9a738470e3d",
+        "name": "LAB-5.3 CTI Event Report",
+        "content": "# LAB-5.3 \u2014 AI-Assisted ATT&CK Mapping + Reporting\n\n**Case:** CJ-016  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-11  \n**ATT&CK:** T1074\n\n## Analyst narrative\nStudents complete final ATT&CK mapping and reporting, linking MISP event context back to TheHive case evidence and final incident report.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

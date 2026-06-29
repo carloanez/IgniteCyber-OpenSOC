@@ -1,0 +1,131 @@
+{
+  "Event": {
+    "uuid": "f2bd249b-945c-514f-a645-105ee0e52ab1",
+    "info": "IgniteCyber CJ LAB-5.1: AI Triage Assistant (Validated Summaries)",
+    "date": "2025-09-09",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-5.1"
+      },
+      {
+        "name": "case:CJ-014"
+      },
+      {
+        "name": "day:day-5"
+      },
+      {
+        "name": "attack:technique=\"T1119\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Automated Collection - T1119\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "8ef9f42e-6e71-5654-b63a-a72f0031273a",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-014",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-09",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "67607656-777c-50aa-b401-4c164543d32d",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-5.1_AI_Triage_Assistant_Validated_Summaries.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-09",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "09fe85a3-2816-5744-a9ef-50d9d1983a55",
+        "type": "text",
+        "category": "Other",
+        "value": "AI validation status: human-reviewed, evidence-backed only",
+        "to_ids": false,
+        "comment": "CTI governance marker for AI-assisted triage outputs.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-09",
+        "Tag": [
+          {
+            "name": "source:ai-validation-control"
+          },
+          {
+            "name": "lab:LAB-5.1"
+          }
+        ]
+      },
+      {
+        "uuid": "758a8927-5bd1-5bd6-b356-69845befd2c3",
+        "type": "text",
+        "category": "Other",
+        "value": "reject unsupported IOC claims",
+        "to_ids": false,
+        "comment": "Quality-control instruction for MISP promotion.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-09",
+        "Tag": [
+          {
+            "name": "source:ai-validation-control"
+          },
+          {
+            "name": "lab:LAB-5.1"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "37f72de4-214f-55e8-9594-6dcb842740fe",
+        "name": "LAB-5.1 CTI Event Report",
+        "content": "# LAB-5.1 \u2014 AI Triage Assistant (Validated Summaries)\n\n**Case:** CJ-014  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-09  \n**ATT&CK:** T1119\n\n## Analyst narrative\nStudents use AI to draft triage summaries, then validate every claim against evidence before promoting final CTI or case notes.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

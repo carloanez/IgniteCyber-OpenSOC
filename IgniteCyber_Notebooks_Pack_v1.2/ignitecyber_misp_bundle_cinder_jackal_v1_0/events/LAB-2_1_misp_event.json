@@ -1,0 +1,188 @@
+{
+  "Event": {
+    "uuid": "ac00dc61-69ff-558c-b264-9a67cbf6f952",
+    "info": "IgniteCyber CJ LAB-2.1: Phishing Case Triage (Elastic Casebook-style)",
+    "date": "2025-07-08",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-2.1"
+      },
+      {
+        "name": "case:CJ-004"
+      },
+      {
+        "name": "day:day-2"
+      },
+      {
+        "name": "attack:technique=\"T1566.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Spearphishing Attachment - T1566.001\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "3721b97c-10b5-56bf-8d55-dadc0b63ac9e",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-004",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "5a8e36bb-5808-53ee-948c-cec1e9f43d54",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-2.1_Phishing_Triage_Elastic_Casebook.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "1b55ccfa-f268-504f-b6e4-78d74d4a092e",
+        "type": "email-src",
+        "category": "Payload delivery",
+        "value": "billing@apexfin-support.com",
+        "to_ids": true,
+        "comment": "Training sender used as phishing lead for the ApexFin scenario.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          }
+        ]
+      },
+      {
+        "uuid": "d8080ae3-c8d6-5c79-b9c2-360ac47267c2",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "cj-mail.com",
+        "to_ids": true,
+        "comment": "Training phishing infrastructure domain from CJ Day 1/Day 2 narrative.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          }
+        ]
+      },
+      {
+        "uuid": "4ea667b4-f302-5ecf-8360-c6f76ad82608",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://cj-mail.com/portal/login",
+        "to_ids": true,
+        "comment": "Training phishing URL; use only inside lab MISP instance.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          }
+        ]
+      },
+      {
+        "uuid": "79aaddbf-af17-5b5c-96fc-85c9b1ba1f2f",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "invoice_Q2_2026.docm",
+        "to_ids": true,
+        "comment": "Reported attachment name for phishing triage.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          }
+        ]
+      },
+      {
+        "uuid": "b96a6f85-0bb5-5f4c-9bd7-1bc45f133753",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "198.51.100.10",
+        "to_ids": false,
+        "comment": "TEST-NET-2 address used as a safe training infrastructure lead.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-08",
+        "Tag": [
+          {
+            "name": "source:reserved-documentation-ip"
+          },
+          {
+            "name": "lab:LAB-2.1"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "0fb37704-2f4a-5de4-8ff8-e2f46e8d66fd",
+        "name": "LAB-2.1 CTI Event Report",
+        "content": "# LAB-2.1 \u2014 Phishing Case Triage (Elastic Casebook-style)\n\n**Case:** CJ-004  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-08  \n**ATT&CK:** T1566.001\n\n## Analyst narrative\nStudents triage a reported phishing lead, capture observables, and prepare a casebook entry before expanding into malware/macro analysis.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

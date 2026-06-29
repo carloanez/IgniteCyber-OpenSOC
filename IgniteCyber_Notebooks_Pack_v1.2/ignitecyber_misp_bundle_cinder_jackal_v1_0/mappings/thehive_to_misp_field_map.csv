@@ -1,0 +1,11 @@
+TheHive field,MISP field,Notes
+case.title,Event.info,Use lab/case title.
+case.tags,Event.Tag,"Preserve lab, day, ATT&CK, actor, TLP/PAP, training tags."
+case.severity,Event.threat_level_id,"Map high=1, medium=2, low=3, info/unknown=4."
+case.status,Event.analysis,"New=0, in progress=1, closed/complete=2."
+observable.dataType,Attribute.type,Map domain/url/ip/hash/file/path/registry/etc.
+observable.data,Attribute.value,Preserve original observable value; defang only in comments or external reports.
+observable.ioc,Attribute.to_ids,True only for detection/actionable indicators.
+observable.tags,Attribute.Tag,Carry confidence/source/lab tags.
+task/log notes,EventReport.content,Append analyst narrative and validation notes.
+case.customFields.case_id,Attribute text case_id=,Used as human-readable alignment key.

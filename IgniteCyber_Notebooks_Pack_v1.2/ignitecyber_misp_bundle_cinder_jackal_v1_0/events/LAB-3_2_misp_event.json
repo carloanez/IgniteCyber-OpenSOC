@@ -1,0 +1,226 @@
+{
+  "Event": {
+    "uuid": "496b4bb0-8fa3-54b2-8d07-9daea94a5736",
+    "info": "IgniteCyber CJ LAB-3.2: Lateral Movement: WinRM + Remote Scheduled Tasks",
+    "date": "2025-08-07",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-3.2"
+      },
+      {
+        "name": "case:CJ-009"
+      },
+      {
+        "name": "day:day-3"
+      },
+      {
+        "name": "attack:technique=\"T1021.006\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Windows Remote Management - T1021.006\""
+      },
+      {
+        "name": "attack:technique=\"T1053.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "cbf35d77-a876-585c-9800-cc70e5ab66ae",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-009",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "9f4f24f6-f553-5b5e-a4bf-47baf13cd8e8",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-3.2_Lateral_Movement_WinRM_Schtasks.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "5bcb7f38-eb8f-5be9-9099-857276d27e57",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "92fe91b7-25eb-5cdd-9eaa-51f63cf8363c",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=schtask_modification_2020-12-1907505969.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "815d60ad-bbd1-5bd2-bb6c-7fda4b0a0591",
+        "type": "hostname",
+        "category": "Network activity",
+        "value": "WORKSTATION5.theshire.local",
+        "to_ids": false,
+        "comment": "Source/affected host in lateral movement and scheduled task telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "source:lab-host"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          }
+        ]
+      },
+      {
+        "uuid": "1aa72a5b-2253-5bd1-b7ef-6bac5d2ddf7a",
+        "type": "hostname",
+        "category": "Network activity",
+        "value": "WORKSTATION6.theshire.local",
+        "to_ids": false,
+        "comment": "Additional host observed in lateral movement/schtasks telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "source:lab-host"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          }
+        ]
+      },
+      {
+        "uuid": "65b0f7bd-17c7-5d58-80d0-9ab088be6834",
+        "type": "hostname",
+        "category": "Network activity",
+        "value": "MORDORDC.theshire.local",
+        "to_ids": false,
+        "comment": "Domain controller context observed in Empire scheduled task dataset.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "source:lab-domain-controller"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          }
+        ]
+      },
+      {
+        "uuid": "b897a68a-fb6e-5b5b-9a0b-59634c2107d5",
+        "type": "user-account",
+        "category": "Attribution",
+        "value": "THESHIRE\\pgustavo",
+        "to_ids": false,
+        "comment": "User context observed in scheduled task/PowerShell telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "source:account-context"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          }
+        ]
+      },
+      {
+        "uuid": "d71b1300-15f9-51a0-9801-561f3c01e1b4",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://schemas.microsoft.com/wbem/wsman/1/windows/shell",
+        "to_ids": false,
+        "comment": "WSMan shell URI observed in BITS/WinRM-related telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-07",
+        "Tag": [
+          {
+            "name": "source:winrm/wsman-behavior-context"
+          },
+          {
+            "name": "lab:LAB-3.2"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "e5f11702-8d88-5c6e-af3d-9ed1c302f44d",
+        "name": "LAB-3.2 CTI Event Report",
+        "content": "# LAB-3.2 \u2014 Lateral Movement: WinRM + Remote Scheduled Tasks\n\n**Case:** CJ-009  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-07  \n**ATT&CK:** T1021.006, T1053.005\n\n## Analyst narrative\nStudents correlate PowerShell remoting/WinRM-style activity with scheduled task creation or modification across Windows hosts.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n- schtask_modification_2020-12-1907505969.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

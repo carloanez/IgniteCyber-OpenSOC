@@ -1,0 +1,220 @@
+{
+  "Event": {
+    "uuid": "0d232a5d-718f-53db-bcf6-c59e624933a2",
+    "info": "IgniteCyber CJ CAPSTONE: Project Obsidian Mini-CTF / Full Campaign",
+    "date": "2025-09-12",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:CAPSTONE"
+      },
+      {
+        "name": "case:CJ-017"
+      },
+      {
+        "name": "day:day-5"
+      },
+      {
+        "name": "attack:technique=\"T1566.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Spearphishing Attachment - T1566.001\""
+      },
+      {
+        "name": "attack:technique=\"T1204.002\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Malicious File - T1204.002\""
+      },
+      {
+        "name": "attack:technique=\"T1059.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+      },
+      {
+        "name": "attack:technique=\"T1218.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Mshta - T1218.005\""
+      },
+      {
+        "name": "attack:technique=\"T1197\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"BITS Jobs - T1197\""
+      },
+      {
+        "name": "attack:technique=\"T1071.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Web Protocols - T1071.001\""
+      },
+      {
+        "name": "attack:technique=\"T1053.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+      },
+      {
+        "name": "attack:technique=\"T1547.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Registry Run Keys / Startup Folder - T1547.001\""
+      },
+      {
+        "name": "attack:technique=\"T1003.003\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"NTDS - T1003.003\""
+      },
+      {
+        "name": "attack:technique=\"T1119\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Automated Collection - T1119\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "b76b73ac-3f1e-58aa-8a60-c6dc17c468cb",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-017",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "bedf3a16-c9c3-5afc-9217-643e62bec44d",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=CAPSTONE derived from labs",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "625e821d-3fe9-58e7-aa3f-fee7b8137c15",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=all",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "f0565f89-4816-56b1-9fdc-d7f5786149ea",
+        "type": "threat-actor",
+        "category": "Attribution",
+        "value": "Cinder Jackal",
+        "to_ids": false,
+        "comment": "Fictional training adversary used as campaign spine across the bootcamp.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "source:training-actor"
+          },
+          {
+            "name": "lab:CAPSTONE"
+          }
+        ]
+      },
+      {
+        "uuid": "73f5017e-5ca6-5cd9-bea5-140d30b77389",
+        "type": "target-org",
+        "category": "Attribution",
+        "value": "ApexFin Solutions",
+        "to_ids": false,
+        "comment": "Fictional victim organization for the IgniteCyber Academy bootcamp.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "source:training-victim"
+          },
+          {
+            "name": "lab:CAPSTONE"
+          }
+        ]
+      },
+      {
+        "uuid": "4b192673-9d79-5cb6-bd4f-0138716f157e",
+        "type": "campaign-name",
+        "category": "Attribution",
+        "value": "Project Obsidian / Cinder Jackal",
+        "to_ids": false,
+        "comment": "Campaign name for the final case.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-09-12",
+        "Tag": [
+          {
+            "name": "source:campaign-context"
+          },
+          {
+            "name": "lab:CAPSTONE"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "4596a09e-449e-57e3-8c9a-80e147eefc70",
+        "name": "CAPSTONE CTI Event Report",
+        "content": "# CAPSTONE \u2014 Project Obsidian Mini-CTF / Full Campaign\n\n**Case:** CJ-017  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-09-12  \n**ATT&CK:** T1566.001, T1204.002, T1059.001, T1218.005, T1197, T1071.001, T1053.005, T1547.001, T1003.003, T1119\n\n## Analyst narrative\nCapstone event aggregates validated observables across the full Cinder Jackal campaign for final reporting and scoring.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- all\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "Event": {
+    "uuid": "e43ca73b-8926-53d7-bf8a-ad1cdf658f38",
+    "info": "IgniteCyber CJ LAB-4.1: Persistence Hunt: Run Keys + Scheduled Tasks",
+    "date": "2025-08-26",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-4.1"
+      },
+      {
+        "name": "case:CJ-011"
+      },
+      {
+        "name": "day:day-4"
+      },
+      {
+        "name": "attack:technique=\"T1547.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Registry Run Keys / Startup Folder - T1547.001\""
+      },
+      {
+        "name": "attack:technique=\"T1053.005\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Scheduled Task - T1053.005\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "9f060635-0a22-52ef-9fa8-ffffec97ecf2",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-011",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "60021d26-1f9b-5f30-b5b7-c622ce2b5699",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-4.1_Persistence_Hunt_RunKeys_Schtasks.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "52170493-4bd8-5576-b65b-312cc1f0a49d",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=empire_schtasks_creation_standard_user_2020-09-21031526.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "634370b8-0a18-5789-a686-c5eb5532e0c1",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=schtask_modification_2020-12-1907505969.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "8dfac1b8-7d56-5617-8240-651f19256c0c",
+        "type": "regkey",
+        "category": "Persistence mechanism",
+        "value": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+        "to_ids": false,
+        "comment": "Registry key repeatedly accessed in scheduled task modification telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "source:persistence-hunt-context"
+          },
+          {
+            "name": "lab:LAB-4.1"
+          }
+        ]
+      },
+      {
+        "uuid": "6e183c3b-cf68-5b01-9224-fd7bd0f20f99",
+        "type": "regkey",
+        "category": "Persistence mechanism",
+        "value": "HKLM\\System\\CurrentControlSet\\Services\\bam\\State\\UserSettings",
+        "to_ids": false,
+        "comment": "BAM registry path observed in process execution traces.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "source:execution-artifact-context"
+          },
+          {
+            "name": "lab:LAB-4.1"
+          }
+        ]
+      },
+      {
+        "uuid": "d8834395-56f0-5b50-9b2c-00cf8a310631",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "cscript.exe",
+        "to_ids": false,
+        "comment": "Script host observed in scheduled task modification telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "source:process-context"
+          },
+          {
+            "name": "lab:LAB-4.1"
+          }
+        ]
+      },
+      {
+        "uuid": "76caf855-8602-5a81-b7ca-92746e365d84",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://schemas.microsoft.com/windows/2004/02/mit/task",
+        "to_ids": false,
+        "comment": "Scheduled task XML namespace observed in telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-26",
+        "Tag": [
+          {
+            "name": "source:scheduled-task-artifact-context"
+          },
+          {
+            "name": "lab:LAB-4.1"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "2f00e901-71a4-5c69-ba3d-6681ab440716",
+        "name": "LAB-4.1 CTI Event Report",
+        "content": "# LAB-4.1 \u2014 Persistence Hunt: Run Keys + Scheduled Tasks\n\n**Case:** CJ-011  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-26  \n**ATT&CK:** T1547.001, T1053.005\n\n## Analyst narrative\nStudents hunt persistence signals in registry and scheduled task telemetry and distinguish benign administrative actions from suspicious CJ tradecraft.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- empire_schtasks_creation_standard_user_2020-09-21031526.json\n- schtask_modification_2020-12-1907505969.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

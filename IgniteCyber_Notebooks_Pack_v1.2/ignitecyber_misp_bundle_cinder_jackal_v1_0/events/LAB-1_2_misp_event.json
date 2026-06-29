@@ -1,0 +1,150 @@
+{
+  "Event": {
+    "uuid": "1e96801c-f7b0-5f82-b657-78ecf8a2af0c",
+    "info": "IgniteCyber CJ LAB-1.2: Baseline Dashboards (Zeek + Endpoint Telemetry)",
+    "date": "2025-06-18",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-1.2"
+      },
+      {
+        "name": "case:CJ-002"
+      },
+      {
+        "name": "day:day-1"
+      },
+      {
+        "name": "attack:technique=\"T1046\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Network Service Discovery - T1046\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "a38a5a04-e1a6-506d-ba43-0e6ae77e9dab",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-002",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-18",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "f4225b28-9725-5701-ab52-b037aa8d84b3",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-1.2_Baseline_Dashboards_Zeek_Endpoint_FIXED.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-18",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "9c845c7e-2518-5cdb-8440-bb2f220ce4d8",
+        "type": "ip-src",
+        "category": "Network activity",
+        "value": "192.168.2.5",
+        "to_ids": false,
+        "comment": "Training workstation source address observed repeatedly in Windows Filtering Platform and Log4Shell lab telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-18",
+        "Tag": [
+          {
+            "name": "source:lab-internal-ip"
+          },
+          {
+            "name": "lab:LAB-1.2"
+          }
+        ]
+      },
+      {
+        "uuid": "c0daa960-f735-544a-87ae-e494475c442c",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "168.63.129.16",
+        "to_ids": false,
+        "comment": "Azure host metadata/agent endpoint commonly observed in baseline Windows telemetry; included as benign baseline context.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-18",
+        "Tag": [
+          {
+            "name": "source:expected-baseline-cloud-service"
+          },
+          {
+            "name": "lab:LAB-1.2"
+          }
+        ]
+      },
+      {
+        "uuid": "a54a5e40-d881-502e-97ca-17b26b07ff33",
+        "type": "text",
+        "category": "Other",
+        "value": "baseline outbound TCP/80 and TCP/443",
+        "to_ids": false,
+        "comment": "Baseline network behavior used for contrast during later attack labs.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-18",
+        "Tag": [
+          {
+            "name": "source:baseline-behavior"
+          },
+          {
+            "name": "lab:LAB-1.2"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "bb1d6543-663e-5674-8370-ed3ab545cc18",
+        "name": "LAB-1.2 CTI Event Report",
+        "content": "# LAB-1.2 \u2014 Baseline Dashboards (Zeek + Endpoint Telemetry)\n\n**Case:** CJ-002  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-06-18  \n**ATT&CK:** T1046\n\n## Analyst narrative\nStudents establish baseline network and endpoint behavior so later Cinder Jackal activity can be compared against normal traffic.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "Event": {
+    "uuid": "6ce284b4-9087-50cd-baea-837aef984be0",
+    "info": "IgniteCyber CJ LAB-1.3: First Detection: Suspicious PowerShell (Sigma)",
+    "date": "2025-06-20",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-1.3"
+      },
+      {
+        "name": "case:CJ-003"
+      },
+      {
+        "name": "day:day-1"
+      },
+      {
+        "name": "attack:technique=\"T1059.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "ba3aaad2-8903-5db8-9741-ce4af86b583f",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-003",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "ab894311-1d41-52cc-a460-972057c3afd5",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-1.3_First_Detection_Suspicious_PowerShell_Sigma.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "0075ca32-fa11-5656-987a-50303d70211a",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=psh_powershell_httplistener_2020-11-0204130683.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "c6095b44-da50-51a6-93d2-f28a22689088",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "powershell.exe",
+        "to_ids": false,
+        "comment": "PowerShell execution observed during suspicious listener-oriented lab telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "source:process-indicator"
+          },
+          {
+            "name": "lab:LAB-1.3"
+          }
+        ]
+      },
+      {
+        "uuid": "035b5e74-3634-5a5e-8bc9-bd9313439ba4",
+        "type": "port",
+        "category": "Network activity",
+        "value": "8000",
+        "to_ids": false,
+        "comment": "Local listener port observed in PowerShell HTTP listener dataset.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "source:lab-listener-port"
+          },
+          {
+            "name": "lab:LAB-1.3"
+          }
+        ]
+      },
+      {
+        "uuid": "e488dc2d-465c-5b5a-880b-f5f761eafe5f",
+        "type": "command-line",
+        "category": "External analysis",
+        "value": "WindowsPowerShell\\v1.0\\powershell.exe",
+        "to_ids": false,
+        "comment": "PowerShell executable path observed in process access and WFP context.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-06-20",
+        "Tag": [
+          {
+            "name": "source:process-path-fragment"
+          },
+          {
+            "name": "lab:LAB-1.3"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "065de9e7-3a04-5319-9802-861bd522f9da",
+        "name": "LAB-1.3 CTI Event Report",
+        "content": "# LAB-1.3 \u2014 First Detection: Suspicious PowerShell (Sigma)\n\n**Case:** CJ-003  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-06-20  \n**ATT&CK:** T1059.001\n\n## Analyst narrative\nStudents triage suspicious PowerShell behavior and create the first Sigma-driven detection artifact for the campaign.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- psh_powershell_httplistener_2020-11-0204130683.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

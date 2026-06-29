@@ -1,0 +1,210 @@
+{
+  "Event": {
+    "uuid": "0ea5a482-0fe4-5038-bda7-305bb33858f8",
+    "info": "IgniteCyber CJ LAB-4.2: Credential Access Signal: Rubeus ASKTGT CreateNetOnly",
+    "date": "2025-08-28",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-4.2"
+      },
+      {
+        "name": "case:CJ-012"
+      },
+      {
+        "name": "day:day-4"
+      },
+      {
+        "name": "attack:technique=\"T1003.003\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"NTDS - T1003.003\""
+      },
+      {
+        "name": "attack:technique=\"T1555\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Credentials from Password Stores - T1555\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "65dfd2f8-c537-5d91-9136-bc5b4dc93efc",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-012",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "8fafe930-96d4-59a7-b931-1d62ae3be9e4",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-4.2_Credential_Access_Rubeus_T1003_003.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "9dfda81f-a01c-5de8-84eb-a868c8cfa16f",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=psh_input_capture_promptforcreds_2020-10-2001320841.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "7a00d7ca-bf63-51e9-84fc-e270f69205d9",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "Rubeus.exe",
+        "to_ids": true,
+        "comment": "Expected lab tooling name for Kerberos-focused credential access exercise.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "source:expected-lab-tooling"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          }
+        ]
+      },
+      {
+        "uuid": "3cd5fc5f-0eb4-5a52-b859-cff7317dc3d4",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "powershell.exe",
+        "to_ids": false,
+        "comment": "PowerShell process context observed in prompt-for-credentials dataset.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "source:process-context"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          }
+        ]
+      },
+      {
+        "uuid": "845aae54-d440-538d-b6f7-bcccf069d2d4",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "credui.dll",
+        "to_ids": false,
+        "comment": "Credential Manager UI DLL loaded in prompt-for-credentials telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "source:credential-ui-artifact"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          }
+        ]
+      },
+      {
+        "uuid": "04918e59-1bf8-56a8-bc56-109aeaa36ef0",
+        "type": "windows-event-id",
+        "category": "External analysis",
+        "value": "5379",
+        "to_ids": false,
+        "comment": "Credential Manager credentials were read / Enumerate Credentials event observed in dataset.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "source:windows-security-evidence"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          }
+        ]
+      },
+      {
+        "uuid": "cf23ada2-47dd-5606-b912-d081823756c8",
+        "type": "user-account",
+        "category": "Attribution",
+        "value": "WORKSTATION5\\wardog",
+        "to_ids": false,
+        "comment": "User context observed in prompt-for-credentials telemetry.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-28",
+        "Tag": [
+          {
+            "name": "source:account-context"
+          },
+          {
+            "name": "lab:LAB-4.2"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "238d352c-6556-5005-9468-070e9c81a2bd",
+        "name": "LAB-4.2 CTI Event Report",
+        "content": "# LAB-4.2 \u2014 Credential Access Signal: Rubeus ASKTGT CreateNetOnly\n\n**Case:** CJ-012  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-28  \n**ATT&CK:** T1003.003, T1555\n\n## Analyst narrative\nStudents review credential access signals, including credential prompt behavior and credential-manager access, then document confidence and limitations.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- psh_input_capture_promptforcreds_2020-10-2001320841.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

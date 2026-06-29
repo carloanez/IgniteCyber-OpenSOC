@@ -21,8 +21,11 @@ node_modules/
 secrets/*.yaml
 secrets/*.json
 secret.conf
+index.conf
+dot.env.template
 
 
 # OS
 .DS_Store
 Thumbs.db
+.ipynb_checkpoints/

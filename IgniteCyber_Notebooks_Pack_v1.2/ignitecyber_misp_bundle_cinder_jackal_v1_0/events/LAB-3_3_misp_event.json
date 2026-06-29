@@ -1,0 +1,179 @@
+{
+  "Event": {
+    "uuid": "2af76849-1ecc-5cbb-91df-a4d0f39be6fb",
+    "info": "IgniteCyber CJ LAB-3.3: Timeline Reconstruction (Elastic-based, Timesketch optional)",
+    "date": "2025-08-12",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-3.3"
+      },
+      {
+        "name": "case:CJ-010"
+      },
+      {
+        "name": "day:day-3"
+      },
+      {
+        "name": "attack:technique=\"T1074.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Local Data Staging - T1074.001\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "cfe2bfae-80c2-5eba-bad2-58658924415c",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-010",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "c5c0a3a3-ba45-5b96-b4fe-1352f41ef373",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-3.3_Timeline_Reconstruction_Elastic_FIXED.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "94dc6c95-b70d-5785-b984-f69b12b06243",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "a087db60-c2ec-5ac4-b538-a8a2aae1ee84",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=cmd_bitsadmin_download_psh_script_2020-10-2302365189.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "e50c4735-b1f0-5058-b27a-b2b32f78ef13",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=aptsimulator_cobaltstrike_2021-06-11T21081492.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "6f20a9b0-7c6a-5f1b-9d48-6a0b04376525",
+        "type": "text",
+        "category": "Other",
+        "value": "timeline:pivot=process_guid,parent_process,command_line,url,ip",
+        "to_ids": false,
+        "comment": "Timeline reconstruction pivot set for the lab.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "source:analyst-workflow-context"
+          },
+          {
+            "name": "lab:LAB-3.3"
+          }
+        ]
+      },
+      {
+        "uuid": "d4ec030c-f9cf-5b40-98c3-ce2c9fc1aa3e",
+        "type": "text",
+        "category": "Other",
+        "value": "CJ chain: mshta \u2192 bitsadmin \u2192 C2-like beacon \u2192 timeline report",
+        "to_ids": false,
+        "comment": "Narrative thread for timeline reconstruction.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-12",
+        "Tag": [
+          {
+            "name": "source:analyst-narrative"
+          },
+          {
+            "name": "lab:LAB-3.3"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "b059df51-c949-564a-aab0-1560d2474039",
+        "name": "LAB-3.3 CTI Event Report",
+        "content": "# LAB-3.3 \u2014 Timeline Reconstruction (Elastic-based, Timesketch optional)\n\n**Case:** CJ-010  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-12  \n**ATT&CK:** T1074.001\n\n## Analyst narrative\nStudents reconstruct the campaign chain from execution to transfer and C2-like behavior using evidence already promoted into TheHive and MISP.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- cmd_mshta_javascript_getobject_sct_2020-10-2202214475.json\n- cmd_bitsadmin_download_psh_script_2020-10-2302365189.json\n- aptsimulator_cobaltstrike_2021-06-11T21081492.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

